@@ -16,11 +16,11 @@ namespace Datally
 
 
         //public OleDbConnection Conn { get; set; } = new OleDbConnection(ConfigurationManager.ConnectionStrings["Datally.Properties.Settings.DatallyConn"].ConnectionString);
-        //public OleDbConnection Conn { get; set; } = new OleDbConnection(Resources.SVRDB);
-        public OleDbConnection Conn { get; set; } = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\\Datally\\DataBase\\Datally.accdb;Jet OLEDB:Database Password=Datally@2020$;");
+        public OleDbConnection Conn { get; set; } = new OleDbConnection(Resources.SVRDB);
+        //public OleDbConnection Conn { get; set; } = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\\Datally\\DataBase\\Datally.accdb;Jet OLEDB:Database Password=Datally@2020$;");
         public OleDbCommand Cmd { get; set; } = new OleDbCommand();
         //public string Path { get; set; } = Resources.SVR;
-        public string Path { get; set; } = Resources.D;
+        //public string Path { get; set; } = Resources.Path;
         private bool IsLogout { get; set; }
 
         private void Shutdown_Btn_Click(object sender, EventArgs e)

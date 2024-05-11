@@ -40,7 +40,7 @@ namespace Datally
                     if (Con.State == ConnectionState.Closed)
                         Con.Open();
                     Cmd.Connection = Con;
-                    Cmd.CommandText = "SELECT FunctionID FROM Functions WHERE FunctionName=@0";
+                    Cmd.CommandText = "SELECT FunctionID FROM T_Function WHERE FunctionName=@0";
                     Cmd.Parameters.AddWithValue("@0", Fun_Grid.SelectedCells[i].Value);
                     OleDbDataReader Reader = Cmd.ExecuteReader();
                     while (Reader.Read())
@@ -139,7 +139,7 @@ namespace Datally
                 }
 
                 Cmd.Connection = Con;
-                Cmd.CommandText = "SELECT * FROM Functions WHERE FunctionID NOT IN (Select FunctionID FROM T_FunctionRole WHERE RoleID=@0)";
+                Cmd.CommandText = "SELECT * FROM T_Function WHERE FunctionID NOT IN (Select FunctionID FROM T_FunctionRole WHERE RoleID=@0)";
                 Cmd.Parameters.AddWithValue("@0", Value);
                 using (OleDbDataAdapter Da = new OleDbDataAdapter(Cmd))
                 {

@@ -141,7 +141,7 @@
     <value>File Exist</value>
   </data>
   <data name="SVR" xml:space="preserve">
-    <value>\\SVR1\d\Datally\</value>
+    <value>|DataDirectory|</value>
     <comment>\SVR1\d\Datally\</comment>
   </data>
   <data name="NotExist" xml:space="preserve">
@@ -154,7 +154,7 @@
     <value>Phone</value>
   </data>
   <data name="Path" xml:space="preserve">
-    <value>\\SVR1\d\Datally\</value>
+    <value>Application.StartupPath\</value>
   </data>
   <data name="S1" xml:space="preserve">
     <value>Status</value>

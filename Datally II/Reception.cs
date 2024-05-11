@@ -19,7 +19,7 @@ namespace Datally
 
         public OleDbCommand Cmd { get; set; } = new OleDbCommand();
         public Control Ctrl { get; set; }
-        public string Path { get; set; } = Resources.Path;
+        public string Path { get; set; } = Application.StartupPath + "\\";
         //public string Path { get; set; } = Resources.D;
 
         private void Singout_Btn_Click(object sender, EventArgs e)

@@ -12,7 +12,7 @@ namespace Datally.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.8.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.9.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -26,9 +26,9 @@ namespace Datally.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\\Users\\Salah Karrar\\Dropbox\\Proje" +
-            "ct VS\\Datally II\\Datally II\\bin\\Debug\\DataBase\\Datally.accdb;Jet OLEDB:Database " +
-            "Password=Datally@2022$")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.16.0;Data Source=|DataDirectory|\\bin\\Debug\\DataBase\\" +
+            "Datally.accdb;Persist Security Info=True;Password=Datally@2022$;User ID=admin;Je" +
+            "t OLEDB:Database Password=Datally@2022$")]
         public string DatallyConn {
             get {
                 return ((string)(this["DatallyConn"]));

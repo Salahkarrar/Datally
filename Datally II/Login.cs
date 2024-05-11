@@ -19,7 +19,7 @@ namespace Datally
         public string Phone { get; set; }
         public string Authority { get; set; }
         public string RoleID { get; set; }
-        public string Path { get; set; } = Resources.SVR;
+        //public string Path { get; set; } = Resources.SVR;
         //public string Path { get; set; } = Resources.D;
 
         private static Login _instance;

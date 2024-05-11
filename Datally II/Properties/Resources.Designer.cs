@@ -543,7 +543,7 @@ namespace Datally.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to \\SVR1\d\Datally\.
+        ///   Looks up a localized string similar to Application.StartupPath\.
         /// </summary>
         internal static string Path {
             get {
@@ -642,7 +642,7 @@ namespace Datally.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to \\SVR1\d\Datally\.
+        ///   Looks up a localized string similar to |DataDirectory|.
         /// </summary>
         internal static string SVR {
             get {

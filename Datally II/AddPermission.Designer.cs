@@ -347,9 +347,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.FunRole_Grid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Fun_Grid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DatallySet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.T_RolesBindSour)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.T_FunBindSour)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.T_FunRoleBindSour)).EndInit();
+            //((System.ComponentModel.ISupportInitialize)(this.T_RolesBindSour)).EndInit();
+            //((System.ComponentModel.ISupportInitialize)(this.T_FunBindSour)).EndInit();
+            //((System.ComponentModel.ISupportInitialize)(this.T_FunRoleBindSour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FunBindSour2)).EndInit();
             this.ResumeLayout(false);
 

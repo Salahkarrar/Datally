@@ -102,7 +102,7 @@
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label1.Location = new System.Drawing.Point(31, 3);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 19);
+            this.label1.Size = new System.Drawing.Size(71, 23);
             this.label1.TabIndex = 0;
             this.label1.Text = "Datally";
             // 
@@ -170,7 +170,7 @@
             this.UserName_Txt.LinkColor = System.Drawing.Color.White;
             this.UserName_Txt.Location = new System.Drawing.Point(102, 5);
             this.UserName_Txt.Name = "UserName_Txt";
-            this.UserName_Txt.Size = new System.Drawing.Size(65, 15);
+            this.UserName_Txt.Size = new System.Drawing.Size(86, 19);
             this.UserName_Txt.TabIndex = 15;
             this.UserName_Txt.TabStop = true;
             this.UserName_Txt.Text = "User Name";
@@ -181,7 +181,7 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(18, 5);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 15);
+            this.label2.Size = new System.Drawing.Size(91, 19);
             this.label2.TabIndex = 8;
             this.label2.Text = "User Name:";
             // 
@@ -212,7 +212,6 @@
             this.Main_Pan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(38)))), ((int)(((byte)(49)))));
             this.Main_Pan.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Main_Pan.Controls.Add(this.Sub_Pan);
-            this.Main_Pan.Controls.Add(this.panel1);
             this.Main_Pan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Main_Pan.Location = new System.Drawing.Point(175, 25);
             this.Main_Pan.Name = "Main_Pan";
@@ -224,6 +223,7 @@
             this.Sub_Pan.AccessibleName = "";
             this.Sub_Pan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(38)))), ((int)(((byte)(49)))));
             this.Sub_Pan.Controls.Add(this.HReception_Btn);
+            this.Sub_Pan.Controls.Add(this.panel1);
             this.Sub_Pan.Controls.Add(this.HSearch_Btn);
             this.Sub_Pan.Controls.Add(this.HReport_Btn);
             this.Sub_Pan.Controls.Add(this.HRadiology_Btn);
@@ -409,6 +409,7 @@
             this.Per_Btn.Text = "Add Permission";
             this.Per_Btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Per_Btn.UseVisualStyleBackColor = false;
+            this.Per_Btn.Visible = false;
             this.Per_Btn.Click += new System.EventHandler(this.Per_Txt_Click);
             // 
             // AddUser_Txt
@@ -653,7 +654,7 @@
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.CancelButton = this.Minimize_Btn;

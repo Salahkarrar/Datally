@@ -128,7 +128,7 @@
     <value>ID</value>
   </data>
   <data name="DMR" xml:space="preserve">
-    <value>D:\Datally\Medical Report\</value>
+    <value>|DataDirectory|\Medical Report\</value>
   </data>
   <data name="ic_print_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ic_print_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -143,6 +143,9 @@
   <data name="SVR" xml:space="preserve">
     <value>|DataDirectory|</value>
     <comment>\SVR1\d\Datally\</comment>
+  </data>
+  <data name="Reception_White_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Reception_White_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="NotExist" xml:space="preserve">
     <value>File Not Exist</value>
@@ -167,10 +170,7 @@
     <value>Good</value>
   </data>
   <data name="DDB" xml:space="preserve">
-    <value>D:\Datally\DataBase\</value>
-  </data>
-  <data name="datally1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\datally1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>|DataDirectory|\DataBase\</value>
   </data>
   <data name="E1" xml:space="preserve">
     <value>Error</value>
@@ -179,8 +179,8 @@
   <data name="E2" xml:space="preserve">
     <value>Pelease Enter Service and Doctor Name</value>
   </data>
-  <data name="PathP_ReportBackup" xml:space="preserve">
-    <value>D:\Datally\P_Report\</value>
+  <data name="ic_youtube_searched_for_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_youtube_searched_for_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ic_edit_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ic_edit_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -189,7 +189,7 @@
     <value>Information</value>
   </data>
   <data name="PathBackup" xml:space="preserve">
-    <value>D:\Datally\Backup</value>
+    <value>|DataDirectory|\Backup\</value>
   </data>
   <data name="ic_save_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ic_save_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -198,61 +198,70 @@
     <value>..\Resources\ic_send_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Path2" xml:space="preserve">
-    <value>D:\Datally\DataBase\Datally.accdb</value>
+    <value>|DataDirectory|\DataBase\Radiologix.accdb</value>
   </data>
   <data name="SVRDB" xml:space="preserve">
-    <value>Provider=Microsoft.ACE.OLEDB.16.0;Data Source=|DataDirectory|\\DataBase\\Datally.accdb;Jet OLEDB:Database Password=Datally@2022$</value>
+    <value>Provider=Microsoft.ACE.OLEDB.16.0;Data Source=|DataDirectory|\\DataBase\\Radiologix.accdb;Jet OLEDB:Database Password=Radiologix@2024$</value>
     <comment>Provider=Microsoft.ACE.OLEDB.12.0;Data Source=//SVR1\\d\\Datally\\DataBase\\Datally.accdb;Jet OLEDB:Database Password=Datally@2022$</comment>
   </data>
   <data name="ic_cancel_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ic_cancel_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="D" xml:space="preserve">
-    <value>D:\Datally\</value>
+    <value>|DataDirectory|</value>
   </data>
   <data name="DB6" xml:space="preserve">
-    <value />
+    <value>C_Status</value>
   </data>
-  <data name="ic_folder_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic_folder_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="PathP_ReportBackup" xml:space="preserve">
+    <value>|DataDirectory|\P_Report\</value>
   </data>
-  <data name="DataGo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DataGo.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Light_Arrow_Left_36" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Light_Arrow_Left_36.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="E5" xml:space="preserve">
     <value>Please Check Your Data and Try Again</value>
   </data>
+  <data name="ic_remove_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_remove_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="S0" xml:space="preserve">
     <value>"\r\n"</value>
+  </data>
+  <data name="RADIOLOGIX_Trans" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RADIOLOGIX_Trans.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="S4" xml:space="preserve">
     <value>GoodBye</value>
     <comment>\\SVR\d\Datally</comment>
   </data>
   <data name="SVRTemplete" xml:space="preserve">
-    <value>\Datally\Templete\</value>
+    <value>|DataDirectory|\Templete\</value>
     <comment>\\SVR\\d\\Datally\\Templete\\</comment>
   </data>
-  <data name="DB3" xml:space="preserve">
-    <value>Password</value>
+  <data name="Light_Arrow_Right_36" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Light_Arrow_Right_36.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ic_add_circle_outline_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ic_add_circle_outline_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="DTemplete" xml:space="preserve">
-    <value>D:\Datally\Templete</value>
-  </data>
   <data name="E11" xml:space="preserve">
     <value>There is Some Problem</value>
   </data>
-  <data name="ic_youtube_searched_for_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic_youtube_searched_for_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ic_input_white_36dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_input_white_36dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DTemplete" xml:space="preserve">
+    <value>|DataDirectory|\Templete</value>
   </data>
   <data name="ic_clear_white_24dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ic_clear_white_24dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="DataGo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DataGo.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="DP_Report" xml:space="preserve">
-    <value>D:\Datally\P_Report</value>
+    <value>|DataDirectory|\P_Report</value>
   </data>
   <data name="E8" xml:space="preserve">
     <value>Exit</value>
@@ -271,14 +280,11 @@
     <value>Data Deleted</value>
   </data>
   <data name="SVRPath" xml:space="preserve">
-    <value>DataBase\Datally.accdb</value>
+    <value>DataBase\Radiologix.accdb</value>
     <comment>DataBase\Datally.accdb</comment>
   </data>
   <data name="Confirm" xml:space="preserve">
     <value>Are You Sure ???</value>
-  </data>
-  <data name="datally11" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\datally11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Update" xml:space="preserve">
     <value>Data Updated</value>
@@ -289,14 +295,8 @@
   <data name="Question" xml:space="preserve">
     <value>Question?</value>
   </data>
-  <data name="MRpath3" xml:space="preserve">
-    <value>D:\Datally\Medical Report\Backup</value>
-  </data>
   <data name="ic_create_new_folder_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ic_create_new_folder_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Dark_Info_Outline_36" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Dark_Info_Outline_36.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Make" xml:space="preserve">
     <value>Sorry You Can't Make Templete, Call IT Administrator</value>
@@ -304,20 +304,32 @@
   <data name="DB2" xml:space="preserve">
     <value>UserName</value>
   </data>
+  <data name="Radiologix App" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Radiologix App.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="BackupFolder" xml:space="preserve">
     <value>Backup\</value>
   </data>
   <data name="Close_white_18" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Close_white_18.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ic_input_white_36dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic_input_white_36dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="outline_logout_white_20" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\outline_logout_white_20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MRpath3" xml:space="preserve">
+    <value>|DataDirectory|\Medical Report\Backup</value>
+  </data>
+  <data name="Light_Info_Outline_36" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Light_Info_Outline_36.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="E9" xml:space="preserve">
     <value>Do You Really Want to Closing The Program?</value>
   </data>
-  <data name="ic_remove_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic_remove_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Radiologix_250" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Radiologix_250.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_folder_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_folder_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="E7" xml:space="preserve">
     <value>Your Password is not correct</value>
@@ -334,11 +346,17 @@
   <data name="ic_account_circle_white_18dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ic_account_circle_white_18dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="DB3" xml:space="preserve">
+    <value>PWord</value>
+  </data>
   <data name="SVRMR" xml:space="preserve">
     <value>\\SVR1\d\Datally\Medical Report\</value>
     <comment>\SVR1\d\Datally\Medical Report\</comment>
   </data>
-  <data name="Light_Info_Outline_36" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Light_Info_Outline_36.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Radiologix" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Radiologix.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Template_White_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Template_White_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

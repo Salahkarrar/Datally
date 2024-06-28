@@ -1,6 +1,5 @@
 ﻿using Datally.Properties;
 using System;
-using System.Configuration;
 using System.Data;
 using System.Data.OleDb;
 using System.IO;
@@ -8,20 +7,22 @@ using System.Windows.Forms;
 
 namespace Datally
 {
-    public partial class Search : Form
+    public partial class Search_Frm : Form
     {
-        public Search() => InitializeComponent();
+        public Search_Frm() => InitializeComponent();
 
         private void Search_Load(object sender, EventArgs e) => Fill();
 
-        //public OleDbConnection Conn { get; set; } = new OleDbConnection(ConfigurationManager.ConnectionStrings["Datally.Properties.Settings.DatallyConn"].ConnectionString);
         public OleDbConnection Conn { get; set; } = new OleDbConnection(Resources.SVRDB);
-        //public OleDbConnection Conn { get; set; } = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\\Datally\\DataBase\\Datally.accdb;Jet OLEDB:Database Password=Datally@2020$;");
         public OleDbCommand Cmd { get; set; } = new OleDbCommand();
         public string Path { get; set; } = Application.StartupPath + "\\";
-        //public string Path { get; set; } = Resources.D;
 
-        private void Shutdown_Btn_Click(object sender, EventArgs e) => Close();
+        private void Shutdown_Btn_Click(object sender, EventArgs e)
+        {
+            Close();
+            Main main = new Main();
+            main.Show();
+        }
 
         public void Fill()
         {
@@ -29,6 +30,7 @@ namespace Datally
             {
                 Conn.Open();
             }
+
 
             Cmd.Connection = Conn;
             Cmd.CommandText = "SELECT P_Data.ID, P_Data.P_Name, P_Data.Age, P_Data.Sex, P_Data.Card, P_Data.P_Date, P_Data.Ref, P_Report.Services, P_Report.Doctor " +
@@ -41,13 +43,17 @@ namespace Datally
                 Search_Grid.DataSource = Dt;
                 Search_Grid.Columns[0].Width = 60;
                 Search_Grid.Columns[1].Width = 250;
+                Search_Grid.Columns[1].HeaderText = "Patient Name";
                 Search_Grid.Columns[2].Width = 60;
                 Search_Grid.Columns[3].Width = 60;
                 Search_Grid.Columns[4].Width = 60;
                 Search_Grid.Columns[5].Width = 110;
+                Search_Grid.Columns[5].HeaderText = "Date";
                 Search_Grid.Columns[6].Width = 160;
+                Search_Grid.Columns[6].HeaderText = "Ref. Doctor";
                 Search_Grid.Columns[7].Width = 300;
                 Search_Grid.Columns[8].Width = 180;
+                Search_Grid.Columns[8].HeaderText = "Radiologist";
             }
             Conn.Close();
         }
@@ -93,7 +99,7 @@ namespace Datally
             }
             else
             {
-                MessageBoxEx.Show(Resources.Make,Resources.Information, 700);
+                MessageBoxEx.Show(Resources.Make, Resources.Information, 700);
             }
         }
 

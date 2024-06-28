@@ -1,6 +1,6 @@
 ﻿namespace Datally
 {
-    partial class Report
+    partial class Report_Frm
     {
         /// <summary>
         /// Required designer variable.
@@ -70,6 +70,7 @@
             // 
             // Print_Btn
             // 
+            this.Print_Btn.Enabled = false;
             this.Print_Btn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
             this.Print_Btn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
             this.Print_Btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
@@ -96,9 +97,9 @@
             this.Doc_Name.DisplayMember = "DocName";
             this.Doc_Name.ForeColor = System.Drawing.Color.White;
             this.Doc_Name.FormattingEnabled = true;
-            this.Doc_Name.Location = new System.Drawing.Point(114, 91);
+            this.Doc_Name.Location = new System.Drawing.Point(136, 91);
             this.Doc_Name.Name = "Doc_Name";
-            this.Doc_Name.Size = new System.Drawing.Size(234, 23);
+            this.Doc_Name.Size = new System.Drawing.Size(234, 27);
             this.Doc_Name.TabIndex = 3;
             this.Doc_Name.ValueMember = "ID";
             // 
@@ -117,7 +118,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(233, 57);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(27, 15);
+            this.label2.Size = new System.Drawing.Size(35, 19);
             this.label2.TabIndex = 2;
             this.label2.Text = "To :";
             // 
@@ -126,16 +127,16 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(33, 94);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 15);
+            this.label3.Size = new System.Drawing.Size(97, 19);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Doctor\'s :";
+            this.label3.Text = "Radiologist :";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(33, 57);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 15);
+            this.label1.Size = new System.Drawing.Size(55, 19);
             this.label1.TabIndex = 2;
             this.label1.Text = "From :";
             // 
@@ -144,22 +145,22 @@
             this.To_Txt.CustomFormat = "dd/MM/yyyy";
             this.To_Txt.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.To_Txt.Location = new System.Drawing.Point(266, 52);
-            this.To_Txt.MinDate = new System.DateTime(2016, 1, 1, 0, 0, 0, 0);
+            this.To_Txt.MinDate = new System.DateTime(2024, 1, 1, 0, 0, 0, 0);
             this.To_Txt.Name = "To_Txt";
-            this.To_Txt.Size = new System.Drawing.Size(127, 22);
+            this.To_Txt.Size = new System.Drawing.Size(127, 26);
             this.To_Txt.TabIndex = 1;
-            this.To_Txt.Value = new System.DateTime(2019, 9, 15, 0, 0, 0, 0);
+            this.To_Txt.Value = new System.DateTime(2026, 1, 1, 0, 0, 0, 0);
             // 
             // From_Txt
             // 
             this.From_Txt.CustomFormat = "dd/MM/yyyy";
             this.From_Txt.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.From_Txt.Location = new System.Drawing.Point(81, 52);
-            this.From_Txt.MinDate = new System.DateTime(2016, 1, 1, 0, 0, 0, 0);
+            this.From_Txt.MinDate = new System.DateTime(2024, 1, 1, 0, 0, 0, 0);
             this.From_Txt.Name = "From_Txt";
-            this.From_Txt.Size = new System.Drawing.Size(127, 22);
+            this.From_Txt.Size = new System.Drawing.Size(127, 26);
             this.From_Txt.TabIndex = 1;
-            this.From_Txt.Value = new System.DateTime(2019, 9, 15, 0, 0, 0, 0);
+            this.From_Txt.Value = new System.DateTime(2026, 1, 1, 0, 0, 0, 0);
             // 
             // Shutdown_Btn
             // 
@@ -199,9 +200,9 @@
             this.panel1.Size = new System.Drawing.Size(1022, 25);
             this.panel1.TabIndex = 4;
             // 
-            // Report
+            // Report_Frm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(38)))), ((int)(((byte)(49)))));
             this.ClientSize = new System.Drawing.Size(1022, 646);
@@ -214,9 +215,9 @@
             this.MaximumSize = new System.Drawing.Size(1022, 700);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1021, 646);
-            this.Name = "Report";
+            this.Name = "Report_Frm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Datally";
+            this.Text = "Report";
             this.Load += new System.EventHandler(this.Search_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

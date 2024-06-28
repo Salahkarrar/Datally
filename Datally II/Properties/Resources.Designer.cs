@@ -99,7 +99,7 @@ namespace Datally.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to D:\Datally\.
+        ///   Looks up a localized string similar to |DataDirectory|.
         /// </summary>
         internal static string D {
             get {
@@ -120,39 +120,9 @@ namespace Datally.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Dark_Info_Outline_36 {
-            get {
-                object obj = ResourceManager.GetObject("Dark_Info_Outline_36", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap DataGo {
             get {
                 object obj = ResourceManager.GetObject("DataGo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap datally1 {
-            get {
-                object obj = ResourceManager.GetObject("datally1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap datally11 {
-            get {
-                object obj = ResourceManager.GetObject("datally11", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -176,7 +146,7 @@ namespace Datally.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Password.
+        ///   Looks up a localized string similar to PWord.
         /// </summary>
         internal static string DB3 {
             get {
@@ -203,7 +173,7 @@ namespace Datally.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to C_Status.
         /// </summary>
         internal static string DB6 {
             get {
@@ -212,7 +182,7 @@ namespace Datally.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to D:\Datally\DataBase\.
+        ///   Looks up a localized string similar to |DataDirectory|\DataBase\.
         /// </summary>
         internal static string DDB {
             get {
@@ -230,7 +200,7 @@ namespace Datally.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to D:\Datally\Medical Report\.
+        ///   Looks up a localized string similar to |DataDirectory|\Medical Report\.
         /// </summary>
         internal static string DMR {
             get {
@@ -239,7 +209,7 @@ namespace Datally.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to D:\Datally\P_Report.
+        ///   Looks up a localized string similar to |DataDirectory|\P_Report.
         /// </summary>
         internal static string DP_Report {
             get {
@@ -248,7 +218,7 @@ namespace Datally.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to D:\Datally\Templete.
+        ///   Looks up a localized string similar to |DataDirectory|\Templete.
         /// </summary>
         internal static string DTemplete {
             get {
@@ -499,6 +469,26 @@ namespace Datally.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Light_Arrow_Left_36 {
+            get {
+                object obj = ResourceManager.GetObject("Light_Arrow_Left_36", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Light_Arrow_Right_36 {
+            get {
+                object obj = ResourceManager.GetObject("Light_Arrow_Right_36", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Light_Info_Outline_36 {
             get {
                 object obj = ResourceManager.GetObject("Light_Info_Outline_36", resourceCulture);
@@ -525,7 +515,7 @@ namespace Datally.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to D:\Datally\Medical Report\Backup.
+        ///   Looks up a localized string similar to |DataDirectory|\Medical Report\Backup.
         /// </summary>
         internal static string MRpath3 {
             get {
@@ -543,6 +533,16 @@ namespace Datally.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap outline_logout_white_20 {
+            get {
+                object obj = ResourceManager.GetObject("outline_logout_white_20", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Application.StartupPath\.
         /// </summary>
         internal static string Path {
@@ -552,7 +552,7 @@ namespace Datally.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to D:\Datally\DataBase\Datally.accdb.
+        ///   Looks up a localized string similar to |DataDirectory|\DataBase\Radiologix.accdb.
         /// </summary>
         internal static string Path2 {
             get {
@@ -561,7 +561,7 @@ namespace Datally.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to D:\Datally\Backup.
+        ///   Looks up a localized string similar to |DataDirectory|\Backup\.
         /// </summary>
         internal static string PathBackup {
             get {
@@ -570,7 +570,7 @@ namespace Datally.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to D:\Datally\P_Report\.
+        ///   Looks up a localized string similar to |DataDirectory|\P_Report\.
         /// </summary>
         internal static string PathP_ReportBackup {
             get {
@@ -584,6 +584,56 @@ namespace Datally.Properties {
         internal static string Question {
             get {
                 return ResourceManager.GetString("Question", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Radiologix {
+            get {
+                object obj = ResourceManager.GetObject("Radiologix", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Radiologix_250 {
+            get {
+                object obj = ResourceManager.GetObject("Radiologix_250", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Radiologix_App {
+            get {
+                object obj = ResourceManager.GetObject("Radiologix App", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RADIOLOGIX_Trans {
+            get {
+                object obj = ResourceManager.GetObject("RADIOLOGIX_Trans", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Reception_White_32 {
+            get {
+                object obj = ResourceManager.GetObject("Reception_White_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -660,7 +710,7 @@ namespace Datally.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Provider=Microsoft.ACE.OLEDB.16.0;Data Source=|DataDirectory|\\DataBase\\Datally.accdb;Jet OLEDB:Database Password=Datally@2022$.
+        ///   Looks up a localized string similar to Provider=Microsoft.ACE.OLEDB.16.0;Data Source=|DataDirectory|\\DataBase\\Radiologix.accdb;Jet OLEDB:Database Password=Radiologix@2024$.
         /// </summary>
         internal static string SVRDB {
             get {
@@ -687,7 +737,7 @@ namespace Datally.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DataBase\Datally.accdb.
+        ///   Looks up a localized string similar to DataBase\Radiologix.accdb.
         /// </summary>
         internal static string SVRPath {
             get {
@@ -696,11 +746,21 @@ namespace Datally.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to \Datally\Templete\.
+        ///   Looks up a localized string similar to |DataDirectory|\Templete\.
         /// </summary>
         internal static string SVRTemplete {
             get {
                 return ResourceManager.GetString("SVRTemplete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Template_White_32 {
+            get {
+                object obj = ResourceManager.GetObject("Template_White_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

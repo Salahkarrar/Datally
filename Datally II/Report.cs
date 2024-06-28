@@ -4,22 +4,33 @@ using System.Windows.Forms;
 
 namespace Datally
 {
-    public partial class Report : Form
+    public partial class Report_Frm : Form
     {
         string F, T, Doc;
 
-        public Report() => InitializeComponent();
+        public Report_Frm() => InitializeComponent();
 
         private void Search_Load(object sender, EventArgs e)
         {
             From_Txt.Value = DateTime.Today;
             To_Txt.Value = DateTime.Today;
             DocTabAdap.Fill(DatallySet.Doctor);
+            Login.Instance.CheckMain(Login.Instance.UserName);
+            foreach (var obj in Login.Instance.List)
+            {
+                if (Print_Btn.Name == obj.FunctionName)
+                {
+                    Print_Btn.Enabled = true;
+                }
+            }
         }
 
-        private void Shutdown_Btn_Click(object sender, EventArgs e) => Close();
-
-        private void Close_Click(object sender, EventArgs e) => Close();
+        private void Shutdown_Btn_Click(object sender, EventArgs e)
+        {
+            Close();
+            Main main = new Main();
+            main.Show();
+        }
 
         private void Print_Btn_Click(object sender, EventArgs e)
         {
@@ -30,7 +41,7 @@ namespace Datally
                 T = To_Txt.Text;
                 Doc = Doc_Name.Text;
 
-                using (Datally.Print frm = new Datally.Print(F, T, Doc))
+                using (Print frm = new Print(F, T, Doc))
 
                 {
                     frm.ShowDialog();

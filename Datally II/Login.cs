@@ -1,5 +1,6 @@
 ﻿using Datally.Properties;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
 using System.Diagnostics;
@@ -7,11 +8,15 @@ using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.Linq;
+using Dapper;
 namespace Datally
 {
     public partial class Login : Form
     {
         public Login() => InitializeComponent();
+
+        public OleDbConnection Con { get; } = new OleDbConnection(Resources.SVRDB);
 
         public string ID { get; set; }
         public string UserName { get; set; }
@@ -19,8 +24,9 @@ namespace Datally
         public string Phone { get; set; }
         public string Authority { get; set; }
         public string RoleID { get; set; }
-        //public string Path { get; set; } = Resources.SVR;
-        //public string Path { get; set; } = Resources.D;
+        public string RoleName { get; set; }
+        public string Status { get; set; }
+        public List<PROAuth> List { get; set; }
 
         private static Login _instance;
 
@@ -37,9 +43,8 @@ namespace Datally
             }
         }
 
-        //public OleDbConnection Conn { get; set; } = new OleDbConnection(ConfigurationManager.ConnectionStrings["Datally.Properties.Settings.DatallyConn"].ConnectionString);
         public OleDbConnection Conn { get; set; } = new OleDbConnection(Resources.SVRDB);
-        //public OleDbConnection Conn { get; set; } = new OleDbConnection(Resources.D);
+
 
 
         private void Login_Load(object sender, EventArgs e)
@@ -69,7 +74,7 @@ namespace Datally
         private void Login_Btn_Click(object sender, EventArgs e)
         {
 
-            OleDbCommand Cmd = new OleDbCommand("SELECT * FROM Users WHERE Password=@0", Conn);
+            OleDbCommand Cmd = new OleDbCommand("SELECT * FROM T_Users WHERE PWord=@0", Conn);
 
             Cmd.Parameters.AddWithValue("@0", PassWord.Text);
 
@@ -83,16 +88,26 @@ namespace Datally
                 Password = Reader[Resources.DB3].ToString();
                 Phone = Reader[Resources.DB4].ToString();
                 RoleID = Reader[Resources.DB5].ToString();
+                Status = Reader[Resources.DB6].ToString();
             }
             Cmd.Parameters.Clear();
             Reader.Close();
-            if (c == 1)
+            if (c == 1 && Status == "Changed")
             {
                 Hide();
                 using (Main D = new Main())
                 {
                     D.ShowDialog();
                 }
+                PassWord.Clear();
+            }
+            else if (c == 1 && Status != "Changed")
+            {
+                using (ChangePass D = new ChangePass())
+                {
+                    D.ShowDialog();
+                }
+                PassWord.Clear();
             }
             else
             {
@@ -116,7 +131,7 @@ namespace Datally
             using (OleDbCommand Cmd = new OleDbCommand
             {
                 Connection = Conn,
-                CommandText = "SELECT * FROM Users WHERE PassWord=@0"
+                CommandText = "SELECT * FROM T_Users WHERE PWord=@0"
             })
             {
                 Cmd.Parameters.AddWithValue("@0", PassWord.Text);
@@ -151,13 +166,13 @@ namespace Datally
                 var backupFolder = Resources.BackupFolder;
 
                 var backupFileName = String.Format("{0}{1}~{2}.accdb",
-                    backupFolder, "Datally",
+                    backupFolder, "Radiologix",
                     DateTime.Now.ToString("dd-MM-yyy  hh-mm-ss"));
 
                 string So = Resources.SVRPath;
                 string De = backupFileName;
 
-                string backupDir = Resources.PathBackup;
+                string backupDir = Resources.BackupFolder;
                 var DeletionDays = 3;
                 if (DeletionDays < 10)
                 {
@@ -194,5 +209,62 @@ namespace Datally
             Value.TextImageRelation = TextImageRelation.ImageBeforeText;
         }
 
+        private void ChangePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (ChangePass D = new ChangePass())
+            {
+                D.ShowDialog();
+            }
+        }
+
+        public void Check(string Value, string Value2)
+        {
+            try
+            {
+                if (Con.State == ConnectionState.Closed)
+                {
+                    Con.Open();
+                }
+
+                using (OleDbCommand Cmd = new OleDbCommand
+                {
+                    Connection = Con,
+                })
+                {
+                    List = Con.Query<PROAuth>("SELECT T_Function.FunctionName, T_Roles.RoleName FROM((T_Function INNER JOIN T_FunctionRole ON T_Function.FunctionID = T_FunctionRole.FunctionID) INNER JOIN T_Roles ON T_FunctionRole.RoleID = T_Roles.RoleID) INNER JOIN T_Users ON T_Roles.RoleID = T_Users.RoleID " +
+                                              "WHERE(([T_Users].[UserName] = '" + Value + "' AND ([T_Function].[FunctionName]='" + Value2 + "')))", commandType: CommandType.Text).ToList();
+                    Con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Problem in Database, Can't Get Your Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Login - 1002", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void CheckMain(string Value)
+        {
+            try
+            {
+                if (Con.State == ConnectionState.Closed)
+                {
+                    Con.Open();
+                }
+
+                using (OleDbCommand Cmd = new OleDbCommand
+                {
+                    Connection = Con,
+                })
+                {
+                    List = Con.Query<PROAuth>("SELECT T_Function.FunctionName, T_Roles.RoleName FROM((T_Function INNER JOIN T_FunctionRole ON T_Function.FunctionID = T_FunctionRole.FunctionID) INNER JOIN T_Roles ON T_FunctionRole.RoleID = T_Roles.RoleID) INNER JOIN T_Users ON T_Roles.RoleID = T_Users.RoleID " +
+                                              "WHERE(([T_Users].[UserName] = '" + Value + "'))", commandType: CommandType.Text).ToList();
+                    Con.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Problem in Database, Can't Get Your Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Login - 1003", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

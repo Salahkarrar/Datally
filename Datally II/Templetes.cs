@@ -1,6 +1,5 @@
 ﻿using Datally.Properties;
 using System;
-using System.Configuration;
 using System.Data;
 using System.Data.OleDb;
 using System.IO;
@@ -8,38 +7,60 @@ using System.Windows.Forms;
 
 namespace Datally
 {
-    public partial class Templetes : Form
+    public partial class Templetes_Frm : Form
     {
-        public Templetes()
+        public Templetes_Frm()
         {
             InitializeComponent();
         }
 
-        //public OleDbConnection Conn { get; set; } = new OleDbConnection(ConfigurationManager.ConnectionStrings["Datally.Properties.Settings.DatallyConn"].ConnectionString);
         public OleDbConnection Conn { get; set; } = new OleDbConnection(Resources.SVRDB);
-        //public OleDbConnection Conn { get; set; } = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\\Datally\\DataBase\\Datally.accdb;Jet OLEDB:Database Password=Datally@2020$;");
         public OleDbCommand Cmd { get; set; } = new OleDbCommand();
         public BindingSource Value { get; set; }
         public string Path { get; set; } = Application.StartupPath + "\\";
-        //public string Path { get; set; } = Resources.D;
 
 
-        private void Shutdown_Btn_Click(object sender, EventArgs e) => Close();
+        private void Shutdown_Btn_Click(object sender, EventArgs e)
+        {
+            Close();
+            Main main = new Main();
+            main.Show();
+        }
 
-        private void Datally_Load(object sender, EventArgs e)
+        private void Templates_Load(object sender, EventArgs e)
         {
             Templete_Grid.DataSource = MriBindSour;
             MinimizeBox = true;
             Services();
             Services_Label.Text = "MRI";
             Edit(true);
-            if (Convert.ToInt32(Login.Instance.RoleID) == 1)
+            Login.Instance.CheckMain(Login.Instance.UserName);
+            foreach (var obj in Login.Instance.List)
             {
-                Delete_Btn.Enabled = true;
-            }
-            else if (Convert.ToInt32(Login.Instance.RoleID) == 2)
-            {
-                Delete_Btn.Enabled = false;
+                if (Delete_Btn.Name == obj.FunctionName)
+                {
+                    Delete_Btn.Enabled = true;
+                }
+                else if (New_Btn.Name == obj.FunctionName)
+                {
+                    New_Btn.Enabled = true;
+                }
+                else if (Save_Btn.Name == obj.FunctionName)
+                {
+                    Save_Btn.Enabled = true;
+                }
+                else if (Edit_Btn.Name == obj.FunctionName)
+                {
+                    Edit_Btn.Enabled = true;
+                }
+                else if (Cancel_Btn.Name == obj.FunctionName)
+                {
+                    Cancel_Btn.Enabled = true;
+                }
+                else if (Templete_Btn.Name == obj.FunctionName)
+                {
+                    Templete_Btn.Enabled = true;
+                }
             }
         }
 
@@ -296,7 +317,7 @@ namespace Datally
                     USTableAdapter.Fill(DatallySet.US);
                     goto V;
                 }
-                V:
+            V:
                 Templete_Grid.DataSource = Value;
                 Clear_Text();
                 Name_Txt.DataBindings.Add("Text", Value, "Name", false, DataSourceUpdateMode.OnPropertyChanged);

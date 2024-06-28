@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Datally")]
-[assembly: AssemblyDescription("Medical Program \r\n" + "For Radiologist Department")]
+[assembly: AssemblyTitle("Radiologix")]
+[assembly: AssemblyDescription("Medical Program \r\nFor Radiologist Department\r\nFor more Custom App Contact ME\r\nVisit: www.salahkarrar.com\r\nTel:  00966567278322\r\nEmail: Salah.eldin.karra@outlook.com")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("All About You")]
-[assembly: AssemblyProduct("Datally")]
-[assembly: AssemblyCopyright("Copyright ©  2021")]
-[assembly: AssemblyTrademark("About You")]
+[assembly: AssemblyCompany("Salah Karrar")]
+[assembly: AssemblyProduct("Radiologix")]
+[assembly: AssemblyCopyright("Copyright ©  2024")]
+[assembly: AssemblyTrademark("S & S Company")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

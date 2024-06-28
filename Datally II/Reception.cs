@@ -8,19 +8,16 @@ using System.Windows.Forms;
 
 namespace Datally
 {
-    public partial class Reception : Form
+    public partial class Reception_Frm : Form
     {
-        public Reception() => InitializeComponent();
+        public Reception_Frm() => InitializeComponent();
 
         public bool IsLogout { get; set; }
-        //public OleDbConnection Conn { get; set; } = new OleDbConnection(ConfigurationManager.ConnectionStrings["Datally.Properties.Settings.DatallyConn"].ConnectionString);
         public OleDbConnection Conn { get; set; } = new OleDbConnection(Resources.SVRDB);
-        //public OleDbConnection Conn { get; set; } = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\\Datally\\DataBase\\Datally.accdb;Jet OLEDB:Database Password=Datally@2020$;");
 
         public OleDbCommand Cmd { get; set; } = new OleDbCommand();
         public Control Ctrl { get; set; }
         public string Path { get; set; } = Application.StartupPath + "\\";
-        //public string Path { get; set; } = Resources.D;
 
         private void Singout_Btn_Click(object sender, EventArgs e)
         {
@@ -31,31 +28,79 @@ namespace Datally
 
         private void Reception_Load(object sender, EventArgs e)
         {
-            P_DataTabAdap.Fill(datallyDataSet.P_Data);
+            T_ContractTabAd.Fill(datallyDataSet.T_Contract);
+            RefDocTabAd.Fill(datallyDataSet.RefDoctor);
+            P_DataTabAd.Fill(datallyDataSet.P_Data);
             Date_Txt.Value = DateTime.Today;
             MinimizeBox = true;
             Date_Txt.CalendarMonthBackground = Color.FromArgb(27, 38, 49);
             Edit(true, false);
+            Login.Instance.CheckMain(Login.Instance.UserName);
+            foreach (var obj in Login.Instance.List)
+            {
+                if (New_Btn.Name == obj.FunctionName)
+                {
+                    New_Btn.Enabled = true;
+                }
+                else if (S_New_Btn.Name == obj.FunctionName)
+                {
+                    S_New_Btn.Enabled = true;
+                }
+                else if (Save_Btn.Name == obj.FunctionName)
+                {
+                    Save_Btn.Enabled = true;
+                }
+                else if (S_Save_Btn.Name == obj.FunctionName)
+                {
+                    S_Save_Btn.Enabled = true;
+                }
+                else if (Edit_Btn.Name == obj.FunctionName)
+                {
+                    Edit_Btn.Enabled = true;
+                }
+                else if (Cancel_Btn.Name == obj.FunctionName)
+                {
+                    Cancel_Btn.Enabled = true;
+                }
+                else if (Report_Btn.Name == obj.FunctionName)
+                {
+                    Report_Btn.Enabled = true;
+                }
+                else if (S_Report_Btn.Name == obj.FunctionName)
+                {
+                    S_Report_Btn.Enabled = true;
+                }
+                else if (New_Report_Btn.Name == obj.FunctionName)
+                {
+                    New_Report_Btn.Enabled = true;
+                }
+            }
         }
 
-        private void Shutdown_Btn_Click(object sender, EventArgs e) => Close();
+        private void Shutdown_Btn_Click(object sender, EventArgs e)
+        {
+            Close();
+            Main main = new Main();
+            main.Show();
+        }
 
         /*  PATIENT DATA  */
-        private void New_D_Btn_Click(object sender, EventArgs e)
+        private void New_Btn_Click(object sender, EventArgs e)
         {
             Edit(false, true);
             TempleteBindSour.AddNew();
             TempleteTabAd.Fill(datallyDataSet.Templete);
             DocBindSour.AddNew();
-            DocTabAdap.Fill(datallyDataSet.Doctor);
+            DocTabAd.Fill(datallyDataSet.Doctor);
             S_Serveice_Group.Hide();
             Patiant_Group2.Hide();
             datallyDataSet.P_Data.AddP_DataRow(datallyDataSet.P_Data.NewP_DataRow());
             P_DataBindSour.MoveLast();
             Name_Txt.Focus();
+            New_Btn.Enabled = false;
         }
 
-        private void Save_D_Btn_Click(object sender, EventArgs e)
+        private void Save_Btn_Click(object sender, EventArgs e)
         {
             if (Name_Txt.TextLength > 0 && Age_Txt.TextLength > 0 && !string.IsNullOrEmpty(Sex_Txt.Text)
                 && !string.IsNullOrEmpty(Card_Txt.Text) && !string.IsNullOrEmpty(Date_Txt.Text))
@@ -63,6 +108,7 @@ namespace Datally
                 Edit(true, false);
                 SaveData();
                 New_Report_Click(sender, e);
+                New_Btn.Enabled = true;
             }
             else
             {
@@ -79,8 +125,8 @@ namespace Datally
                     if (Edit_Btn.Text == "Edit" && !string.IsNullOrEmpty(Services_TxT.Text))
                     {
                         Edit(false, true);
-                        New_D_Btn.Enabled = false;
-                        Save_D_Btn.Enabled = false;
+                        New_Btn.Enabled = false;
+                        Save_Btn.Enabled = false;
                         Services_Combo.Enabled = false;
 
                         Login.Instance.Edit_Ico(Edit_Btn, "Update", Resources.ic_send_white_18dp);
@@ -92,7 +138,7 @@ namespace Datally
                     else if (Edit_Btn.Text == "Update")
                     {
                         Edit(true, false);
-                        New_D_Btn.Enabled = true;
+                        New_Btn.Enabled = true;
                         Services_Combo.Enabled = false;
 
                         Login.Instance.Edit_Ico(Edit_Btn, "Edit", Resources.ic_edit_white_18dp);
@@ -136,7 +182,7 @@ namespace Datally
             }
         }
 
-        private void Cancel_D_Btn_Click(object sender, EventArgs e)
+        private void Cancel_Btn_Click(object sender, EventArgs e)
         {
             try
             {
@@ -145,7 +191,7 @@ namespace Datally
                 Login.Instance.Edit_Ico(Edit_Btn, "Edit", Resources.ic_edit_white_18dp);
                 Edit(true, false);
                 P_DataBindSour.CancelEdit();
-                P_DataTabAdap.Fill(datallyDataSet.P_Data);
+                P_DataTabAd.Fill(datallyDataSet.P_Data);
                 string So = Path + "P_Report\\" + ID_Txt.Text + "_" + Name_Txt.Text + "_" + Services_Combo.Text + ".docx";
                 string De = Path + "P_Report\\" + ID_Txt.Text + ".docx";
                 if (File.Exists(De))
@@ -156,6 +202,7 @@ namespace Datally
                 {
                     Edit(true, false);
                 }
+                New_Btn.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -190,23 +237,21 @@ namespace Datally
             TempleteBindSour.AddNew();
             TempleteTabAd.Fill(datallyDataSet.Templete);
             DocBindSour.AddNew();
-            DocTabAdap.Fill(datallyDataSet.Doctor);
+            DocTabAd.Fill(datallyDataSet.Doctor);
             Services_Combo.Enabled = true;
             Doctor_Txt.Enabled = true;
-            Save_S_Btn.Enabled = true;
+            S_Save_Btn.Enabled = true;
         }
 
-        private void Save_S_Btn_Click(object sender, EventArgs e)
+        private void S_Save_Btn_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(Services_Combo.Text) && !string.IsNullOrEmpty(Doctor_Txt.Text))
             {
                 Services_Combo.Enabled = false;
                 Doctor_Txt.Enabled = false;
-                Save_S_Btn.Enabled = false;
+                S_Save_Btn.Enabled = false;
                 SaveData2();
-                MessageBoxEx.Show(Resources.Save, 700);
                 Report_Btn_Click(sender, e);
-                //P_DataTabAdap.Fill(datallyDataSet.P_Data);
             }
             else
             {
@@ -256,14 +301,14 @@ namespace Datally
             }
         }
 
-        private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void PData_Grid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             Se();
         }
 
 
 
-        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        private void PData_Grid_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.Delete && MessageBox.Show("Do You Want to Delete This Patient Data", Resources.Question, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
@@ -272,7 +317,7 @@ namespace Datally
                     string FilePath = Path + "P_Report\\" + ID_Txt.Text + "_" + Name_Txt.Text + "_" + Services_TxT.Text + ".docx";
                     File.Delete(FilePath);
                     P_DataBindSour.RemoveCurrent();
-                    P_DataTabAdap.Update(datallyDataSet.P_Data);
+                    P_DataTabAd.Update(datallyDataSet.P_Data);
                     PData_Grid.Refresh();
                     Edit(true, false);
                     Patiant_Group2.Show();
@@ -290,14 +335,14 @@ namespace Datally
             }
         }
 
-        private void Services_DataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e) => S_New_Btn_Click(sender, e);
+        private void Services_DataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e) => S_Report_Btn_Click(sender, e);
 
         private void Close_Click(object sender, EventArgs e) => Patiant_Group2.Hide();
 
         /* Function*/
         private void Edit(bool Value, bool Value2)
         {
-            Save_D_Btn.Enabled = Value2;
+            Save_Btn.Enabled = Value2;
             Name_Txt.ReadOnly = Value;
             Age_Txt.ReadOnly = Value;
             Cash_Txt.ReadOnly = Value;
@@ -488,6 +533,7 @@ namespace Datally
                 Cmd.ExecuteNonQuery();
                 Cmd.Parameters.Clear();
                 Conn.Close();
+                MessageBoxEx.Show(Resources.Save, 700);
             }
             catch (Exception ex)
             {
@@ -541,16 +587,8 @@ namespace Datally
 
         private void Card_Txt_Leave(object sender, EventArgs e)
         {
-            if (Card_Txt.Text == "Free")
-            {
-                Cash_Txt.Text = "0";
-            }
-            else
-            {
-                Cash_Txt.Show();
-                label1.Show();
-                Cash_Txt.ReadOnly = false;
-            }
+            Contract(Card_Txt.Text);
+            Cash_Txt.ReadOnly = true;
         }
 
         public void Enter_KeyDown(object sender, KeyEventArgs e)
@@ -619,7 +657,7 @@ namespace Datally
                         DataTable Dt = new DataTable();
                         Da.Fill(Dt);
                         P_DataBindSour.DataSource = Dt;
-                        P_DataTabAdap.Fill(datallyDataSet.P_Data);
+                        P_DataTabAd.Fill(datallyDataSet.P_Data);
                     }
                     Conn.Close();
                 }
@@ -634,7 +672,7 @@ namespace Datally
             }
 
             Cmd.Connection = Conn;
-            Cmd.CommandText = "SELECT P_Data.ID, P_Data.P_Name, P_Data.Age, P_Data.Sex, P_Data.Card, P_Data.P_Date, P_Data.Ref, P_Report.Services, P_Report.Doctor " +
+            Cmd.CommandText = "SELECT P_Data.ID, P_Data.P_Name, P_Data.Age, P_Data.Sex, P_Data.Card, P_Data.Cash, P_Data.P_Date, P_Data.Ref, P_Report.Services, P_Report.Doctor " +
                               $"FROM P_Data INNER JOIN P_Report ON P_Data.[ID] = P_Report.[ID]";
 
             using (OleDbDataAdapter Da = new OleDbDataAdapter(Cmd))
@@ -642,7 +680,7 @@ namespace Datally
                 DataTable Dt = new DataTable();
                 Da.Fill(Dt);
                 P_DataBindSour.DataSource = Dt;
-                P_DataTabAdap.Fill(datallyDataSet.P_Data);
+                P_DataTabAd.Fill(datallyDataSet.P_Data);
             }
             Conn.Close();
         }
@@ -661,18 +699,45 @@ namespace Datally
                 }
 
                 Cmd.Connection = Conn;
-                Cmd.CommandText = "SELECT P_Data.ID, P_Data.P_Name, P_Data.Age, P_Data.Sex, P_Data.Card, P_Data.P_Date, P_Data.Ref, P_Report.Services, P_Report.Doctor " +
+                Cmd.CommandText = "SELECT P_Data.ID, P_Data.P_Name, P_Data.Age, P_Data.Sex, P_Data.Card, P_Data.Cash, P_Data.P_Date, P_Data.Ref, P_Report.Services, P_Report.Doctor " +
                                   $"FROM P_Data INNER JOIN P_Report ON P_Data.[ID] = P_Report.[ID] " +
-                                  "WHERE P_Data.ID LIKE '%"+Search_Txt.Text+"%' OR P_Name LIKE'%"+Search_Txt.Text+"%' OR Card LIKE'%"+Search_Txt.Text+"%' OR Services LIKE'%"+Search_Txt.Text+"%' OR P_Report.Doctor LIKE'%"+Search_Txt.Text+"%' OR Sex LIKE'%"+Search_Txt.Text+"%'";
+                                  "WHERE P_Data.ID LIKE '%" + Search_Txt.Text + "%' OR P_Name LIKE'%" + Search_Txt.Text + "%' OR Card LIKE'%" + Search_Txt.Text + "%' OR Services LIKE'%" + Search_Txt.Text + "%' OR P_Report.Doctor LIKE'%" + Search_Txt.Text + "%' OR Sex LIKE'%" + Search_Txt.Text + "%'";
 
                 using (OleDbDataAdapter Da = new OleDbDataAdapter(Cmd))
                 {
                     DataTable Dt = new DataTable();
                     Da.Fill(Dt);
                     P_DataBindSour.DataSource = Dt;
-                    P_DataTabAdap.Fill(datallyDataSet.P_Data);
+                    P_DataTabAd.Fill(datallyDataSet.P_Data);
                 }
                 Conn.Close();
+            }
+        }
+
+
+
+        void Contract(string Value)
+        {
+            try
+            {
+                if (Conn.State == ConnectionState.Closed)
+                    Conn.Open();
+                Cmd.Connection = Conn;
+                Cmd.CommandText = "SELECT NetPrice FROM T_Contract WHERE Name='" + Value + "'";
+                Cmd.Parameters.AddWithValue("@0", Value);
+
+                OleDbDataReader Reader = Cmd.ExecuteReader();
+                while (Reader.Read())
+                {
+                    Cash_Txt.Text = Reader[0].ToString();
+                }
+                Cmd.Parameters.Clear();
+                Reader.Close();
+                Conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Problem in Database, Can't Retrive Your Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Reception - 1008", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

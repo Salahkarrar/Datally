@@ -18,9 +18,7 @@ namespace Datally
             InitializeComponent();
         }
 
-        //public OleDbConnection Conn { get; set; } = new OleDbConnection(ConfigurationManager.ConnectionStrings["Datally.Properties.Settings.DatallyConn"].ConnectionString);
         public OleDbConnection Conn { get; set; } = new OleDbConnection(Resources.SVRDB);
-        //public OleDbConnection Conn { get; set; } = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\\Datally\\DataBase\\Datally.accdb;Jet OLEDB:Database Password=Datally@2020$;");
         public OleDbCommand Cmd { get; set; } = new OleDbCommand();
 
         private void Print_Load(object sender, EventArgs e)

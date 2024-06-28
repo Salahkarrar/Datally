@@ -1,5 +1,4 @@
-﻿using Datally.Properties;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
@@ -7,20 +6,21 @@ using System.Windows.Forms;
 
 namespace Datally
 {
-    public partial class AddPermission : Form
+    public partial class Authorities_Frm : Form
     {
-        public AddPermission() => InitializeComponent();
+        public Authorities_Frm()
+        {
+            InitializeComponent();
 
-        public OleDbConnection Con { get; } = new OleDbConnection(Resources.SVRDB);
+        }
+
+        public OleDbConnection Con { get; } = new OleDbConnection(Properties.Resources.SVRDB);
         public OleDbCommand Cmd { get; set; } = new OleDbCommand();
         public int Index { get; set; } = 1;
         public List<PROAuth> List { get; set; }
-        public int Invert { get; set; }
         public object ID { get; set; }
 
-        private void Shutdown_Btn_Click(object sender, EventArgs e) => Close();
-
-        private void AddPermission_Load(object sender, EventArgs e)
+        protected internal void Authority_Load(object sender, EventArgs e)
         {
             Dock = DockStyle.Fill;
             Index = 1;
@@ -50,10 +50,11 @@ namespace Datally
                     Cmd.Parameters.Clear();
                     Reader.Close();
                     Con.Close();
-                    T_FunRoleTabAd.Insert(Convert.ToInt32(FID), Convert.ToInt32(MAuthority_Txt.SelectedValue));
-                    Fill(Index);
-                    FunFill(Index);
+                    T_FunRoleTabAd.Insert(Convert.ToInt32(MAuthority_Txt.SelectedValue), Convert.ToInt32(FID), true);
+                    
                 }
+                Fill(Index);
+                FunFill(Index);
             }
             catch (Exception ex)
             {
@@ -157,6 +158,13 @@ namespace Datally
             }
         }
 
-        
+        private void Close_Btn_Click(object sender, EventArgs e)
+        {
+            Close();
+            Main main = new Main();
+            main.Show();
+            main.Settings_Btn_Click(sender, e);
+            main.Settings_Btn_Enter(sender, e);
+        }
     }
 }

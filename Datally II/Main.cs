@@ -15,13 +15,10 @@ namespace Datally
         }
 
 
-        //public OleDbConnection Conn { get; set; } = new OleDbConnection(ConfigurationManager.ConnectionStrings["Datally.Properties.Settings.DatallyConn"].ConnectionString);
         public OleDbConnection Conn { get; set; } = new OleDbConnection(Resources.SVRDB);
-        //public OleDbConnection Conn { get; set; } = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\\Datally\\DataBase\\Datally.accdb;Jet OLEDB:Database Password=Datally@2020$;");
         public OleDbCommand Cmd { get; set; } = new OleDbCommand();
-        //public string Path { get; set; } = Resources.SVR;
-        //public string Path { get; set; } = Resources.Path;
         private bool IsLogout { get; set; }
+        public int M { get; set; }
 
         private void Shutdown_Btn_Click(object sender, EventArgs e)
         {
@@ -32,13 +29,13 @@ namespace Datally
                 var backupFolder = Resources.BackupFolder;
 
                 var backupFileName = String.Format("{0}{1}~{2}.accdb",
-                    backupFolder, "Datally",
+                    backupFolder, "Radiologix",
                     DateTime.Now.ToString("dd-MM-yyyy  hh-mm-ss"));
 
                 string So = Resources.SVRPath;
                 string De = backupFileName;
 
-                string backupDir = Resources.PathBackup;
+                string backupDir = Resources.BackupFolder;
                 var DeletionDays = 3;
                 if (DeletionDays < 10)
                 {
@@ -61,6 +58,7 @@ namespace Datally
                     }
                 }
                 File.Copy(So, De);
+                MessageBoxEx.Show(Resources.S4, Resources.E8, 700);
                 Application.Exit();
             }
             else if (dialog == DialogResult.No)
@@ -71,46 +69,81 @@ namespace Datally
 
         private void Minimize_Btn_Click(object sender, EventArgs e) => WindowState = FormWindowState.Minimized;
 
-        private void Datally_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = e.CloseReason == CloseReason.None;
+        private void Radiologix_FormClosing(object sender, FormClosingEventArgs e) => e.Cancel = e.CloseReason == CloseReason.None;
 
-        private void Datally_Load(object sender, EventArgs e)
+        private void Radiologix_Load(object sender, EventArgs e)
         {
-            UserName_Txt.Text = $"{Login.Instance.UserName}";
             MinimizeBox = true;
-            //Home_Btn_Enter(sender, e);
 
-
-            if (Convert.ToInt32(Login.Instance.RoleID) == 1)
+            Login.Instance.CheckMain(Login.Instance.UserName);
+            foreach (var obj in Login.Instance.List)
             {
-                Home_Btn.Enabled = true;
-                Reception_Btn.Enabled = true;
-                Search_Btn.Enabled = true;
-                Report_Btn.Enabled = true;
-                Settings_Btn.Enabled = true;
-                Radiology_Btn.Enabled = true;
-
-                HReception_Btn.Enabled = true;
-                HSearch_Btn.Enabled = true;
-                HReport_Btn.Enabled = true;
-                HSettings_Btn.Enabled = true;
-                HRadiology_Btn.Enabled = true;
+                Login.Instance.RoleName = obj.RoleName;
+                UserName_Txt.Text = $"{Login.Instance.UserName}  |  " + $"{Login.Instance.RoleName}  |";
+                if (Home_Btn.Text == obj.FunctionName)
+                {
+                    Home_Btn.Enabled = true;
+                    Home_Btn.Tag = obj.FunctionName;
+                }
+                else if (Reception_Btn.Text == obj.FunctionName)
+                {
+                    Reception_Btn.Enabled = true;
+                    HReception_Btn.Enabled = true;
+                    Reception_Btn.Tag = obj.FunctionName;
+                }
+                else if (Search_Btn.Text == obj.FunctionName)
+                {
+                    Search_Btn.Enabled = true;
+                    HSearch_Btn.Enabled = true;
+                    Search_Btn.Tag = obj.FunctionName;
+                }
+                else if (Report_Btn.Text == obj.FunctionName)
+                {
+                    Report_Btn.Enabled = true;
+                    HReport_Btn.Enabled = true;
+                    Report_Btn.Tag = obj.FunctionName;
+                }
+                else if (Radiology_Btn.Text == obj.FunctionName)
+                {
+                    Radiology_Btn.Enabled = true;
+                    HRadiology_Btn.Enabled = true;
+                    Radiology_Btn.Tag = obj.FunctionName;
+                }
+                else if (Settings_Btn.Text == obj.FunctionName)
+                {
+                    Settings_Btn.Enabled = true;
+                    HSettings_Btn.Enabled = true;
+                    Settings_Btn.Tag = obj.FunctionName;
+                }
+                else if (Radologist_Btn.Text == obj.FunctionName)
+                {
+                    Radologist_Btn.Enabled = true;
+                    Radologist_Btn.Tag = obj.FunctionName;
+                }
+                else if (RefDoc_Btn.Text == obj.FunctionName)
+                {
+                    RefDoc_Btn.Enabled = true;
+                    RefDoc_Btn.Tag = obj.FunctionName;
+                }
+                else if (User_Btn.Text == obj.FunctionName)
+                {
+                    User_Btn.Enabled = true;
+                    User_Btn.Tag = obj.FunctionName;
+                }
+                else if (Authorities_Btn.Text == obj.FunctionName)
+                {
+                    Authorities_Btn.Enabled = true;
+                    Authorities_Btn.Tag = obj.FunctionName;
+                }
+                else if (Contract_Btn.Text == obj.FunctionName)
+                {
+                    Contract_Btn.Enabled = true;
+                    Contract_Btn.Tag = obj.FunctionName;
+                }
             }
-            else if (Convert.ToInt32(Login.Instance.RoleID) == 2)
-            {
-                Home_Btn.Enabled = true;
-                Reception_Btn.Enabled = true;
-                Search_Btn.Enabled = true;
-                Report_Btn.Enabled = true;
-                Radiology_Btn.Enabled = true;
 
-                HReception_Btn.Enabled = true;
-                HSearch_Btn.Enabled = true;
-                HReport_Btn.Enabled = true;
-                HSettings_Btn.Enabled = false;
-                HRadiology_Btn.Enabled = true;
-            }
-            Singout_Btn.Click += Singout_Btn_Click;
             Home_Btn.Click += Home_Btn_Click;
+            Home_Btn_Click(sender, e);
             Home_Btn_Enter(sender, e);
         }
 
@@ -126,6 +159,7 @@ namespace Datally
         //Home;
         public void Home_Btn_Click(object sender, EventArgs e)
         {
+            FormName_lab.Text = "Home";
             Side_Panel.Height = Home_Btn.Height;
             Side_Panel.Top = Home_Btn.Top;
             Main_Pan.Controls.Clear();
@@ -135,6 +169,7 @@ namespace Datally
         {
             Home_Btn.Focus();
             Home_Btn.BackColor = Color.FromArgb(52, 152, 219);
+            Main_Lab.ForeColor = Color.FromArgb(52, 152, 219);
         }
 
         public void Home_Btn_Leave(object sender, EventArgs e) => Home_Btn.BackColor = Color.FromArgb(27, 38, 49);
@@ -144,16 +179,33 @@ namespace Datally
         {
             Side_Panel.Height = Reception_Btn.Height;
             Side_Panel.Top = Reception_Btn.Top;
-            Reception myForm = new Reception
+            Reception_Frm myForm = new Reception_Frm
             {
                 TopLevel = false
             };
             {
-                Main_Pan.Controls.Clear();
-                Main_Pan.Controls.Add(myForm);
-                myForm.Show();
+                Login.Instance.Check(Login.Instance.UserName, myForm.Name);
+                foreach (var obj in Login.Instance.List)
+                {
+                    M = 1;
+                    if (myForm.Name == obj.FunctionName)
+                    {
+                        M = 1;
+                        Main_Pan.Controls.Clear();
+                        Main_Pan.Controls.Add(myForm);
+                        FormName_lab.Text = "Reception";
+                        myForm.Show();
+                        break;
+                    }
+                }
+                if (Login.Instance.List.Count == 0)
+                {
+                    MessageBoxEx.Show("Please Check Your Permission.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information, 1000);
+                }
+
             }
         }
+
         public void Reception_Btn_Enter(object sender, EventArgs e)
         {
             Reception_Btn.Focus();
@@ -167,14 +219,29 @@ namespace Datally
         {
             Side_Panel.Height = Search_Btn.Height;
             Side_Panel.Top = Search_Btn.Top;
-            Search myForm = new Search
+            Search_Frm myForm = new Search_Frm
             {
                 TopLevel = false
             };
             {
-                Main_Pan.Controls.Clear();
-                Main_Pan.Controls.Add(myForm);
-                myForm.Show();
+                Login.Instance.Check(Login.Instance.UserName, myForm.Name);
+                foreach (var obj in Login.Instance.List)
+                {
+                    M = 1;
+                    if (myForm.Name == obj.FunctionName)
+                    {
+                        M = 1;
+                        Main_Pan.Controls.Clear();
+                        Main_Pan.Controls.Add(myForm);
+                        FormName_lab.Text = "Search";
+                        myForm.Show();
+                        break;
+                    }
+                }
+                if (Login.Instance.List.Count == 0)
+                {
+                    MessageBoxEx.Show("Please Check Your Permission.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information, 1000);
+                }
             }
         }
         public void Search_Btn_Enter(object sender, EventArgs e)
@@ -190,14 +257,29 @@ namespace Datally
         {
             Side_Panel.Height = Report_Btn.Height;
             Side_Panel.Top = Report_Btn.Top;
-            Report myForm = new Report
+            Report_Frm myForm = new Report_Frm
             {
                 TopLevel = false
             };
             {
-                Main_Pan.Controls.Clear();
-                Main_Pan.Controls.Add(myForm);
-                myForm.Show();
+                Login.Instance.Check(Login.Instance.UserName, myForm.Name);
+                foreach (var obj in Login.Instance.List)
+                {
+                    M = 1;
+                    if (myForm.Name == obj.FunctionName)
+                    {
+                        M = 1;
+                        Main_Pan.Controls.Clear();
+                        Main_Pan.Controls.Add(myForm);
+                        FormName_lab.Text = "Report";
+                        myForm.Show();
+                        break;
+                    }
+                }
+                if (Login.Instance.List.Count == 0)
+                {
+                    MessageBoxEx.Show("Please Check Your Permission.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information, 1000);
+                }
             }
         }
         public void Report_Btn_Enter(object sender, EventArgs e)
@@ -213,13 +295,30 @@ namespace Datally
         {
             Side_Panel.Height = Radiology_Btn.Height;
             Side_Panel.Top = Radiology_Btn.Top;
-            Templetes myForm = new Templetes
+            Templetes_Frm myForm = new Templetes_Frm
             {
                 TopLevel = false
             };
-            Main_Pan.Controls.Clear();
-            Main_Pan.Controls.Add(myForm);
-            myForm.Show();
+            {
+                Login.Instance.Check(Login.Instance.UserName, myForm.Name);
+                foreach (var obj in Login.Instance.List)
+                {
+                    M = 1;
+                    if (myForm.Name == obj.FunctionName)
+                    {
+                        M = 1;
+                        Main_Pan.Controls.Clear();
+                        Main_Pan.Controls.Add(myForm);
+                        FormName_lab.Text = "Radiology Templates";
+                        myForm.Show();
+                        break;
+                    }
+                }
+                if (Login.Instance.List.Count == 0)
+                {
+                    MessageBoxEx.Show("Please Check Your Permission.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information, 1000);
+                }
+            }
         }
         public void Radiology_Btn_Enter(object sender, EventArgs e)
         {
@@ -234,9 +333,24 @@ namespace Datally
         {
             Side_Panel.Height = Settings_Btn.Height;
             Side_Panel.Top = Settings_Btn.Top;
-            Main_Pan.Controls.Clear();
-            Main_Pan.Controls.Add(panel1);
-            panel1.Show();
+            Login.Instance.Check(Login.Instance.UserName, Settings_Frm.Name);
+            foreach (var obj in Login.Instance.List)
+            {
+                M = 1;
+                if (Settings_Frm.Name == obj.FunctionName)
+                {
+                    M = 1;
+                    Main_Pan.Controls.Clear();
+                    Main_Pan.Controls.Add(Settings_Frm);
+                    FormName_lab.Text = "Settings";
+                    Settings_Frm.Show();
+                    break;
+                }
+            }
+            if (Login.Instance.List.Count == 0)
+            {
+                MessageBoxEx.Show("Please Check Your Permission.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information, 1000);
+            }
         }
         public void Settings_Btn_Enter(object sender, EventArgs e)
         {
@@ -248,41 +362,90 @@ namespace Datally
 
         private void AddDoc_Txt_Click(object sender, EventArgs e)
         {
-            panel1.BringToFront();
-            panel1.Show();
-            AddDoc myForm = new AddDoc
+            Settings_Frm.BringToFront();
+            Settings_Frm.Show();
+            Radiologist_Frm myForm = new Radiologist_Frm
             {
                 TopLevel = false
             };
             {
-                Main_Pan.Controls.Clear();
-                Main_Pan.Controls.Add(myForm);
-                myForm.Show();
+                Login.Instance.Check(Login.Instance.UserName, myForm.Name);
+                foreach (var obj in Login.Instance.List)
+                {
+                    M = 1;
+                    if (myForm.Name == obj.FunctionName)
+                    {
+                        M = 1;
+                        Main_Pan.Controls.Clear();
+                        Main_Pan.Controls.Add(myForm);
+                        FormName_lab.Text = "Settings - Radiologist";
+                        myForm.Show();
+                        break;
+                    }
+                }
+                if (Login.Instance.List.Count == 0)
+                {
+                    MessageBoxEx.Show("Please Check Your Permission.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information, 1000);
+                }
             }
         }
         private void AddUser_Txt_Click(object sender, EventArgs e)
         {
-            panel1.BringToFront();
-            panel1.Show();
-            AddUser myForm = new AddUser
+            Settings_Frm.BringToFront();
+            Settings_Frm.Show();
+            Users_Frm myForm = new Users_Frm
             {
                 TopLevel = false
             };
-            Main_Pan.Controls.Clear();
-            Main_Pan.Controls.Add(myForm);
-            myForm.Show();
+            {
+                Login.Instance.Check(Login.Instance.UserName, myForm.Name);
+                foreach (var obj in Login.Instance.List)
+                {
+                    M = 1;
+                    if (myForm.Name == obj.FunctionName)
+                    {
+                        M = 1;
+                        Main_Pan.Controls.Clear();
+                        Main_Pan.Controls.Add(myForm);
+                        FormName_lab.Text = "Settings - Users";
+                        myForm.Show();
+                        break;
+                    }
+                }
+                if (Login.Instance.List.Count == 0)
+                {
+                    MessageBoxEx.Show("Please Check Your Permission.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information, 1000);
+                }
+            }
         }
         private void Per_Txt_Click(object sender, EventArgs e)
         {
-            panel1.BringToFront();
-            panel1.Show();
-            AddPermission myForm = new AddPermission
+            Settings_Frm.BringToFront();
+            Settings_Frm.Show();
+            Authorities_Frm myForm = new Authorities_Frm
             {
                 TopLevel = false
             };
-            Main_Pan.Controls.Clear();
-            Main_Pan.Controls.Add(myForm);
-            myForm.Show();
+            {
+                Login.Instance.Check(Login.Instance.UserName, myForm.Name);
+                foreach (var obj in Login.Instance.List)
+                {
+                    M = 1;
+                    if (myForm.Name == obj.FunctionName)
+                    {
+                        M = 1;
+                        Main_Pan.Controls.Clear();
+                        Main_Pan.Controls.Add(myForm);
+                        FormName_lab.Text = "Settings - Authorities";
+                        myForm.Show();
+                        break;
+                    }
+                }
+                if (Login.Instance.List.Count == 0)
+                {
+                    MessageBoxEx.Show("Please Check Your Permission.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information, 1000);
+                }
+            }
         }
 
         //About;
@@ -292,6 +455,7 @@ namespace Datally
             Side_Panel.Top = About_Btn.Top;
             using (About myForm = new About())
             {
+                FormName_lab.Text = "About Appliction";
                 myForm.ShowDialog();
             }
         }
@@ -308,6 +472,66 @@ namespace Datally
             using (About A = new About())
             {
                 A.ShowDialog();
+            }
+        }
+
+        private void Ref_Btn_Click(object sender, EventArgs e)
+        {
+            Settings_Frm.BringToFront();
+            Settings_Frm.Show();
+            RefDoc_Frm myForm = new RefDoc_Frm
+            {
+                TopLevel = false
+            };
+            {
+                Login.Instance.Check(Login.Instance.UserName, myForm.Name);
+                foreach (var obj in Login.Instance.List)
+                {
+                    M = 1;
+                    if (myForm.Name == obj.FunctionName)
+                    {
+                        M = 1;
+                        Main_Pan.Controls.Clear();
+                        Main_Pan.Controls.Add(myForm);
+                        FormName_lab.Text = "Settings - References Doctor";
+                        myForm.Show();
+                        break;
+                    }
+                }
+                if (Login.Instance.List.Count == 0)
+                {
+                    MessageBoxEx.Show("Please Check Your Permission.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information, 1000);
+                }
+            }
+        }
+
+        private void Contract_Btn_Click(object sender, EventArgs e)
+        {
+            Settings_Frm.BringToFront();
+            Settings_Frm.Show();
+            Contract_Frm myForm = new Contract_Frm
+            {
+                TopLevel = false
+            };
+            {
+                Login.Instance.Check(Login.Instance.UserName, myForm.Name);
+                foreach (var obj in Login.Instance.List)
+                {
+                    M = 1;
+                    if (myForm.Name == obj.FunctionName)
+                    {
+                        M = 1;
+                        Main_Pan.Controls.Clear();
+                        Main_Pan.Controls.Add(myForm);
+                        FormName_lab.Text = "Settings - Contract";
+                        myForm.Show();
+                        break;
+                    }
+                }
+                if (Login.Instance.List.Count == 0)
+                {
+                    MessageBoxEx.Show("Please Check Your Permission.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information, 1000);
+                }
             }
         }
 

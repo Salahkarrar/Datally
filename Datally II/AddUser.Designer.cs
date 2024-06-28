@@ -502,9 +502,7 @@
 
         private System.Windows.Forms.BindingSource UserBindSour;
         private System.Windows.Forms.BindingSource RolesBindSour;
-        private Datally.DatallyDataSetTableAdapters.T_RolesTableAdapter RolesTabAdap;
         private System.Windows.Forms.DataGridView User_Grid;
-        private Datally.DatallyDataSetTableAdapters.UsersTableAdapter UsersTabAdap;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button Shutdown_Btn;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;

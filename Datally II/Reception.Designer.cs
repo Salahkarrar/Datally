@@ -36,7 +36,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Cash_Txt = new System.Windows.Forms.TextBox();
             this.P_DataBindSour = new System.Windows.Forms.BindingSource(this.components);
-            this.datallyDataSet = new Datally.DatallyDataSet();
             this.Date_Txt = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -157,11 +156,6 @@
             // 
             this.P_DataBindSour.DataMember = "P_Data";
             this.P_DataBindSour.DataSource = this.datallyDataSet;
-            // 
-            // datallyDataSet
-            // 
-            this.datallyDataSet.DataSetName = "DatallyDataSet";
-            this.datallyDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // Date_Txt
             // 

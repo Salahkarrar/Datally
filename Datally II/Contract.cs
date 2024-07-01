@@ -55,7 +55,7 @@ namespace Datally
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Problem in Database." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Contract - 1000", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Can't Retrive Your Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Contract - 1000", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -79,11 +79,11 @@ namespace Datally
         {
             try
             {
-                if (!string.IsNullOrEmpty(Name_Txt.Text) && !string.IsNullOrEmpty(Discount_Txt.Text) && !string.IsNullOrEmpty(Amount_Txt.Text) && Amount_Txt.TextLength >= 4 &&
+                if (!string.IsNullOrEmpty(Name_Txt.Text) && !string.IsNullOrEmpty(Discount_Txt.Text) && !string.IsNullOrEmpty(Amount_Txt.Text) &&
                     !string.IsNullOrEmpty(Net_Txt.Text))
                 {
                     Edit(true, false);
-                    T_ContractTabAd.Insert(Name_Txt.Text, Convert.ToInt32(Amount_Txt.Text), Convert.ToInt16(Discount_Txt.Text), Convert.ToInt32(Net_Txt.Text));
+                    T_ContractTabAd.Insert(Name_Txt.Text, Convert.ToDouble(Amount_Txt.Text), Convert.ToDouble(Discount_Txt.Text), Convert.ToDouble(Net_Txt.Text));
                     MessageBoxEx.Show("Data Saved", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information, 1000);
                     T_ContractTabAd.Fill(DatallySet.T_Contract);
                     T_ContractBindSour.MoveLast();
@@ -91,12 +91,12 @@ namespace Datally
                 }
                 else
                 {
-                    MessageBoxEx.Show("Please Check Your Data and Try Again" + "\r\n" + "Choose Strong Password", "Hand Error", MessageBoxButtons.OK, MessageBoxIcon.Error, 1000);
+                    MessageBoxEx.Show("Please Check Your Data and Try Again", "User Error", MessageBoxButtons.OK, MessageBoxIcon.Error, 1000);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("The Name,Password and Phone Can't Duplicated, Please Recheck The Entery Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Contract - 1002", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Can't Save Your Data, Please Recheck The Entery Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Contract - 1002", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -118,7 +118,7 @@ namespace Datally
                     Login.Instance.Edit_Ico(Edit_Btn, "Edit", Resources.ic_edit_white_18dp);
                     T_ContractBindSour.EndEdit();
                     T_ContractTabAd.Update(DatallySet.T_Contract);
-                    MessageBoxEx.Show("Updated", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information, 1000);
+                    MessageBoxEx.Show("Data Updated", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information, 1000);
                 }
                 else
                 {
@@ -127,7 +127,7 @@ namespace Datally
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Problem in Database, Can't Update Your Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Contract - 1003", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Can't Update Your Data, Plese Check Your Data." + "\r\n" + "or Call System Administrator" + "\r\n" + ex.Message, "Error Contract - 1003", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -143,7 +143,7 @@ namespace Datally
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Problem in Database, Can't Cancel Your Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Contract - 1004", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Can't Cancel Your Data, Please Check Your Data." + "\r\n" + "or Call System Administrator" + "\r\n" + ex.Message, "Error Contract - 1004", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

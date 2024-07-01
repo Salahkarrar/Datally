@@ -1,19 +1,71 @@
-﻿using Datally.Properties;
+﻿using Dapper;
+using Datally.Properties;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
 using System.Linq;
-using Dapper;
+using System.Windows.Forms;
 namespace Datally
 {
     public partial class Login : Form
     {
+        //#region Trial Section :
+        //// This function does all the work
+        //[DllImport("Radiologix.dll", EntryPoint = "ReadSettingsStr", CharSet = CharSet.Ansi)]
+        //static extern uint InitTrial(String aKeyCode, IntPtr aHWnd);
+
+        //// Use this function to register the application when the application is running
+        //[DllImport("Radiologix.dll", EntryPoint = "DisplayRegistrationStr", CharSet = CharSet.Ansi)]
+        //static extern uint DisplayRegistration(String aKeyCode, IntPtr aHWnd);
+
+        //// The kLibraryKey is meant to prevent unauthorized use of the library.
+        //// Do not share this key. Replace this key with your own from Advanced Installer 
+        //// project > Licensing > Registration > Library Key
+        //private const string kLibraryKey = "D36DEC3A76ADD23619D80002231E4E4C570D190E3D6AA3266325DC5F2FEB7E081487DAF27E2C";
+        //// Trial ID = {33DA8412-D2B7-48CD-A041-D402E0E6F8C6}
+        //// Codes = 941E47B0 296C5FC1 C9D3E533 55F57AD6 88129593 
+
+        //private static void OnInit()
+        //{
+        //    try
+        //    {
+        //        Process process = Process.GetCurrentProcess();
+        //        InitTrial(kLibraryKey, process.MainWindowHandle);
+        //    }
+        //    catch (DllNotFoundException ex)
+        //    {
+        //        // Trial dll is missing close the application immediately.
+        //        MessageBox.Show(ex.ToString());
+        //        Process.GetCurrentProcess().Kill();
+        //    }
+        //    catch (Exception ex1)
+        //    {
+        //        MessageBox.Show(ex1.ToString());
+        //    }
+        //}
+
+        //private void RegisterApp(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        Process process = Process.GetCurrentProcess();
+        //        DisplayRegistration(kLibraryKey, process.MainWindowHandle);
+        //    }
+        //    catch (DllNotFoundException ex)
+        //    {
+        //        // Trial dll is missing close the application immediately.
+        //        MessageBox.Show(ex.ToString());
+        //    }
+        //    catch (Exception ex1)
+        //    {
+        //        MessageBox.Show(ex1.ToString());
+        //    }
+        //}
+        //#endregion
+
         public Login() => InitializeComponent();
 
         public OleDbConnection Con { get; } = new OleDbConnection(Resources.SVRDB);
@@ -46,10 +98,9 @@ namespace Datally
         public OleDbConnection Conn { get; set; } = new OleDbConnection(Resources.SVRDB);
 
 
-
         private void Login_Load(object sender, EventArgs e)
         {
-           // OnInit();
+            //OnInit();
             _instance = this;
             try
             {
@@ -65,7 +116,7 @@ namespace Datally
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Resources.E6 + "\r\n" + ex.Message, Resources.E1, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Can't Connected to Database, Call System Administration." + "\r\n" + ex.Message, "Error Login 1000", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Conn_Status.ForeColor = Color.Red;
                 Conn_Status.Text.Replace(Resources.S1, Resources.S3);
             }
@@ -73,26 +124,32 @@ namespace Datally
 
         private void Login_Btn_Click(object sender, EventArgs e)
         {
-
-            OleDbCommand Cmd = new OleDbCommand("SELECT * FROM T_Users WHERE PWord=@0", Conn);
-
-            Cmd.Parameters.AddWithValue("@0", PassWord.Text);
-
-            OleDbDataReader Reader = Cmd.ExecuteReader();
-            int c = 0;
-            while (Reader.Read())
+            try
             {
-                c += 1;
-                ID = Reader[Resources.DB1].ToString();
-                UserName = Reader[Resources.DB2].ToString();
-                Password = Reader[Resources.DB3].ToString();
-                Phone = Reader[Resources.DB4].ToString();
-                RoleID = Reader[Resources.DB5].ToString();
-                Status = Reader[Resources.DB6].ToString();
+                OleDbCommand Cmd = new OleDbCommand("SELECT * FROM T_Users WHERE PWord=@0", Conn);
+
+                Cmd.Parameters.AddWithValue("@0", PassWord.Text);
+
+                OleDbDataReader Reader = Cmd.ExecuteReader();
+
+                while (Reader.Read())
+                {
+                    ID = Reader[Resources.DB1].ToString();
+                    UserName = Reader[Resources.DB2].ToString();
+                    Password = Reader[Resources.DB3].ToString();
+                    Phone = Reader[Resources.DB4].ToString();
+                    RoleID = Reader[Resources.DB5].ToString();
+                    Status = Reader[Resources.DB6].ToString();
+                }
+                Cmd.Parameters.Clear();
+                Reader.Close();
             }
-            Cmd.Parameters.Clear();
-            Reader.Close();
-            if (c == 1 && Status == "Changed")
+            catch (Exception ex)
+            {
+                MessageBox.Show("Problem in Database, Can't Get Your Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Login - 1001", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            if (ID != null && Status == "Changed")
             {
                 Hide();
                 using (Main D = new Main())
@@ -101,7 +158,7 @@ namespace Datally
                 }
                 PassWord.Clear();
             }
-            else if (c == 1 && Status != "Changed")
+            else if (ID != null && Status != "Changed")
             {
                 using (ChangePass D = new ChangePass())
                 {
@@ -111,8 +168,10 @@ namespace Datally
             }
             else
             {
-                MessageBoxEx.Show(Resources.E7, 5000);
+                MessageBoxEx.Show("Incorrect Password, Please try again.", "Password", 5000);
             }
+
+
 
         }
 
@@ -152,7 +211,7 @@ namespace Datally
                 }
                 else
                 {
-                    MessageBoxEx.Show(Resources.E7, 5000);
+                    MessageBoxEx.Show("Incorrect Password, Please try again.", "Password", 5000);
                 }
             }
         }
@@ -163,7 +222,7 @@ namespace Datally
             dynamic dialog = MessageBox.Show(Resources.E9, Resources.E8, MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
             {
-                var backupFolder = Resources.BackupFolder;
+                var backupFolder = Application.StartupPath + Resources.BackupFolder;
 
                 var backupFileName = String.Format("{0}{1}~{2}.accdb",
                     backupFolder, "Radiologix",
@@ -172,7 +231,7 @@ namespace Datally
                 string So = Resources.SVRPath;
                 string De = backupFileName;
 
-                string backupDir = Resources.BackupFolder;
+                string backupDir = Application.StartupPath + Resources.BackupFolder;
                 var DeletionDays = 3;
                 if (DeletionDays < 10)
                 {
@@ -191,7 +250,7 @@ namespace Datally
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex.ToString());
+                        MessageBoxEx.Show("Can't Delete The old Backup" + "\r\n" + ex.Message, "Error Login - 1002", 1000);
                     }
                 }
 
@@ -238,7 +297,7 @@ namespace Datally
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Problem in Database, Can't Get Your Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Login - 1002", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Problem in Database, Can't Get Your Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Login - 1003", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -263,8 +322,9 @@ namespace Datally
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Problem in Database, Can't Get Your Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Login - 1003", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Problem in Database, Can't Get Your Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Login - 1004", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }

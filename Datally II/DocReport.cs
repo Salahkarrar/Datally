@@ -19,4 +19,14 @@ namespace Datally
         public int FunctionID { get; set; }
         public int RoleID { get; set; }
     }
+
+    public class Regist
+    {
+
+        public string RegistrationKey { get; set; } 
+        public bool RegStatus { get; set; }
+        public DateTime Exp { get; set; }
+        public string UserName { get; set; }
+        public DateTime LicenceEnd { get; set; } 
+    }
 }

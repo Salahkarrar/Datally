@@ -15,34 +15,41 @@ namespace Datally
         public OleDbCommand Cmd { get; set; } = new OleDbCommand();
         public Control Ctrl { get; set; }
 
-        private void Search_Load(object sender, EventArgs e)
+        private void Users_Load(object sender, EventArgs e)
         {
-            T_RolesTabAd.Fill(DatallySet.T_Roles);
-            T_UsersTabAd.Fill(DatallySet.T_Users);
-            Edit(true, false);
-            Login.Instance.CheckMain(Login.Instance.UserName);
-            foreach (var obj in Login.Instance.List)
+            try
             {
-                if (Delete_Btn.Name == obj.FunctionName)
+                T_RolesTabAd.Fill(DatallySet.T_Roles);
+                T_UsersTabAd.Fill(DatallySet.T_Users);
+                Edit(true, false);
+                Login.Instance.CheckMain(Login.Instance.UserName);
+                foreach (var obj in Login.Instance.List)
                 {
-                    Delete_Btn.Enabled = true;
+                    if (Delete_Btn.Name == obj.FunctionName)
+                    {
+                        Delete_Btn.Enabled = true;
+                    }
+                    else if (New_Btn.Name == obj.FunctionName)
+                    {
+                        New_Btn.Enabled = true;
+                    }
+                    else if (Save_Btn.Name == obj.FunctionName)
+                    {
+                        Save_Btn.Enabled = true;
+                    }
+                    else if (Edit_Btn.Name == obj.FunctionName)
+                    {
+                        Edit_Btn.Enabled = true;
+                    }
+                    else if (Cancel_Btn.Name == obj.FunctionName)
+                    {
+                        Cancel_Btn.Enabled = true;
+                    }
                 }
-                else if (New_Btn.Name == obj.FunctionName)
-                {
-                    New_Btn.Enabled = true;
-                }
-                else if (Save_Btn.Name == obj.FunctionName)
-                {
-                    Save_Btn.Enabled = true;
-                }
-                else if (Edit_Btn.Name == obj.FunctionName)
-                {
-                    Edit_Btn.Enabled = true;
-                }
-                else if (Cancel_Btn.Name == obj.FunctionName)
-                {
-                    Cancel_Btn.Enabled = true;
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can't Retrive Your Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Users - 1000", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -67,14 +74,14 @@ namespace Datally
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, Resources.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Problem in Database, Can't Make New Row." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Users - 1001", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void Save_D_Btn_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(Name_Txt.Text) && !string.IsNullOrEmpty(Phone_Txt.Text) && !string.IsNullOrEmpty(Pass_Txt.Text) &&
-                !string.IsNullOrEmpty(Auth_Txt.Text))
+                !string.IsNullOrEmpty(Auth_Txt.Text) && Pass_Txt.TextLength > 4)
             {
                 Edit(true, false);
 
@@ -90,12 +97,12 @@ namespace Datally
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(Resources.E11 + "\r\n" + ex.Message, Resources.E1, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Can't Save Your Data, Please Recheck The Entery Data." + "\r\n" + "or Call System Administrator" + "\r\n" + ex.Message, "Error Users - 1002", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBoxEx.Show(Resources.E5, Resources.E1, MessageBoxButtons.OK, MessageBoxIcon.Error, 1000);
+                MessageBoxEx.Show("Please Check Your Data and Try Again" + "\r\n" + "The Password Filed Most be Great Than 4.", "User Error", MessageBoxButtons.OK, MessageBoxIcon.Error, 1000);
             }
         }
 
@@ -129,18 +136,24 @@ namespace Datally
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Resources.E11 + "\r\n" + ex.Message, Resources.E1, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Can't Update Your Data, Plese Check Your Data." + "\r\n" + "or Call System Administrator" + "\r\n" + ex.Message, "Error Users - 1003", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void Cancel_D_Btn_Click(object sender, EventArgs e)
         {
-            Login.Instance.Edit_Ico(Edit_Btn, "Edit", Resources.ic_edit_white_18dp);
-            Edit(true, false);
-            UserBindSour.CancelEdit();
-            T_UsersTabAd.Fill(DatallySet.T_Users);
-            New_Btn.Enabled = true;
-
+            try
+            {
+                Login.Instance.Edit_Ico(Edit_Btn, "Edit", Resources.ic_edit_white_18dp);
+                Edit(true, false);
+                UserBindSour.CancelEdit();
+                T_UsersTabAd.Fill(DatallySet.T_Users);
+                New_Btn.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can't Cancel Your Data, Please Check Your Data." + "\r\n" + "or Call System Administrator" + "\r\n" + ex.Message, "Error Users - 1004", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Delete_Btn_Click(object sender, EventArgs e)
@@ -167,7 +180,7 @@ namespace Datally
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Problem in Database, Can't Delete Your Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Users - 1005", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Can't Delete Your Data, Please Check Your Data." + "\r\n" + "or Call System Administrator" + "\r\n" + ex.Message, "Error Users - 1005", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

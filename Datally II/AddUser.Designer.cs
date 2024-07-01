@@ -408,6 +408,7 @@
             this.Pass_Txt.ForeColor = System.Drawing.Color.White;
             this.Pass_Txt.Location = new System.Drawing.Point(119, 67);
             this.Pass_Txt.Name = "Pass_Txt";
+            this.Pass_Txt.PasswordChar = '*';
             this.Pass_Txt.Size = new System.Drawing.Size(239, 26);
             this.Pass_Txt.TabIndex = 3;
             this.Pass_Txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown);
@@ -498,7 +499,7 @@
             this.Name = "Users_Frm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Users_Frm";
-            this.Load += new System.EventHandler(this.Search_Load);
+            this.Load += new System.EventHandler(this.Users_Load);
             ((System.ComponentModel.ISupportInitialize)(this.RolesBindSour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DatallySet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserBindSour)).EndInit();

@@ -42,18 +42,19 @@
             this.Singout_Btn = new System.Windows.Forms.Button();
             this.Main_Pan = new System.Windows.Forms.Panel();
             this.Sub_Pan = new System.Windows.Forms.Panel();
+            this.Settings_Frm = new System.Windows.Forms.Panel();
+            this.Reset_Btn = new System.Windows.Forms.Button();
+            this.Contract_Btn = new System.Windows.Forms.Button();
+            this.RefDoc_Btn = new System.Windows.Forms.Button();
+            this.Authorities_Btn = new System.Windows.Forms.Button();
+            this.User_Btn = new System.Windows.Forms.Button();
+            this.Radologist_Btn = new System.Windows.Forms.Button();
             this.HReception_Btn = new System.Windows.Forms.Button();
             this.HSearch_Btn = new System.Windows.Forms.Button();
             this.HReport_Btn = new System.Windows.Forms.Button();
             this.HRadiology_Btn = new System.Windows.Forms.Button();
             this.HSettings_Btn = new System.Windows.Forms.Button();
             this.HAbout_Btn = new System.Windows.Forms.Button();
-            this.Settings_Frm = new System.Windows.Forms.Panel();
-            this.Contract_Btn = new System.Windows.Forms.Button();
-            this.RefDoc_Btn = new System.Windows.Forms.Button();
-            this.Authorities_Btn = new System.Windows.Forms.Button();
-            this.User_Btn = new System.Windows.Forms.Button();
-            this.Radologist_Btn = new System.Windows.Forms.Button();
             this.Menu_Panel = new System.Windows.Forms.Panel();
             this.Side_Panel = new System.Windows.Forms.Panel();
             this.Settings_Btn = new System.Windows.Forms.Button();
@@ -263,18 +264,162 @@
             this.Sub_Pan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(38)))), ((int)(((byte)(49)))));
             this.Sub_Pan.BackgroundImage = global::Datally.Properties.Resources.RADIOLOGIX_Trans;
             this.Sub_Pan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Sub_Pan.Controls.Add(this.Settings_Frm);
             this.Sub_Pan.Controls.Add(this.HReception_Btn);
             this.Sub_Pan.Controls.Add(this.HSearch_Btn);
             this.Sub_Pan.Controls.Add(this.HReport_Btn);
             this.Sub_Pan.Controls.Add(this.HRadiology_Btn);
             this.Sub_Pan.Controls.Add(this.HSettings_Btn);
             this.Sub_Pan.Controls.Add(this.HAbout_Btn);
-            this.Sub_Pan.Controls.Add(this.Settings_Frm);
             this.Sub_Pan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Sub_Pan.Location = new System.Drawing.Point(0, 0);
             this.Sub_Pan.Name = "Sub_Pan";
             this.Sub_Pan.Size = new System.Drawing.Size(1021, 646);
             this.Sub_Pan.TabIndex = 18;
+            // 
+            // Settings_Frm
+            // 
+            this.Settings_Frm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(38)))), ((int)(((byte)(53)))));
+            this.Settings_Frm.Controls.Add(this.Reset_Btn);
+            this.Settings_Frm.Controls.Add(this.Contract_Btn);
+            this.Settings_Frm.Controls.Add(this.RefDoc_Btn);
+            this.Settings_Frm.Controls.Add(this.Authorities_Btn);
+            this.Settings_Frm.Controls.Add(this.User_Btn);
+            this.Settings_Frm.Controls.Add(this.Radologist_Btn);
+            this.Settings_Frm.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Settings_Frm.Location = new System.Drawing.Point(0, 69);
+            this.Settings_Frm.Name = "Settings_Frm";
+            this.Settings_Frm.Size = new System.Drawing.Size(236, 435);
+            this.Settings_Frm.TabIndex = 17;
+            this.Settings_Frm.Visible = false;
+            // 
+            // Reset_Btn
+            // 
+            this.Reset_Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(38)))), ((int)(((byte)(49)))));
+            this.Reset_Btn.Enabled = false;
+            this.Reset_Btn.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.Reset_Btn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.Reset_Btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.Reset_Btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.Reset_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Reset_Btn.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Reset_Btn.ForeColor = System.Drawing.Color.White;
+            this.Reset_Btn.Image = global::Datally.Properties.Resources.Rest;
+            this.Reset_Btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Reset_Btn.Location = new System.Drawing.Point(26, 378);
+            this.Reset_Btn.Name = "Reset_Btn";
+            this.Reset_Btn.Size = new System.Drawing.Size(169, 40);
+            this.Reset_Btn.TabIndex = 16;
+            this.Reset_Btn.Text = "Reset Application";
+            this.Reset_Btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Reset_Btn.UseVisualStyleBackColor = false;
+            this.Reset_Btn.Visible = false;
+            this.Reset_Btn.Click += new System.EventHandler(this.Reset_Btn_Click);
+            // 
+            // Contract_Btn
+            // 
+            this.Contract_Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(38)))), ((int)(((byte)(49)))));
+            this.Contract_Btn.Enabled = false;
+            this.Contract_Btn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.Contract_Btn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.Contract_Btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.Contract_Btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.Contract_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Contract_Btn.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Contract_Btn.ForeColor = System.Drawing.Color.White;
+            this.Contract_Btn.Image = ((System.Drawing.Image)(resources.GetObject("Contract_Btn.Image")));
+            this.Contract_Btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Contract_Btn.Location = new System.Drawing.Point(26, 252);
+            this.Contract_Btn.Name = "Contract_Btn";
+            this.Contract_Btn.Size = new System.Drawing.Size(169, 40);
+            this.Contract_Btn.TabIndex = 15;
+            this.Contract_Btn.Text = "Contract";
+            this.Contract_Btn.UseVisualStyleBackColor = false;
+            this.Contract_Btn.Click += new System.EventHandler(this.Contract_Btn_Click);
+            // 
+            // RefDoc_Btn
+            // 
+            this.RefDoc_Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(38)))), ((int)(((byte)(49)))));
+            this.RefDoc_Btn.Enabled = false;
+            this.RefDoc_Btn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.RefDoc_Btn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.RefDoc_Btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.RefDoc_Btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.RefDoc_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RefDoc_Btn.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RefDoc_Btn.ForeColor = System.Drawing.Color.White;
+            this.RefDoc_Btn.Image = ((System.Drawing.Image)(resources.GetObject("RefDoc_Btn.Image")));
+            this.RefDoc_Btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.RefDoc_Btn.Location = new System.Drawing.Point(26, 142);
+            this.RefDoc_Btn.Name = "RefDoc_Btn";
+            this.RefDoc_Btn.Size = new System.Drawing.Size(169, 40);
+            this.RefDoc_Btn.TabIndex = 14;
+            this.RefDoc_Btn.Text = "Ref. Doctor";
+            this.RefDoc_Btn.UseVisualStyleBackColor = false;
+            this.RefDoc_Btn.Click += new System.EventHandler(this.Ref_Btn_Click);
+            // 
+            // Authorities_Btn
+            // 
+            this.Authorities_Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(38)))), ((int)(((byte)(49)))));
+            this.Authorities_Btn.Enabled = false;
+            this.Authorities_Btn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.Authorities_Btn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.Authorities_Btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.Authorities_Btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.Authorities_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Authorities_Btn.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Authorities_Btn.ForeColor = System.Drawing.Color.White;
+            this.Authorities_Btn.Image = ((System.Drawing.Image)(resources.GetObject("Authorities_Btn.Image")));
+            this.Authorities_Btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Authorities_Btn.Location = new System.Drawing.Point(26, 307);
+            this.Authorities_Btn.Name = "Authorities_Btn";
+            this.Authorities_Btn.Size = new System.Drawing.Size(169, 40);
+            this.Authorities_Btn.TabIndex = 11;
+            this.Authorities_Btn.Text = "Authorities";
+            this.Authorities_Btn.UseVisualStyleBackColor = false;
+            this.Authorities_Btn.Click += new System.EventHandler(this.Per_Txt_Click);
+            // 
+            // User_Btn
+            // 
+            this.User_Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(38)))), ((int)(((byte)(49)))));
+            this.User_Btn.Enabled = false;
+            this.User_Btn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.User_Btn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.User_Btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.User_Btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.User_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.User_Btn.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.User_Btn.ForeColor = System.Drawing.Color.White;
+            this.User_Btn.Image = ((System.Drawing.Image)(resources.GetObject("User_Btn.Image")));
+            this.User_Btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.User_Btn.Location = new System.Drawing.Point(26, 197);
+            this.User_Btn.Name = "User_Btn";
+            this.User_Btn.Size = new System.Drawing.Size(169, 40);
+            this.User_Btn.TabIndex = 11;
+            this.User_Btn.Text = "Users";
+            this.User_Btn.UseVisualStyleBackColor = false;
+            this.User_Btn.Click += new System.EventHandler(this.AddUser_Txt_Click);
+            // 
+            // Radologist_Btn
+            // 
+            this.Radologist_Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(38)))), ((int)(((byte)(49)))));
+            this.Radologist_Btn.Enabled = false;
+            this.Radologist_Btn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.Radologist_Btn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.Radologist_Btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.Radologist_Btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.Radologist_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Radologist_Btn.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Radologist_Btn.ForeColor = System.Drawing.Color.White;
+            this.Radologist_Btn.Image = ((System.Drawing.Image)(resources.GetObject("Radologist_Btn.Image")));
+            this.Radologist_Btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Radologist_Btn.Location = new System.Drawing.Point(26, 87);
+            this.Radologist_Btn.Name = "Radologist_Btn";
+            this.Radologist_Btn.Size = new System.Drawing.Size(169, 40);
+            this.Radologist_Btn.TabIndex = 12;
+            this.Radologist_Btn.Text = "Radiologist";
+            this.Radologist_Btn.UseVisualStyleBackColor = false;
+            this.Radologist_Btn.Click += new System.EventHandler(this.AddDoc_Txt_Click);
             // 
             // HReception_Btn
             // 
@@ -417,126 +562,6 @@
             this.HAbout_Btn.Click += new System.EventHandler(this.About_Btn_Click);
             this.HAbout_Btn.Enter += new System.EventHandler(this.About_Btn_Enter);
             this.HAbout_Btn.Leave += new System.EventHandler(this.About_Btn_Leave);
-            // 
-            // Settings_Frm
-            // 
-            this.Settings_Frm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(38)))), ((int)(((byte)(53)))));
-            this.Settings_Frm.Controls.Add(this.Contract_Btn);
-            this.Settings_Frm.Controls.Add(this.RefDoc_Btn);
-            this.Settings_Frm.Controls.Add(this.Authorities_Btn);
-            this.Settings_Frm.Controls.Add(this.User_Btn);
-            this.Settings_Frm.Controls.Add(this.Radologist_Btn);
-            this.Settings_Frm.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Settings_Frm.Location = new System.Drawing.Point(0, 69);
-            this.Settings_Frm.Name = "Settings_Frm";
-            this.Settings_Frm.Size = new System.Drawing.Size(236, 356);
-            this.Settings_Frm.TabIndex = 17;
-            this.Settings_Frm.Visible = false;
-            // 
-            // Contract_Btn
-            // 
-            this.Contract_Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(38)))), ((int)(((byte)(49)))));
-            this.Contract_Btn.Enabled = false;
-            this.Contract_Btn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.Contract_Btn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.Contract_Btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.Contract_Btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.Contract_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Contract_Btn.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Contract_Btn.ForeColor = System.Drawing.Color.White;
-            this.Contract_Btn.Image = ((System.Drawing.Image)(resources.GetObject("Contract_Btn.Image")));
-            this.Contract_Btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Contract_Btn.Location = new System.Drawing.Point(26, 220);
-            this.Contract_Btn.Name = "Contract_Btn";
-            this.Contract_Btn.Size = new System.Drawing.Size(169, 40);
-            this.Contract_Btn.TabIndex = 15;
-            this.Contract_Btn.Text = "Contract";
-            this.Contract_Btn.UseVisualStyleBackColor = false;
-            this.Contract_Btn.Click += new System.EventHandler(this.Contract_Btn_Click);
-            // 
-            // RefDoc_Btn
-            // 
-            this.RefDoc_Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(38)))), ((int)(((byte)(49)))));
-            this.RefDoc_Btn.Enabled = false;
-            this.RefDoc_Btn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.RefDoc_Btn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.RefDoc_Btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.RefDoc_Btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.RefDoc_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RefDoc_Btn.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RefDoc_Btn.ForeColor = System.Drawing.Color.White;
-            this.RefDoc_Btn.Image = ((System.Drawing.Image)(resources.GetObject("RefDoc_Btn.Image")));
-            this.RefDoc_Btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.RefDoc_Btn.Location = new System.Drawing.Point(26, 110);
-            this.RefDoc_Btn.Name = "RefDoc_Btn";
-            this.RefDoc_Btn.Size = new System.Drawing.Size(169, 40);
-            this.RefDoc_Btn.TabIndex = 14;
-            this.RefDoc_Btn.Text = "Ref. Doctor";
-            this.RefDoc_Btn.UseVisualStyleBackColor = false;
-            this.RefDoc_Btn.Click += new System.EventHandler(this.Ref_Btn_Click);
-            // 
-            // Authorities_Btn
-            // 
-            this.Authorities_Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(38)))), ((int)(((byte)(49)))));
-            this.Authorities_Btn.Enabled = false;
-            this.Authorities_Btn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.Authorities_Btn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.Authorities_Btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.Authorities_Btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.Authorities_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Authorities_Btn.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Authorities_Btn.ForeColor = System.Drawing.Color.White;
-            this.Authorities_Btn.Image = ((System.Drawing.Image)(resources.GetObject("Authorities_Btn.Image")));
-            this.Authorities_Btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Authorities_Btn.Location = new System.Drawing.Point(26, 275);
-            this.Authorities_Btn.Name = "Authorities_Btn";
-            this.Authorities_Btn.Size = new System.Drawing.Size(169, 40);
-            this.Authorities_Btn.TabIndex = 11;
-            this.Authorities_Btn.Text = "Authorities";
-            this.Authorities_Btn.UseVisualStyleBackColor = false;
-            this.Authorities_Btn.Click += new System.EventHandler(this.Per_Txt_Click);
-            // 
-            // User_Btn
-            // 
-            this.User_Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(38)))), ((int)(((byte)(49)))));
-            this.User_Btn.Enabled = false;
-            this.User_Btn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.User_Btn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.User_Btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.User_Btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.User_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.User_Btn.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.User_Btn.ForeColor = System.Drawing.Color.White;
-            this.User_Btn.Image = ((System.Drawing.Image)(resources.GetObject("User_Btn.Image")));
-            this.User_Btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.User_Btn.Location = new System.Drawing.Point(26, 165);
-            this.User_Btn.Name = "User_Btn";
-            this.User_Btn.Size = new System.Drawing.Size(169, 40);
-            this.User_Btn.TabIndex = 11;
-            this.User_Btn.Text = "Users";
-            this.User_Btn.UseVisualStyleBackColor = false;
-            this.User_Btn.Click += new System.EventHandler(this.AddUser_Txt_Click);
-            // 
-            // Radologist_Btn
-            // 
-            this.Radologist_Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(38)))), ((int)(((byte)(49)))));
-            this.Radologist_Btn.Enabled = false;
-            this.Radologist_Btn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.Radologist_Btn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.Radologist_Btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.Radologist_Btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.Radologist_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Radologist_Btn.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Radologist_Btn.ForeColor = System.Drawing.Color.White;
-            this.Radologist_Btn.Image = ((System.Drawing.Image)(resources.GetObject("Radologist_Btn.Image")));
-            this.Radologist_Btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Radologist_Btn.Location = new System.Drawing.Point(26, 55);
-            this.Radologist_Btn.Name = "Radologist_Btn";
-            this.Radologist_Btn.Size = new System.Drawing.Size(169, 40);
-            this.Radologist_Btn.TabIndex = 12;
-            this.Radologist_Btn.Text = "Radiologist";
-            this.Radologist_Btn.UseVisualStyleBackColor = false;
-            this.Radologist_Btn.Click += new System.EventHandler(this.AddDoc_Txt_Click);
             // 
             // Menu_Panel
             // 
@@ -815,5 +840,6 @@
         protected internal System.Windows.Forms.Label FormName_lab;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Contract_Btn;
+        private System.Windows.Forms.Button Reset_Btn;
     }
 }

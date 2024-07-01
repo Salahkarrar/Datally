@@ -22,12 +22,19 @@ namespace Datally
 
         protected internal void Authority_Load(object sender, EventArgs e)
         {
-            Dock = DockStyle.Fill;
-            Index = 1;
-            T_RolesTabAd.Fill(DatallySet.T_Roles);
-            T_FunTabAd.Fill(DatallySet.T_Function);
-            Fill(Index);
-            FunFill(Index);
+            try
+            {
+                Dock = DockStyle.Fill;
+                Index = 1;
+                T_RolesTabAd.Fill(DatallySet.T_Roles);
+                T_FunTabAd.Fill(DatallySet.T_Function);
+                Fill(Index);
+                FunFill(Index);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can't Retrive Your Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Authority - 1000", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Add_Btn_Click(object sender, EventArgs e)
@@ -58,7 +65,7 @@ namespace Datally
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Problem in Database, Can't Store Your Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Authority - 1000", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Problem in Database, Can't Store Your Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Authority - 1001", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -85,15 +92,22 @@ namespace Datally
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Problem in Database, Can't Detete Your Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Authority - 1001", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Problem in Database, Can't Detete Your Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Authority - 1002", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void MAuthority_Txt_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Index = Convert.ToInt32(MAuthority_Txt.SelectedValue);
-            Fill(Index);
-            FunFill(Index);
+            try
+            {
+                Index = Convert.ToInt32(MAuthority_Txt.SelectedValue);
+                Fill(Index);
+                FunFill(Index);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can't Retrive Your Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Authority - 1003", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Fun_Grid_CellDoubleClick(object sender, DataGridViewCellEventArgs e) => Add_Btn_Click(sender, e);
@@ -125,7 +139,7 @@ namespace Datally
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Problem in Database, Can't Retrive Your Data.." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Authority - 1002", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Problem in Database, Can't Retrive Your Data.." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Authority - 1004", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Fill(Index);
             }
         }
@@ -154,7 +168,7 @@ namespace Datally
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Problem in Database, Can't retrive Your Data.." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Authority - 1003", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Problem in Database, Can't retrive Your Data.." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Authority - 1005", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

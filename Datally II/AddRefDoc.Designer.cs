@@ -228,7 +228,7 @@
             this.New_Btn.Text = "New";
             this.New_Btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.New_Btn.UseVisualStyleBackColor = true;
-            this.New_Btn.Click += new System.EventHandler(this.New_D_Btn_Click);
+            this.New_Btn.Click += new System.EventHandler(this.New_Btn_Click);
             // 
             // Edit_Btn
             // 
@@ -274,7 +274,7 @@
             this.Save_Btn.Text = "Save";
             this.Save_Btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Save_Btn.UseVisualStyleBackColor = true;
-            this.Save_Btn.Click += new System.EventHandler(this.Save_D_Btn_Click);
+            this.Save_Btn.Click += new System.EventHandler(this.Save_Btn_Click);
             // 
             // Cancel_Btn
             // 
@@ -297,7 +297,7 @@
             this.Cancel_Btn.Text = "Cancel";
             this.Cancel_Btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Cancel_Btn.UseVisualStyleBackColor = true;
-            this.Cancel_Btn.Click += new System.EventHandler(this.Cancel_D_Btn_Click);
+            this.Cancel_Btn.Click += new System.EventHandler(this.Cancel_Btn_Click);
             // 
             // ID_Txt
             // 
@@ -402,7 +402,7 @@
             this.Name = "RefDoc_Frm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "RefDoctor_Frm";
-            this.Load += new System.EventHandler(this.AddDoc_Load);
+            this.Load += new System.EventHandler(this.RefDoctor_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.RefDoc_Grid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RefDocBindSour)).EndInit();

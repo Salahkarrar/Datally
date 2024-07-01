@@ -61,7 +61,7 @@ namespace Datally.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Backup\.
+        ///   Looks up a localized string similar to \Backup\.
         /// </summary>
         internal static string BackupFolder {
             get {
@@ -236,7 +236,7 @@ namespace Datally.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There is Some Problem.
+        ///   Looks up a localized string similar to There are Some Problems.
         /// </summary>
         internal static string E11 {
             get {
@@ -268,15 +268,6 @@ namespace Datally.Properties {
         internal static string E6 {
             get {
                 return ResourceManager.GetString("E6", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Your Password is not correct.
-        /// </summary>
-        internal static string E7 {
-            get {
-                return ResourceManager.GetString("E7", resourceCulture);
             }
         }
         
@@ -633,6 +624,16 @@ namespace Datally.Properties {
         internal static System.Drawing.Bitmap Reception_White_32 {
             get {
                 object obj = ResourceManager.GetObject("Reception_White_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Rest {
+            get {
+                object obj = ResourceManager.GetObject("Rest", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

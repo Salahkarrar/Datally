@@ -41,10 +41,12 @@
             this.From_Txt = new System.Windows.Forms.DateTimePicker();
             this.Shutdown_Btn = new System.Windows.Forms.Button();
             this.DocTabAdap = new Datally.DatallyDataSetTableAdapters.DoctorTableAdapter();
+            this.docReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DocBindSour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DatallySet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.docReportBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -185,6 +187,10 @@
             // 
             this.DocTabAdap.ClearBeforeFill = true;
             // 
+            // docReportBindingSource
+            // 
+            this.docReportBindingSource.DataSource = typeof(Datally.DocReport);
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.Shutdown_Btn);
@@ -212,11 +218,12 @@
             this.Name = "Report_Frm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Report";
-            this.Load += new System.EventHandler(this.Report_Load);
+            this.Load += new System.EventHandler(this.Search_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DocBindSour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DatallySet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.docReportBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -235,6 +242,7 @@
         private Datally.DatallyDataSet DatallySet;
         private System.Windows.Forms.BindingSource DocBindSour;
         private Datally.DatallyDataSetTableAdapters.DoctorTableAdapter DocTabAdap;
+        private System.Windows.Forms.BindingSource docReportBindingSource;
         private System.Windows.Forms.Panel panel1;
     }
 }

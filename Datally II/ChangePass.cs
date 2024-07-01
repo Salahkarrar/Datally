@@ -37,7 +37,6 @@ namespace Datally
                     }
                     Cmd.Parameters.Clear();
                     Reader.Close();
-                    //Con.Close();
                     if (c == 1)
                     {
                         groupBox1.Enabled = true;
@@ -46,29 +45,28 @@ namespace Datally
                     }
                     else
                     {
-                        MessageBoxEx.Show("Password Not Correct.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, 1000);
+                        MessageBoxEx.Show("Incorrect Password, Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, 1000);
                         PassWord.Text = null;
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Can't Connect to Database, Please Recheck The Server or Call System Administrator" + "\r\n" + ex.Message, "Error Change Password - 1000", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Can't Retrive Your Data, Call System Administrator" + "\r\n" + ex.Message, "Error Change Password - 1000", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
         private void Save_Btn_Click(object sender, EventArgs e)
         {
-            if (UserName_Txt.Text != null && New_Txt.Text == Confirm_Txt.Text)
+            if (UserName_Txt.Text != null && New_Txt.TextLength > 4 && New_Txt.Text == Confirm_Txt.Text)
             {
                 string Ch = "Changed";
-                //Con.Close();
                 try
                 {
                     if (Con.State == ConnectionState.Closed)
                         Con.Open();
                     Cmd.Connection = Con;
-                    Cmd.CommandText = "UPDATE T_Users SET PWord= @1,C_Status='"+Ch+"' WHERE ID=@0";
+                    Cmd.CommandText = "UPDATE T_Users SET PWord= @1,C_Status='" + Ch + "' WHERE ID=@0";
                     Cmd.Parameters.AddWithValue("@1", New_Txt.Text);
                     Cmd.Parameters.AddWithValue("@0", ID);
                     Cmd.ExecuteNonQuery();
@@ -85,12 +83,12 @@ namespace Datally
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Please Enter Another Password" + "\r\n" + ex.Message, "Change Password - 1000", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Can't Save Your Data, Please Check Your Data or Call Administration." + "\r\n" + ex.Message, "Change Password - 1001", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("The User Name Can't be Empty or Your New Password & Confirm Password not Equal, Please Try Again.", "Error Changed Password - 1001", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("The User Name Can't be Empty or Your New Password & Confirm Password not Equal and New Passsword Most Be Great Than 4, Please Try Again.", "Error Changed Password - 1001", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

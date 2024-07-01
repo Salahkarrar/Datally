@@ -244,7 +244,7 @@
             this.New_Btn.Text = "New";
             this.New_Btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.New_Btn.UseVisualStyleBackColor = true;
-            this.New_Btn.Click += new System.EventHandler(this.New_D_Btn_Click);
+            this.New_Btn.Click += new System.EventHandler(this.New_Btn_Click);
             // 
             // Edit_Btn
             // 
@@ -290,7 +290,7 @@
             this.Save_Btn.Text = "Save";
             this.Save_Btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Save_Btn.UseVisualStyleBackColor = true;
-            this.Save_Btn.Click += new System.EventHandler(this.Save_D_Btn_Click);
+            this.Save_Btn.Click += new System.EventHandler(this.Save_Btn_Click);
             // 
             // Cancel_Btn
             // 

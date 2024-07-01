@@ -1,5 +1,6 @@
 ﻿using Datally.Properties;
 using System;
+using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
 using System.IO;
@@ -26,7 +27,7 @@ namespace Datally
             dynamic dialog = MessageBox.Show(Resources.E9, Resources.E8, MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
             {
-                var backupFolder = Resources.BackupFolder;
+                var backupFolder = Application.StartupPath + Resources.BackupFolder;
 
                 var backupFileName = String.Format("{0}{1}~{2}.accdb",
                     backupFolder, "Radiologix",
@@ -35,7 +36,7 @@ namespace Datally
                 string So = Resources.SVRPath;
                 string De = backupFileName;
 
-                string backupDir = Resources.BackupFolder;
+                string backupDir = Application.StartupPath + Resources.BackupFolder;
                 var DeletionDays = 3;
                 if (DeletionDays < 10)
                 {
@@ -54,7 +55,7 @@ namespace Datally
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex.ToString());
+                        MessageBoxEx.Show("Can't Delete The old Backup " + ex.Message, "Error Main - 1000", 3000);
                     }
                 }
                 File.Copy(So, De);
@@ -75,76 +76,88 @@ namespace Datally
         {
             MinimizeBox = true;
 
-            Login.Instance.CheckMain(Login.Instance.UserName);
-            foreach (var obj in Login.Instance.List)
+            try
             {
-                Login.Instance.RoleName = obj.RoleName;
-                UserName_Txt.Text = $"{Login.Instance.UserName}  |  " + $"{Login.Instance.RoleName}  |";
-                if (Home_Btn.Text == obj.FunctionName)
+                Login.Instance.CheckMain(Login.Instance.UserName);
+                foreach (var obj in Login.Instance.List)
                 {
-                    Home_Btn.Enabled = true;
-                    Home_Btn.Tag = obj.FunctionName;
+                    Login.Instance.RoleName = obj.RoleName;
+                    UserName_Txt.Text = $"{Login.Instance.UserName}  |  " + $"{Login.Instance.RoleName}  |";
+                    if (Home_Btn.Text == obj.FunctionName)
+                    {
+                        Home_Btn.Enabled = true;
+                        Home_Btn.Tag = obj.FunctionName;
+                    }
+                    else if (Reception_Btn.Text == obj.FunctionName)
+                    {
+                        Reception_Btn.Enabled = true;
+                        HReception_Btn.Enabled = true;
+                        Reception_Btn.Tag = obj.FunctionName;
+                    }
+                    else if (Search_Btn.Text == obj.FunctionName)
+                    {
+                        Search_Btn.Enabled = true;
+                        HSearch_Btn.Enabled = true;
+                        Search_Btn.Tag = obj.FunctionName;
+                    }
+                    else if (Report_Btn.Text == obj.FunctionName)
+                    {
+                        Report_Btn.Enabled = true;
+                        HReport_Btn.Enabled = true;
+                        Report_Btn.Tag = obj.FunctionName;
+                    }
+                    else if (Radiology_Btn.Text == obj.FunctionName)
+                    {
+                        Radiology_Btn.Enabled = true;
+                        HRadiology_Btn.Enabled = true;
+                        Radiology_Btn.Tag = obj.FunctionName;
+                    }
+                    else if (Settings_Btn.Text == obj.FunctionName)
+                    {
+                        Settings_Btn.Enabled = true;
+                        HSettings_Btn.Enabled = true;
+                        Settings_Btn.Tag = obj.FunctionName;
+                    }
+                    else if (Radologist_Btn.Text == obj.FunctionName)
+                    {
+                        Radologist_Btn.Enabled = true;
+                        Radologist_Btn.Tag = obj.FunctionName;
+                    }
+                    else if (RefDoc_Btn.Text == obj.FunctionName)
+                    {
+                        RefDoc_Btn.Enabled = true;
+                        RefDoc_Btn.Tag = obj.FunctionName;
+                    }
+                    else if (User_Btn.Text == obj.FunctionName)
+                    {
+                        User_Btn.Enabled = true;
+                        User_Btn.Tag = obj.FunctionName;
+                    }
+                    else if (Authorities_Btn.Text == obj.FunctionName)
+                    {
+                        Authorities_Btn.Enabled = true;
+                        Authorities_Btn.Tag = obj.FunctionName;
+                    }
+                    else if (Contract_Btn.Text == obj.FunctionName)
+                    {
+                        Contract_Btn.Enabled = true;
+                        Contract_Btn.Tag = obj.FunctionName;
+                    }
+                    else if (Reset_Btn.Text == obj.FunctionName)
+                    {
+                        Reset_Btn.Enabled = true;
+                        Reset_Btn.Tag = obj.FunctionName;
+                    }
                 }
-                else if (Reception_Btn.Text == obj.FunctionName)
-                {
-                    Reception_Btn.Enabled = true;
-                    HReception_Btn.Enabled = true;
-                    Reception_Btn.Tag = obj.FunctionName;
-                }
-                else if (Search_Btn.Text == obj.FunctionName)
-                {
-                    Search_Btn.Enabled = true;
-                    HSearch_Btn.Enabled = true;
-                    Search_Btn.Tag = obj.FunctionName;
-                }
-                else if (Report_Btn.Text == obj.FunctionName)
-                {
-                    Report_Btn.Enabled = true;
-                    HReport_Btn.Enabled = true;
-                    Report_Btn.Tag = obj.FunctionName;
-                }
-                else if (Radiology_Btn.Text == obj.FunctionName)
-                {
-                    Radiology_Btn.Enabled = true;
-                    HRadiology_Btn.Enabled = true;
-                    Radiology_Btn.Tag = obj.FunctionName;
-                }
-                else if (Settings_Btn.Text == obj.FunctionName)
-                {
-                    Settings_Btn.Enabled = true;
-                    HSettings_Btn.Enabled = true;
-                    Settings_Btn.Tag = obj.FunctionName;
-                }
-                else if (Radologist_Btn.Text == obj.FunctionName)
-                {
-                    Radologist_Btn.Enabled = true;
-                    Radologist_Btn.Tag = obj.FunctionName;
-                }
-                else if (RefDoc_Btn.Text == obj.FunctionName)
-                {
-                    RefDoc_Btn.Enabled = true;
-                    RefDoc_Btn.Tag = obj.FunctionName;
-                }
-                else if (User_Btn.Text == obj.FunctionName)
-                {
-                    User_Btn.Enabled = true;
-                    User_Btn.Tag = obj.FunctionName;
-                }
-                else if (Authorities_Btn.Text == obj.FunctionName)
-                {
-                    Authorities_Btn.Enabled = true;
-                    Authorities_Btn.Tag = obj.FunctionName;
-                }
-                else if (Contract_Btn.Text == obj.FunctionName)
-                {
-                    Contract_Btn.Enabled = true;
-                    Contract_Btn.Tag = obj.FunctionName;
-                }
-            }
 
-            Home_Btn.Click += Home_Btn_Click;
-            Home_Btn_Click(sender, e);
-            Home_Btn_Enter(sender, e);
+                Home_Btn.Click += Home_Btn_Click;
+                Home_Btn_Click(sender, e);
+                Home_Btn_Enter(sender, e);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can't Retrive Your Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Main - 1000", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Singout_Btn_Click(object sender, EventArgs e)
@@ -532,6 +545,83 @@ namespace Datally
                 {
                     MessageBoxEx.Show("Please Check Your Permission.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information, 1000);
                 }
+            }
+        }
+
+        private void Reset_Btn_Click(object sender, EventArgs e)
+        {
+            if (Conn.State == ConnectionState.Open)
+            {
+                Conn.Close();
+            }
+            try
+            {
+                dynamic dialog = MessageBox.Show("You Lose All Application Data, Are You Sure?", "Warrning", MessageBoxButtons.YesNo);
+                if (dialog == DialogResult.Yes)
+                {
+                    string backup = Application.StartupPath + "\\BackUp\\Reset\\";
+                    DirectoryInfo directoryInfo = Directory.CreateDirectory(backup);
+
+
+                    string dbasedes = Application.StartupPath + "\\DataBase\\Radiologix.accdb";
+                    string redes = Application.StartupPath + "\\P_Report\\";
+                    string tmpdes = Application.StartupPath + "\\Templete";
+                    string dbdes = Application.StartupPath + "\\BackUp\\DB\\Radiologix.accdb";
+
+                    if (File.Exists(dbasedes))
+                    {
+                        Conn.Close();
+                        Conn.Dispose();
+                        Directory.CreateDirectory(backup + "\\Database");
+                        var backupFileName = String.Format("{0}{1}~{2}({3}).accdb",
+                            backup + "Database\\", "Radiologix",
+                            DateTime.Now.ToString("dd-MM-yyyy  hh-mm-ss"), "Reset");
+                        File.Copy(dbasedes, backupFileName);
+                        File.Delete(dbasedes);
+                        File.Copy(dbdes, Application.StartupPath + "\\Database\\Radiologix.accdb");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Database File Not Exsist", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    if (Directory.Exists(redes))
+                    {
+                        Directory.Move(redes, backup + "P_Report\\" + DateTime.Now.ToString("dd-MM-yyyy  hh-mm-ss"));
+                        Directory.CreateDirectory(Application.StartupPath + "\\P_Report\\");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Report File Not Exsist", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    //if (Directory.Exists(tmpdes))
+                    //{
+                    //    Directory.Move(tmpdes, backup + "Templete\\" + DateTime.Now.ToString("dd-MM-yyyy  hh-mm-ss"));
+                    //    Directory.CreateDirectory(Application.StartupPath + "\\Templete\\");
+                    //    Directory..Copy(Application.StartupPath + "\\BackUp\\Templete", Application.StartupPath + "\\Templete\\");
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show("Template File Not Exsist", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //}
+                    if (!File.Exists(dbdes))
+                    {
+                        File.Copy(dbasedes, Application.StartupPath + "\\Database\\");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Database File Not Exsist", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
+
+                }
+                else if (dialog == DialogResult.No)
+                {
+                    DialogResult.Cancel.Equals(true);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Resources.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

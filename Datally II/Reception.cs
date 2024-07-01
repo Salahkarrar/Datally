@@ -28,52 +28,59 @@ namespace Datally
 
         private void Reception_Load(object sender, EventArgs e)
         {
-            T_ContractTabAd.Fill(datallyDataSet.T_Contract);
-            RefDocTabAd.Fill(datallyDataSet.RefDoctor);
-            P_DataTabAd.Fill(datallyDataSet.P_Data);
-            Date_Txt.Value = DateTime.Today;
-            MinimizeBox = true;
-            Date_Txt.CalendarMonthBackground = Color.FromArgb(27, 38, 49);
-            Edit(true, false);
-            Login.Instance.CheckMain(Login.Instance.UserName);
-            foreach (var obj in Login.Instance.List)
+            try
             {
-                if (New_Btn.Name == obj.FunctionName)
+                T_ContractTabAd.Fill(DatallySet.T_Contract);
+                RefDocTabAd.Fill(DatallySet.RefDoctor);
+                P_DataTabAd.Fill(DatallySet.P_Data);
+                Date_Txt.Value = DateTime.Today;
+                MinimizeBox = true;
+                Date_Txt.CalendarMonthBackground = Color.FromArgb(27, 38, 49);
+                Edit(true, false);
+                Login.Instance.CheckMain(Login.Instance.UserName);
+                foreach (var obj in Login.Instance.List)
                 {
-                    New_Btn.Enabled = true;
+                    if (New_Btn.Name == obj.FunctionName)
+                    {
+                        New_Btn.Enabled = true;
+                    }
+                    else if (S_New_Btn.Name == obj.FunctionName)
+                    {
+                        S_New_Btn.Enabled = true;
+                    }
+                    else if (Save_Btn.Name == obj.FunctionName)
+                    {
+                        Save_Btn.Enabled = true;
+                    }
+                    else if (S_Save_Btn.Name == obj.FunctionName)
+                    {
+                        S_Save_Btn.Enabled = true;
+                    }
+                    else if (Edit_Btn.Name == obj.FunctionName)
+                    {
+                        Edit_Btn.Enabled = true;
+                    }
+                    else if (Cancel_Btn.Name == obj.FunctionName)
+                    {
+                        Cancel_Btn.Enabled = true;
+                    }
+                    else if (Report_Btn.Name == obj.FunctionName)
+                    {
+                        Report_Btn.Enabled = true;
+                    }
+                    else if (S_Report_Btn.Name == obj.FunctionName)
+                    {
+                        S_Report_Btn.Enabled = true;
+                    }
+                    else if (New_Report_Btn.Name == obj.FunctionName)
+                    {
+                        New_Report_Btn.Enabled = true;
+                    }
                 }
-                else if (S_New_Btn.Name == obj.FunctionName)
-                {
-                    S_New_Btn.Enabled = true;
-                }
-                else if (Save_Btn.Name == obj.FunctionName)
-                {
-                    Save_Btn.Enabled = true;
-                }
-                else if (S_Save_Btn.Name == obj.FunctionName)
-                {
-                    S_Save_Btn.Enabled = true;
-                }
-                else if (Edit_Btn.Name == obj.FunctionName)
-                {
-                    Edit_Btn.Enabled = true;
-                }
-                else if (Cancel_Btn.Name == obj.FunctionName)
-                {
-                    Cancel_Btn.Enabled = true;
-                }
-                else if (Report_Btn.Name == obj.FunctionName)
-                {
-                    Report_Btn.Enabled = true;
-                }
-                else if (S_Report_Btn.Name == obj.FunctionName)
-                {
-                    S_Report_Btn.Enabled = true;
-                }
-                else if (New_Report_Btn.Name == obj.FunctionName)
-                {
-                    New_Report_Btn.Enabled = true;
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can't Retrive Your Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Reception - 1000", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -87,17 +94,24 @@ namespace Datally
         /*  PATIENT DATA  */
         private void New_Btn_Click(object sender, EventArgs e)
         {
-            Edit(false, true);
-            TempleteBindSour.AddNew();
-            TempleteTabAd.Fill(datallyDataSet.Templete);
-            DocBindSour.AddNew();
-            DocTabAd.Fill(datallyDataSet.Doctor);
-            S_Serveice_Group.Hide();
-            Patiant_Group2.Hide();
-            datallyDataSet.P_Data.AddP_DataRow(datallyDataSet.P_Data.NewP_DataRow());
-            P_DataBindSour.MoveLast();
-            Name_Txt.Focus();
-            New_Btn.Enabled = false;
+            try
+            {
+                Edit(false, true);
+                TempleteBindSour.AddNew();
+                TempleteTabAd.Fill(DatallySet.Templete);
+                DocBindSour.AddNew();
+                DocTabAd.Fill(DatallySet.Doctor);
+                S_Serveice_Group.Hide();
+                Patiant_Group2.Hide();
+                DatallySet.P_Data.AddP_DataRow(DatallySet.P_Data.NewP_DataRow());
+                P_DataBindSour.MoveLast();
+                Name_Txt.Focus();
+                New_Btn.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Problem in Database, Can't Make New Row." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Reception - 1001", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Save_Btn_Click(object sender, EventArgs e)
@@ -108,11 +122,12 @@ namespace Datally
                 Edit(true, false);
                 SaveData();
                 New_Report_Click(sender, e);
+                RefDoc();
                 New_Btn.Enabled = true;
             }
             else
             {
-                MessageBoxEx.Show(Resources.E5, Resources.E1, MessageBoxButtons.OK, MessageBoxIcon.Error, 1000);
+                MessageBoxEx.Show("Please Check Your data.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error, 1000);
             }
         }
 
@@ -162,7 +177,7 @@ namespace Datally
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show(Resources.E11 + "\r\n" + ex.Message, Resources.E1, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Can't Update Your Data, Plese Check Your Data." + "\r\n" + "or Call System Administrator" + "\r\n" + ex.Message, "Error Reception - 1002", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         Conn.Close();
 
@@ -178,7 +193,7 @@ namespace Datally
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Resources.E11 + "\r\n" + ex.Message, Resources.E1, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Some Proplem When You Try to Update Your Data, Please Try again" + "\r\n" + ex.Message, "Error Reception - 1001", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -191,8 +206,8 @@ namespace Datally
                 Login.Instance.Edit_Ico(Edit_Btn, "Edit", Resources.ic_edit_white_18dp);
                 Edit(true, false);
                 P_DataBindSour.CancelEdit();
-                P_DataTabAd.Fill(datallyDataSet.P_Data);
-                string So = Path + "P_Report\\" + ID_Txt.Text + "_" + Name_Txt.Text + "_" + Services_Combo.Text + ".docx";
+                P_DataTabAd.Fill(DatallySet.P_Data);
+                string So = Path + "P_Report\\" + ID_Txt.Text + "_" + Name_Txt.Text + "_" + Services_TxT.Text + ".docx";
                 string De = Path + "P_Report\\" + ID_Txt.Text + ".docx";
                 if (File.Exists(De))
                 {
@@ -206,7 +221,7 @@ namespace Datally
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Resources.E11 + "\r\n" + ex.Message, Resources.E1, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Can't Cancel Your Data, Please Check Your Data." + "\r\n" + "or Call System Administrator" + "\r\n" + ex.Message, "Error Reception - 1003", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -232,18 +247,27 @@ namespace Datally
         /*  Services */
         private void New_Report_Click(object sender, EventArgs e)
         {
-            Patiant_Group2.Show();
-            Patiant_Group2.BringToFront();
-            TempleteBindSour.AddNew();
-            TempleteTabAd.Fill(datallyDataSet.Templete);
-            DocBindSour.AddNew();
-            DocTabAd.Fill(datallyDataSet.Doctor);
-            Services_Combo.Enabled = true;
-            Doctor_Txt.Enabled = true;
-            S_Save_Btn.Enabled = true;
+            try
+            {
+                Patiant_Group2.Show();
+                Patiant_Group2.BringToFront();
+                TempleteBindSour.AddNew();
+                TempleteTabAd.Fill(DatallySet.Templete);
+                DocBindSour.AddNew();
+                DocTabAd.Fill(DatallySet.Doctor);
+                Services_Combo.Enabled = true;
+                Doctor_Txt.Enabled = true;
+                S_Save_Btn.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can't Make New Report, Please Check Your Data." + "\r\n" + "or Call System Administrator" + "\r\n" + ex.Message, "Error Reception - 1004", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
+#pragma warning disable IDE1006 // Naming Styles
         private void S_Save_Btn_Click(object sender, EventArgs e)
+#pragma warning restore IDE1006 // Naming Styles
         {
             if (!string.IsNullOrEmpty(Services_Combo.Text) && !string.IsNullOrEmpty(Doctor_Txt.Text))
             {
@@ -265,13 +289,17 @@ namespace Datally
             P_Report(FilePath);
         }
 
+#pragma warning disable IDE1006 // Naming Styles
         private void S_Report_Btn_Click(object sender, EventArgs e)
+#pragma warning restore IDE1006 // Naming Styles
         {
             string FilePath = Path + "P_Report\\" + ID_Txt.Text + "_" + Name_Txt.Text + "_" + Services_TxT.Text + ".docx";
             P_Report(FilePath);
         }
 
+#pragma warning disable IDE1006 // Naming Styles
         private void S_New_Btn_Click(object sender, EventArgs e) => New_Report_Click(sender, e);
+#pragma warning restore IDE1006 // Naming Styles
 
         private void Services_DataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -297,7 +325,7 @@ namespace Datally
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Resources.E11 + "\r\n" + ex.Message, Resources.E1, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Some Proplem When You Try to Retrive Services Data, Please Try again" + "\r\n" + ex.Message, "Error Reception - 1005", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -317,7 +345,7 @@ namespace Datally
                     string FilePath = Path + "P_Report\\" + ID_Txt.Text + "_" + Name_Txt.Text + "_" + Services_TxT.Text + ".docx";
                     File.Delete(FilePath);
                     P_DataBindSour.RemoveCurrent();
-                    P_DataTabAd.Update(datallyDataSet.P_Data);
+                    P_DataTabAd.Update(DatallySet.P_Data);
                     PData_Grid.Refresh();
                     Edit(true, false);
                     Patiant_Group2.Show();
@@ -326,7 +354,7 @@ namespace Datally
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, Resources.E1, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Some Proplem When You Try to Delete Patient Data, Please Try again" + "\r\n" + ex.Message, "Error Reception - 1006", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -354,35 +382,42 @@ namespace Datally
 
         private void P_Report(string Value)
         {
-            Microsoft.Office.Interop.Word.Application app = new Microsoft.Office.Interop.Word.Application();
-            Microsoft.Office.Interop.Word.Document Doc = null;
-            object missing = Type.Missing;
-
-            for (int i = 0; i <= 1; i++)
+            try
             {
-                if (File.Exists(Value))
-                {
-                    Doc = app.Documents.Open(Value);
-                    app.Selection.Find.ClearFormatting();
-                    app.Selection.Find.Replacement.ClearFormatting();
-                    app.Visible = true;
-                }
-                else
-                {
-                    MessageBoxEx.Show(Resources.NotExist, 1000);
-                    break;
-                }
+                Microsoft.Office.Interop.Word.Application app = new Microsoft.Office.Interop.Word.Application();
+                Microsoft.Office.Interop.Word.Document Doc = null;
+                object missing = Type.Missing;
 
-                _ = new string[6];
-                string[] tmp = ReadData();
+                for (int i = 0; i <= 1; i++)
+                {
+                    if (File.Exists(Value))
+                    {
+                        Doc = app.Documents.Open(Value);
+                        app.Selection.Find.ClearFormatting();
+                        app.Selection.Find.Replacement.ClearFormatting();
+                        app.Visible = true;
+                    }
+                    else
+                    {
+                        MessageBoxEx.Show(Resources.NotExist, 1000);
+                        break;
+                    }
 
-                app.Selection.Find.Execute("<ID>", missing, missing, missing, missing, missing, missing, missing, missing, tmp[0], 2);
-                app.Selection.Find.Execute("<Name>", missing, missing, missing, missing, missing, missing, missing, missing, tmp[1], 2);
-                app.Selection.Find.Execute("<Age>", missing, missing, missing, missing, missing, missing, missing, missing, tmp[2], 2);
-                app.Selection.Find.Execute("<Date>", missing, missing, missing, missing, missing, missing, missing, missing, tmp[3], 2);
-                app.Selection.Find.Execute("<Ref>", missing, missing, missing, missing, missing, missing, missing, missing, tmp[4], 2);
-                app.Selection.Find.Execute("<Doctor>", missing, missing, missing, missing, missing, missing, missing, missing, tmp[5], 2);
-                app.Selection.Find.Execute("<Tittle>", missing, missing, missing, missing, missing, missing, missing, missing, tmp[6], 2);
+                    _ = new string[6];
+                    string[] tmp = ReadData();
+
+                    app.Selection.Find.Execute("<ID>", missing, missing, missing, missing, missing, missing, missing, missing, tmp[0], 2);
+                    app.Selection.Find.Execute("<Name>", missing, missing, missing, missing, missing, missing, missing, missing, tmp[1], 2);
+                    app.Selection.Find.Execute("<Age>", missing, missing, missing, missing, missing, missing, missing, missing, tmp[2], 2);
+                    app.Selection.Find.Execute("<Date>", missing, missing, missing, missing, missing, missing, missing, missing, tmp[3], 2);
+                    app.Selection.Find.Execute("<Ref>", missing, missing, missing, missing, missing, missing, missing, missing, tmp[4], 2);
+                    app.Selection.Find.Execute("<Doctor>", missing, missing, missing, missing, missing, missing, missing, missing, tmp[5], 2);
+                    app.Selection.Find.Execute("<Tittle>", missing, missing, missing, missing, missing, missing, missing, missing, tmp[6], 2);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Some Proplem When You Try to Make Report, Please Try again" + "\r\n" + ex.Message, "Error Reception - 1007", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -432,12 +467,12 @@ namespace Datally
                 }
                 else
                 {
-                    MessageBoxEx.Show(Resources.E5, Resources.E1, MessageBoxButtons.OK, MessageBoxIcon.Error, 1000);
+                    MessageBoxEx.Show(Resources.E5, "Error Reception - 1005", MessageBoxButtons.OK, MessageBoxIcon.Error, 1000);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Resources.E11 + "\r\n" + ex.Message, Resources.E1, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Some Proplem When You Try to Save Patient Data, Please Try again" + "\r\n" + ex.Message, "Error Reception - 1008", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -456,7 +491,7 @@ namespace Datally
                     {
                         if (File.Exists(destFileName))
                         {
-                            MessageBoxEx.Show(Resources.FileExist, Resources.E1, 700);
+                            MessageBoxEx.Show(Resources.FileExist, "Information", 700);
                         }
                         else
                         {
@@ -468,7 +503,7 @@ namespace Datally
                     {
                         if (File.Exists(destFileName))
                         {
-                            MessageBoxEx.Show(Resources.FileExist, Resources.E1, 700);
+                            MessageBoxEx.Show(Resources.FileExist, "Information", 700);
                         }
                         else
                         {
@@ -480,7 +515,7 @@ namespace Datally
                     {
                         if (File.Exists(destFileName))
                         {
-                            MessageBoxEx.Show(Resources.FileExist, Resources.E1, 700);
+                            MessageBoxEx.Show(Resources.FileExist, "Information", 700);
                         }
                         else
                         {
@@ -492,7 +527,7 @@ namespace Datally
                     {
                         if (File.Exists(destFileName))
                         {
-                            MessageBoxEx.Show(Resources.FileExist, Resources.E1, 700);
+                            MessageBoxEx.Show(Resources.FileExist, "Information", 700);
                         }
                         else
                         {
@@ -509,7 +544,7 @@ namespace Datally
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Resources.E11 + "\r\n" + ex.Message, Resources.E1, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Some Proplem When You Try Save Word File, Please Try again" + "\r\n" + ex.Message, "Error Reception - 1009", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -537,7 +572,7 @@ namespace Datally
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Resources.E11 + "\r\n" + ex.Message, Resources.E1, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Some Proplem When You Try to Save Services Data, Please Try again" + "\r\n" + ex.Message, "Error Reception - 1010", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -567,7 +602,7 @@ namespace Datally
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Resources.E11 + "\r\n" + ex.Message, Resources.E1, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Some Proplem When You Try to Retrive Your Data, Please Try again" + "\r\n" + ex.Message, "Error Reception - 1011", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -648,16 +683,16 @@ namespace Datally
                     }
 
                     Cmd.Connection = Conn;
-                    Cmd.CommandText = "SELECT P_Data.ID, P_Data.P_Name, P_Data.Age, P_Data.Sex, P_Data.Card, P_Data.P_Date, P_Data.Ref, P_Report.Services, P_Report.Doctor " +
+                    Cmd.CommandText = "SELECT P_Data.ID, P_Data.P_Name, P_Data.Age, P_Data.Sex, P_Data.Card, P_Data.Cash, P_Data.P_Date, P_Data.Ref, P_Report.Services, P_Report.Doctor " +
                                       $"FROM P_Data INNER JOIN P_Report ON P_Data.[ID] = P_Report.[ID] " +
-                                      "WHERE P_Data.ID LIKE '%" + Search_Txt.Text + "%' OR P_Name LIKE'%" + Search_Txt.Text + "%' OR Card LIKE'%" + Search_Txt.Text + "%' OR Services LIKE'%" + Search_Txt.Text + "%' OR P_Report.Doctor LIKE'%" + Search_Txt.Text + "%' OR Sex LIKE'%" + Search_Txt.Text + "%'";
+                                      "WHERE P_Data.ID LIKE '%" + Search_Txt.Text + "%' OR P_Data.P_Name LIKE'%" + Search_Txt.Text + "%' OR P_Data.Card LIKE'%" + Search_Txt.Text + "%' OR P_Report.Services LIKE'%" + Search_Txt.Text + "%' OR P_Report.Doctor LIKE'%" + Search_Txt.Text + "%' OR P_Data.Sex LIKE'%" + Search_Txt.Text + "%'";
 
                     using (OleDbDataAdapter Da = new OleDbDataAdapter(Cmd))
                     {
                         DataTable Dt = new DataTable();
                         Da.Fill(Dt);
                         P_DataBindSour.DataSource = Dt;
-                        P_DataTabAd.Fill(datallyDataSet.P_Data);
+                        P_DataTabAd.Fill(DatallySet.P_Data);
                     }
                     Conn.Close();
                 }
@@ -666,32 +701,7 @@ namespace Datally
 
         public void Fill()
         {
-            if (Conn.State == ConnectionState.Closed)
-            {
-                Conn.Open();
-            }
-
-            Cmd.Connection = Conn;
-            Cmd.CommandText = "SELECT P_Data.ID, P_Data.P_Name, P_Data.Age, P_Data.Sex, P_Data.Card, P_Data.Cash, P_Data.P_Date, P_Data.Ref, P_Report.Services, P_Report.Doctor " +
-                              $"FROM P_Data INNER JOIN P_Report ON P_Data.[ID] = P_Report.[ID]";
-
-            using (OleDbDataAdapter Da = new OleDbDataAdapter(Cmd))
-            {
-                DataTable Dt = new DataTable();
-                Da.Fill(Dt);
-                P_DataBindSour.DataSource = Dt;
-                P_DataTabAd.Fill(datallyDataSet.P_Data);
-            }
-            Conn.Close();
-        }
-
-        private void Search_Txt_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (string.IsNullOrEmpty(Search_Txt.Text))
-            {
-                Fill();
-            }
-            else
+            try
             {
                 if (Conn.State == ConnectionState.Closed)
                 {
@@ -700,21 +710,58 @@ namespace Datally
 
                 Cmd.Connection = Conn;
                 Cmd.CommandText = "SELECT P_Data.ID, P_Data.P_Name, P_Data.Age, P_Data.Sex, P_Data.Card, P_Data.Cash, P_Data.P_Date, P_Data.Ref, P_Report.Services, P_Report.Doctor " +
-                                  $"FROM P_Data INNER JOIN P_Report ON P_Data.[ID] = P_Report.[ID] " +
-                                  "WHERE P_Data.ID LIKE '%" + Search_Txt.Text + "%' OR P_Name LIKE'%" + Search_Txt.Text + "%' OR Card LIKE'%" + Search_Txt.Text + "%' OR Services LIKE'%" + Search_Txt.Text + "%' OR P_Report.Doctor LIKE'%" + Search_Txt.Text + "%' OR Sex LIKE'%" + Search_Txt.Text + "%'";
+                                  $"FROM P_Data INNER JOIN P_Report ON P_Data.[ID] = P_Report.[ID]";
 
                 using (OleDbDataAdapter Da = new OleDbDataAdapter(Cmd))
                 {
                     DataTable Dt = new DataTable();
                     Da.Fill(Dt);
                     P_DataBindSour.DataSource = Dt;
-                    P_DataTabAd.Fill(datallyDataSet.P_Data);
+                    P_DataTabAd.Fill(DatallySet.P_Data);
                 }
                 Conn.Close();
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Some Proplem When You Try to Retrive Data, Please Try again" + "\r\n" + ex.Message, "Error Reception - 1012", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
+        private void Search_Txt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(Search_Txt.Text))
+                {
+                    Fill();
+                }
+                else
+                {
+                    if (Conn.State == ConnectionState.Closed)
+                    {
+                        Conn.Open();
+                    }
 
+                    Cmd.Connection = Conn;
+                    Cmd.CommandText = "SELECT P_Data.ID, P_Data.P_Name, P_Data.Age, P_Data.Sex, P_Data.Card, P_Data.Cash, P_Data.P_Date, P_Data.Ref, P_Report.Services, P_Report.Doctor " +
+                                      $"FROM P_Data INNER JOIN P_Report ON P_Data.[ID] = P_Report.[ID] " +
+                                      "WHERE P_Data.ID LIKE '%" + Search_Txt.Text + "%' OR P_Name LIKE'%" + Search_Txt.Text + "%' OR Card LIKE'%" + Search_Txt.Text + "%' OR Services LIKE'%" + Search_Txt.Text + "%' OR P_Report.Doctor LIKE'%" + Search_Txt.Text + "%' OR Sex LIKE'%" + Search_Txt.Text + "%'";
+
+                    using (OleDbDataAdapter Da = new OleDbDataAdapter(Cmd))
+                    {
+                        DataTable Dt = new DataTable();
+                        Da.Fill(Dt);
+                        P_DataBindSour.DataSource = Dt;
+                        P_DataTabAd.Fill(DatallySet.P_Data);
+                    }
+                    Conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Some Proplem When You Try to Search Data, Please Try again" + "\r\n" + ex.Message, "Error Reception - 1013", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         void Contract(string Value)
         {
@@ -737,7 +784,63 @@ namespace Datally
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Problem in Database, Can't Retrive Your Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Reception - 1008", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Problem in Database, Can't Retrive Price Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Reception - 1014", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        void RefDoc()
+        {
+            string R = null;
+
+            try
+            {
+                if (Conn.State == ConnectionState.Closed)
+                {
+                    Conn.Open();
+                }
+                OleDbCommand Cmd = new OleDbCommand("SELECT * FROM RefDoctor WHERE RefName=@0", Conn);
+                Cmd.Parameters.AddWithValue("@0", Ref_Txt.Text);
+
+                OleDbDataReader Reader = Cmd.ExecuteReader();
+                while (Reader.Read())
+                {
+                    R = Reader["RefName"].ToString();
+                }
+                Cmd.Parameters.Clear();
+                Reader.Close();
+            }
+            catch (Exception)
+            {
+                return;
+            }
+
+            if (R == null)
+            {
+                try
+                {
+                    if (Conn.State == ConnectionState.Closed)
+                    {
+                        Conn.Open();
+                    }
+
+                    Cmd.Connection = Conn;
+                    string Qurey = "INSERT INTO RefDoctor (RefName) VALUES (@0);";
+                    Cmd.CommandText = Qurey;
+                    Cmd.Parameters.AddWithValue("@0", Ref_Txt.Text);
+
+                    Cmd.ExecuteNonQuery();
+                    Cmd.Parameters.Clear();
+                    Conn.Close();
+                    RefDocTabAd.Fill(DatallySet.RefDoctor);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Some Proplem When You Try to Save Ref.Doctor Your Data, Please Try again" + "\r\n" + ex.Message, "Error Reception - 1015", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                return;
             }
         }
     }

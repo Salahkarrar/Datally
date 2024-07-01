@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Datally.Properties;
+using System;
 using System.Windows.Forms;
 
 namespace Datally
@@ -9,25 +10,18 @@ namespace Datally
 
         public Report_Frm() => InitializeComponent();
 
-        private void Report_Load(object sender, EventArgs e)
+        private void Search_Load(object sender, EventArgs e)
         {
-            try
+            From_Txt.Value = DateTime.Today;
+            To_Txt.Value = DateTime.Today;
+            DocTabAdap.Fill(DatallySet.Doctor);
+            Login.Instance.CheckMain(Login.Instance.UserName);
+            foreach (var obj in Login.Instance.List)
             {
-                From_Txt.Value = DateTime.Today;
-                To_Txt.Value = DateTime.Today;
-                DocTabAdap.Fill(DatallySet.Doctor);
-                Login.Instance.CheckMain(Login.Instance.UserName);
-                foreach (var obj in Login.Instance.List)
+                if (Print_Btn.Name == obj.FunctionName)
                 {
-                    if (Print_Btn.Name == obj.FunctionName)
-                    {
-                        Print_Btn.Enabled = true;
-                    }
+                    Print_Btn.Enabled = true;
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Can't Retrive Your Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Report - 1000", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -40,6 +34,7 @@ namespace Datally
 
         private void Print_Btn_Click(object sender, EventArgs e)
         {
+
             if (!string.IsNullOrEmpty(Doc_Name.Text) && !string.IsNullOrEmpty(From_Txt.Text) && !string.IsNullOrEmpty(To_Txt.Text))
             {
                 F = From_Txt.Text;
@@ -54,7 +49,7 @@ namespace Datally
             }
             else
             {
-                MessageBox.Show("Please check Your Data.", "User Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(Resources.E5, Resources.E1, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

@@ -29,38 +29,45 @@ namespace Datally
 
         private void Templates_Load(object sender, EventArgs e)
         {
-            Templete_Grid.DataSource = MriBindSour;
-            MinimizeBox = true;
-            Services();
-            Services_Label.Text = "MRI";
-            Edit(true);
-            Login.Instance.CheckMain(Login.Instance.UserName);
-            foreach (var obj in Login.Instance.List)
+            try
             {
-                if (Delete_Btn.Name == obj.FunctionName)
+                Templete_Grid.DataSource = MriBindSour;
+                MinimizeBox = true;
+                Services();
+                Services_Label.Text = "MRI";
+                Edit(true);
+                Login.Instance.CheckMain(Login.Instance.UserName);
+                foreach (var obj in Login.Instance.List)
                 {
-                    Delete_Btn.Enabled = true;
+                    if (Delete_Btn.Name == obj.FunctionName)
+                    {
+                        Delete_Btn.Enabled = true;
+                    }
+                    else if (New_Btn.Name == obj.FunctionName)
+                    {
+                        New_Btn.Enabled = true;
+                    }
+                    else if (Save_Btn.Name == obj.FunctionName)
+                    {
+                        Save_Btn.Enabled = true;
+                    }
+                    else if (Edit_Btn.Name == obj.FunctionName)
+                    {
+                        Edit_Btn.Enabled = true;
+                    }
+                    else if (Cancel_Btn.Name == obj.FunctionName)
+                    {
+                        Cancel_Btn.Enabled = true;
+                    }
+                    else if (Templete_Btn.Name == obj.FunctionName)
+                    {
+                        Templete_Btn.Enabled = true;
+                    }
                 }
-                else if (New_Btn.Name == obj.FunctionName)
-                {
-                    New_Btn.Enabled = true;
-                }
-                else if (Save_Btn.Name == obj.FunctionName)
-                {
-                    Save_Btn.Enabled = true;
-                }
-                else if (Edit_Btn.Name == obj.FunctionName)
-                {
-                    Edit_Btn.Enabled = true;
-                }
-                else if (Cancel_Btn.Name == obj.FunctionName)
-                {
-                    Cancel_Btn.Enabled = true;
-                }
-                else if (Templete_Btn.Name == obj.FunctionName)
-                {
-                    Templete_Btn.Enabled = true;
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can't Retrive Your Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Templates - 1000", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -103,7 +110,7 @@ namespace Datally
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, Resources.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Problem in Database, Can't Make New Row." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Templates - 1001", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else if (dialog == DialogResult.No)
@@ -159,11 +166,11 @@ namespace Datally
                                 USBindSour.EndEdit();
                                 USTableAdapter.Update(DatallySet.US);
                             }
-                            MessageBoxEx.Show(Resources.Update, Resources.Information, MessageBoxButtons.OK, MessageBoxIcon.Information, 700);
+                            MessageBoxEx.Show("Data Updated", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information, 1000);
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show(Resources.E11 + "\r\n" + ex.Message, Resources.E1, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Can't Update Your Data, Please Recheck The Entery Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Templates - 1002", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         Conn.Close();
                     }
@@ -175,18 +182,25 @@ namespace Datally
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Resources.E11 + "\r\n" + ex.Message, Resources.E1, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Can't Update Your Data, Please Recheck The Entery Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Templates - 1002-1", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void Cancel_Btn_Click(object sender, EventArgs e)
         {
-            Edit(true);
-            Login.Instance.Edit_Ico(Edit_Btn, "Edit", Resources.ic_edit_white_18dp);
-            MriBindSour.CancelEdit();
-            CTBindSour.CancelEdit();
-            XrayBindSour.CancelEdit();
-            USBindSour.CancelEdit();
+            try
+            {
+                Edit(true);
+                Login.Instance.Edit_Ico(Edit_Btn, "Edit", Resources.ic_edit_white_18dp);
+                MriBindSour.CancelEdit();
+                CTBindSour.CancelEdit();
+                XrayBindSour.CancelEdit();
+                USBindSour.CancelEdit();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can't Cancel Your Data, Please Check Your Data." + "\r\n" + "or Call System Administrator" + "\r\n" + ex.Message, "Error Tamplates - 1003", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Save_Btn_Click(object sender, EventArgs e)
@@ -221,11 +235,11 @@ namespace Datally
                     USTableAdapter.Update(DatallySet.US);
                     Name_Txt.Focus();
                 }
-                MessageBoxEx.Show(Resources.Save, Resources.Information, MessageBoxButtons.OK, MessageBoxIcon.Information, 700);
+                MessageBoxEx.Show("Data Saved", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information, 1000);
             }
             catch (Exception ex)
             {
-                MessageBoxEx.Show(ex.Message, Resources.E5, MessageBoxButtons.OK, MessageBoxIcon.Error, 1000);
+                MessageBox.Show("Can't Save Your Data, Please Recheck The Entery Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Tamplates - 1004", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             Templete();
         }
@@ -270,7 +284,7 @@ namespace Datally
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, Resources.E1, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Problem in Database, Can't Delete Your Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Tamplates - 1005", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -283,53 +297,60 @@ namespace Datally
 
         private void Category_Grid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewRow row = Category_Grid.Rows[e.RowIndex];
-
-            BindingSource M = MriBindSour;
-            BindingSource C = CTBindSour;
-            BindingSource X = XrayBindSour;
-            BindingSource U = USBindSour;
-
-            Services_Label.Text = row.Cells[e.ColumnIndex].Value.ToString();
-            if (!string.IsNullOrEmpty(row.Cells[e.ColumnIndex].Value.ToString()))
+            try
             {
-                if (row.Cells[e.ColumnIndex].Value.ToString() == "MRI")
+                DataGridViewRow row = Category_Grid.Rows[e.RowIndex];
+
+                BindingSource M = MriBindSour;
+                BindingSource C = CTBindSour;
+                BindingSource X = XrayBindSour;
+                BindingSource U = USBindSour;
+
+                Services_Label.Text = row.Cells[e.ColumnIndex].Value.ToString();
+                if (!string.IsNullOrEmpty(row.Cells[e.ColumnIndex].Value.ToString()))
                 {
-                    Value = M;
-                    MriTableAdapter.Fill(DatallySet.MRI);
-                    goto V;
+                    if (row.Cells[e.ColumnIndex].Value.ToString() == "MRI")
+                    {
+                        Value = M;
+                        MriTableAdapter.Fill(DatallySet.MRI);
+                        goto V;
+                    }
+                    else if (row.Cells[e.ColumnIndex].Value.ToString() == "CT")
+                    {
+                        Value = C;
+                        CtTableAdapter.Fill(DatallySet.CT);
+                        goto V;
+                    }
+                    else if (row.Cells[e.ColumnIndex].Value.ToString() == "X_RAY")
+                    {
+                        Value = X;
+                        x_RAYTableAdapter.Fill(DatallySet.X_RAY);
+                        goto V;
+                    }
+                    else if (row.Cells[e.ColumnIndex].Value.ToString() == "US")
+                    {
+                        Value = U;
+                        USTableAdapter.Fill(DatallySet.US);
+                        goto V;
+                    }
+                V:
+                    Templete_Grid.DataSource = Value;
+                    Clear_Text();
+                    Name_Txt.DataBindings.Add("Text", Value, "Name", false, DataSourceUpdateMode.OnPropertyChanged);
+                    Tittle_Txt.DataBindings.Add("Text", Value, "Tittle", false, DataSourceUpdateMode.OnPropertyChanged);
+                    Report_Txt.DataBindings.Add("Text", Value, "Report", false, DataSourceUpdateMode.OnPropertyChanged);
                 }
-                else if (row.Cells[e.ColumnIndex].Value.ToString() == "CT")
+                else
                 {
-                    Value = C;
-                    CtTableAdapter.Fill(DatallySet.CT);
-                    goto V;
+                    Name_Txt.Clear();
+                    Tittle_Txt.Clear();
+                    Report_Txt.Clear();
+                    Templete_Grid.DataSource = null;
                 }
-                else if (row.Cells[e.ColumnIndex].Value.ToString() == "X_RAY")
-                {
-                    Value = X;
-                    x_RAYTableAdapter.Fill(DatallySet.X_RAY);
-                    goto V;
-                }
-                else if (row.Cells[e.ColumnIndex].Value.ToString() == "US")
-                {
-                    Value = U;
-                    USTableAdapter.Fill(DatallySet.US);
-                    goto V;
-                }
-            V:
-                Templete_Grid.DataSource = Value;
-                Clear_Text();
-                Name_Txt.DataBindings.Add("Text", Value, "Name", false, DataSourceUpdateMode.OnPropertyChanged);
-                Tittle_Txt.DataBindings.Add("Text", Value, "Tittle", false, DataSourceUpdateMode.OnPropertyChanged);
-                Report_Txt.DataBindings.Add("Text", Value, "Report", false, DataSourceUpdateMode.OnPropertyChanged);
             }
-            else
+            catch (Exception ex)
             {
-                Name_Txt.Clear();
-                Tittle_Txt.Clear();
-                Report_Txt.Clear();
-                Templete_Grid.DataSource = null;
+                MessageBox.Show("Can't Retrive Your Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Templates - 1006", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -353,41 +374,48 @@ namespace Datally
 
         public void Templete()
         {
-            if (!string.IsNullOrEmpty(Services_Label.Text) && !string.IsNullOrEmpty(Name_Txt.Text))
+            try
             {
-                Microsoft.Office.Interop.Word.Application app = new Microsoft.Office.Interop.Word.Application();
-                Microsoft.Office.Interop.Word.Document doc;
-
-                object missing = Type.Missing;
-                string FilePath = "" + Path + "Templete\\" + Services_Label.Text + "\\" + Name_Txt.Text + ".docx";
-                for (int i = 0; i <= 1; i++)
+                if (!string.IsNullOrEmpty(Services_Label.Text) && !string.IsNullOrEmpty(Name_Txt.Text))
                 {
-                    if (File.Exists(FilePath))
-                    {
-                        doc = app.Documents.Open(FilePath);
-                        app.Visible = true;
-                    }
-                    else
-                    {
-                        string soruceFileName = "" + Path + "Templete\\Templete.docx";
-                        string destFileName = "" + Path + "Templete\\" + Services_Label.Text + "\\" + Name_Txt.Text + ".docx";
-                        File.Copy(soruceFileName, destFileName);
-                        doc = app.Documents.Open(destFileName);
-                        Microsoft.Office.Interop.Word.Table table = doc.Tables[2];
-                        table.Range.Text = Report_Txt.Text;
-                        app.Visible = true;
-                    }
+                    Microsoft.Office.Interop.Word.Application app = new Microsoft.Office.Interop.Word.Application();
+                    Microsoft.Office.Interop.Word.Document doc;
 
-                    string[] tmp = new string[2];
-                    tmp = ReadData();
+                    object missing = Type.Missing;
+                    string FilePath = "" + Path + "Templete\\" + Services_Label.Text + "\\" + Name_Txt.Text + ".docx";
+                    for (int i = 0; i <= 1; i++)
+                    {
+                        if (File.Exists(FilePath))
+                        {
+                            doc = app.Documents.Open(FilePath);
+                            app.Visible = true;
+                        }
+                        else
+                        {
+                            string soruceFileName = "" + Path + "Templete\\Templete.docx";
+                            string destFileName = "" + Path + "Templete\\" + Services_Label.Text + "\\" + Name_Txt.Text + ".docx";
+                            File.Copy(soruceFileName, destFileName);
+                            doc = app.Documents.Open(destFileName);
+                            Microsoft.Office.Interop.Word.Table table = doc.Tables[2];
+                            table.Range.Text = Report_Txt.Text;
+                            app.Visible = true;
+                        }
 
-                    app.Selection.Find.Execute("<Tittle>", missing, missing, missing, missing, missing, missing, missing, missing, tmp[0], 2);
-                    doc.Save();
+                        string[] tmp = new string[2];
+                        tmp = ReadData();
+
+                        app.Selection.Find.Execute("<Tittle>", missing, missing, missing, missing, missing, missing, missing, missing, tmp[0], 2);
+                        doc.Save();
+                    }
+                }
+                else
+                {
+                    MessageBoxEx.Show(Resources.Make, Resources.E1, 700);
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBoxEx.Show(Resources.Make, Resources.E1, 700);
+                MessageBox.Show("Can't Save Your Template in Microsof Word File." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Templates - 1007", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -487,21 +515,28 @@ namespace Datally
 
         public void Services()
         {
-            if (Conn.State == ConnectionState.Closed)
+            try
             {
-                Conn.Open();
+                if (Conn.State == ConnectionState.Closed)
+                {
+                    Conn.Open();
+                }
+
+                Cmd.Connection = Conn;
+                Cmd.CommandText = "Select S_Name from Services";
+
+                using (OleDbDataAdapter Da = new OleDbDataAdapter(Cmd))
+                {
+                    DataTable Dt = new DataTable();
+                    Da.Fill(Dt);
+                    Category_Grid.DataSource = Dt;
+                }
+                Conn.Close();
             }
-
-            Cmd.Connection = Conn;
-            Cmd.CommandText = "Select S_Name from Services";
-
-            using (OleDbDataAdapter Da = new OleDbDataAdapter(Cmd))
+            catch (Exception ex)
             {
-                DataTable Dt = new DataTable();
-                Da.Fill(Dt);
-                Category_Grid.DataSource = Dt;
+                MessageBox.Show("Can't Retrive Your Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Templates - 1008", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            Conn.Close();
         }
     }
 }

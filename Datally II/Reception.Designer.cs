@@ -36,7 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Cash_Txt = new System.Windows.Forms.TextBox();
             this.P_DataBindSour = new System.Windows.Forms.BindingSource(this.components);
-            this.datallyDataSet = new Datally.DatallyDataSet();
+            this.DatallySet = new Datally.DatallyDataSet();
             this.Date_Txt = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -89,7 +89,7 @@
             this.T_ContractTabAd = new Datally.DatallyDataSetTableAdapters.T_ContractTableAdapter();
             this.Patiant_Group1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.P_DataBindSour)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.datallyDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DatallySet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RefDocBindSour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.T_ContractBindSour)).BeginInit();
             this.Patiant_Group2.SuspendLayout();
@@ -167,12 +167,12 @@
             // P_DataBindSour
             // 
             this.P_DataBindSour.DataMember = "P_Data";
-            this.P_DataBindSour.DataSource = this.datallyDataSet;
+            this.P_DataBindSour.DataSource = this.DatallySet;
             // 
-            // datallyDataSet
+            // DatallySet
             // 
-            this.datallyDataSet.DataSetName = "DatallyDataSet";
-            this.datallyDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.DatallySet.DataSetName = "DatallyDataSet";
+            this.DatallySet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // Date_Txt
             // 
@@ -278,7 +278,6 @@
             this.New_Btn.Size = new System.Drawing.Size(92, 31);
             this.New_Btn.TabIndex = 0;
             this.New_Btn.Text = "New";
-            this.New_Btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.New_Btn.UseVisualStyleBackColor = true;
             this.New_Btn.Click += new System.EventHandler(this.New_Btn_Click);
             // 
@@ -305,7 +304,7 @@
             // RefDocBindSour
             // 
             this.RefDocBindSour.DataMember = "RefDoctor";
-            this.RefDocBindSour.DataSource = this.datallyDataSet;
+            this.RefDocBindSour.DataSource = this.DatallySet;
             // 
             // Edit_Btn
             // 
@@ -326,7 +325,6 @@
             this.Edit_Btn.Size = new System.Drawing.Size(92, 31);
             this.Edit_Btn.TabIndex = 9;
             this.Edit_Btn.Text = "Edit";
-            this.Edit_Btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Edit_Btn.UseVisualStyleBackColor = true;
             this.Edit_Btn.Click += new System.EventHandler(this.Edit_Btn_Click);
             // 
@@ -349,7 +347,6 @@
             this.Save_Btn.Size = new System.Drawing.Size(92, 31);
             this.Save_Btn.TabIndex = 8;
             this.Save_Btn.Text = "Save";
-            this.Save_Btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Save_Btn.UseVisualStyleBackColor = true;
             this.Save_Btn.Click += new System.EventHandler(this.Save_Btn_Click);
             // 
@@ -379,7 +376,7 @@
             // T_ContractBindSour
             // 
             this.T_ContractBindSour.DataMember = "T_Contract";
-            this.T_ContractBindSour.DataSource = this.datallyDataSet;
+            this.T_ContractBindSour.DataSource = this.DatallySet;
             // 
             // Cancel_Btn
             // 
@@ -539,7 +536,7 @@
             // DocBindSour
             // 
             this.DocBindSour.DataMember = "Doctor";
-            this.DocBindSour.DataSource = this.datallyDataSet;
+            this.DocBindSour.DataSource = this.DatallySet;
             // 
             // Services_Combo
             // 
@@ -566,7 +563,7 @@
             // TempleteBindSour
             // 
             this.TempleteBindSour.DataMember = "Templete";
-            this.TempleteBindSour.DataSource = this.datallyDataSet;
+            this.TempleteBindSour.DataSource = this.DatallySet;
             // 
             // label10
             // 
@@ -950,7 +947,7 @@
             this.Patiant_Group1.ResumeLayout(false);
             this.Patiant_Group1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.P_DataBindSour)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.datallyDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DatallySet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RefDocBindSour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.T_ContractBindSour)).EndInit();
             this.Patiant_Group2.ResumeLayout(false);
@@ -1013,7 +1010,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox Search_Box;
         private System.Windows.Forms.TextBox Search_Txt;
-        private DatallyDataSet datallyDataSet;
+        private DatallyDataSet DatallySet;
         private System.Windows.Forms.BindingSource P_DataBindSour;
         private DatallyDataSetTableAdapters.P_DataTableAdapter P_DataTabAd;
         private System.Windows.Forms.BindingSource DocBindSour;

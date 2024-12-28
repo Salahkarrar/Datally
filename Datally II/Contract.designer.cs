@@ -29,28 +29,27 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Close_Btn = new System.Windows.Forms.Button();
             this.T_ContractBindSour = new System.Windows.Forms.BindingSource(this.components);
             this.DatallySet = new Datally.DatallyDataSet();
             this.Grid_Group = new System.Windows.Forms.GroupBox();
             this.User_Grid = new System.Windows.Forms.DataGridView();
-            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.discountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.netPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TempleteBindSour = new System.Windows.Forms.BindingSource(this.components);
             this.T_ContractTabAd = new Datally.DatallyDataSetTableAdapters.T_ContractTableAdapter();
             this.User_Group = new System.Windows.Forms.GroupBox();
+            this.Name_Txt = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.Delete_Btn = new System.Windows.Forms.Button();
             this.Net_Txt = new System.Windows.Forms.TextBox();
             this.Amount_Txt = new System.Windows.Forms.TextBox();
-            this.Name_Txt = new System.Windows.Forms.TextBox();
             this.Discount_Txt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -60,11 +59,18 @@
             this.Edit_Btn = new System.Windows.Forms.Button();
             this.Save_Btn = new System.Windows.Forms.Button();
             this.Cancel_Btn = new System.Windows.Forms.Button();
+            this.TempleteTabAd = new Datally.DatallyDataSetTableAdapters.TempleteTableAdapter();
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.discountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.netPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.T_ContractBindSour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DatallySet)).BeginInit();
             this.Grid_Group.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.User_Grid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TempleteBindSour)).BeginInit();
             this.User_Group.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -132,15 +138,15 @@
             this.User_Grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.User_Grid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(38)))), ((int)(((byte)(49)))));
             this.User_Grid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.PowderBlue;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(4);
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.PowderBlue;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.User_Grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.PowderBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(4);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.PowderBlue;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.User_Grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.User_Grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.User_Grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.iDDataGridViewTextBoxColumn,
@@ -149,14 +155,14 @@
             this.discountDataGridViewTextBoxColumn,
             this.netPriceDataGridViewTextBoxColumn});
             this.User_Grid.DataSource = this.T_ContractBindSour;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.User_Grid.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.User_Grid.DefaultCellStyle = dataGridViewCellStyle5;
             this.User_Grid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.User_Grid.EnableHeadersVisualStyles = false;
             this.User_Grid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(38)))), ((int)(((byte)(49)))));
@@ -165,18 +171,18 @@
             this.User_Grid.MultiSelect = false;
             this.User_Grid.Name = "User_Grid";
             this.User_Grid.ReadOnly = true;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.PowderBlue;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.User_Grid.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.PowderBlue;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.User_Grid.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.User_Grid.RowHeadersVisible = false;
             this.User_Grid.RowHeadersWidth = 51;
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            this.User_Grid.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            this.User_Grid.RowsDefaultCellStyle = dataGridViewCellStyle7;
             this.User_Grid.RowTemplate.DividerHeight = 4;
             this.User_Grid.RowTemplate.Height = 25;
             this.User_Grid.RowTemplate.ReadOnly = true;
@@ -189,46 +195,10 @@
             this.User_Grid.Size = new System.Drawing.Size(1267, 522);
             this.User_Grid.TabIndex = 0;
             // 
-            // iDDataGridViewTextBoxColumn
+            // TempleteBindSour
             // 
-            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.iDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.iDDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Contract Name";
-            this.nameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // amountDataGridViewTextBoxColumn
-            // 
-            this.amountDataGridViewTextBoxColumn.DataPropertyName = "Amount";
-            this.amountDataGridViewTextBoxColumn.HeaderText = "Amount";
-            this.amountDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.amountDataGridViewTextBoxColumn.Name = "amountDataGridViewTextBoxColumn";
-            this.amountDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // discountDataGridViewTextBoxColumn
-            // 
-            this.discountDataGridViewTextBoxColumn.DataPropertyName = "Discount";
-            this.discountDataGridViewTextBoxColumn.HeaderText = "Discount";
-            this.discountDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.discountDataGridViewTextBoxColumn.Name = "discountDataGridViewTextBoxColumn";
-            this.discountDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // netPriceDataGridViewTextBoxColumn
-            // 
-            this.netPriceDataGridViewTextBoxColumn.DataPropertyName = "NetPrice";
-            this.netPriceDataGridViewTextBoxColumn.HeaderText = "Net Price";
-            this.netPriceDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.netPriceDataGridViewTextBoxColumn.Name = "netPriceDataGridViewTextBoxColumn";
-            this.netPriceDataGridViewTextBoxColumn.ReadOnly = true;
+            this.TempleteBindSour.DataMember = "Templete";
+            this.TempleteBindSour.DataSource = this.DatallySet;
             // 
             // T_ContractTabAd
             // 
@@ -238,11 +208,11 @@
             // 
             this.User_Group.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.User_Group.BackColor = System.Drawing.Color.Transparent;
+            this.User_Group.Controls.Add(this.Name_Txt);
             this.User_Group.Controls.Add(this.label5);
             this.User_Group.Controls.Add(this.Delete_Btn);
             this.User_Group.Controls.Add(this.Net_Txt);
             this.User_Group.Controls.Add(this.Amount_Txt);
-            this.User_Group.Controls.Add(this.Name_Txt);
             this.User_Group.Controls.Add(this.Discount_Txt);
             this.User_Group.Controls.Add(this.label2);
             this.User_Group.Controls.Add(this.label4);
@@ -262,6 +232,27 @@
             this.User_Group.TabIndex = 3;
             this.User_Group.TabStop = false;
             this.User_Group.Text = "Contract Information";
+            // 
+            // Name_Txt
+            // 
+            this.Name_Txt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.Name_Txt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.Name_Txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(38)))), ((int)(((byte)(49)))));
+            this.Name_Txt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.T_ContractBindSour, "Name", true));
+            this.Name_Txt.DataSource = this.TempleteBindSour;
+            this.Name_Txt.DisplayMember = "Name";
+            this.Name_Txt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Name_Txt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Name_Txt.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Name_Txt.ForeColor = System.Drawing.Color.White;
+            this.Name_Txt.FormattingEnabled = true;
+            this.Name_Txt.Location = new System.Drawing.Point(124, 35);
+            this.Name_Txt.Margin = new System.Windows.Forms.Padding(4);
+            this.Name_Txt.Name = "Name_Txt";
+            this.Name_Txt.Size = new System.Drawing.Size(226, 27);
+            this.Name_Txt.TabIndex = 1;
+            this.Name_Txt.ValueMember = "Name";
+            this.Name_Txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ProID_Txt_KeyDown);
             // 
             // label5
             // 
@@ -322,18 +313,6 @@
             this.Amount_Txt.Size = new System.Drawing.Size(181, 26);
             this.Amount_Txt.TabIndex = 2;
             this.Amount_Txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ProID_Txt_KeyDown);
-            // 
-            // Name_Txt
-            // 
-            this.Name_Txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(38)))), ((int)(((byte)(49)))));
-            this.Name_Txt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.T_ContractBindSour, "Name", true));
-            this.Name_Txt.ForeColor = System.Drawing.Color.White;
-            this.Name_Txt.Location = new System.Drawing.Point(124, 35);
-            this.Name_Txt.Margin = new System.Windows.Forms.Padding(4);
-            this.Name_Txt.Name = "Name_Txt";
-            this.Name_Txt.Size = new System.Drawing.Size(226, 26);
-            this.Name_Txt.TabIndex = 1;
-            this.Name_Txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ProID_Txt_KeyDown);
             // 
             // Discount_Txt
             // 
@@ -481,6 +460,61 @@
             this.Cancel_Btn.UseVisualStyleBackColor = true;
             this.Cancel_Btn.Click += new System.EventHandler(this.Cancel_Btn_Click);
             // 
+            // TempleteTabAd
+            // 
+            this.TempleteTabAd.ClearBeforeFill = true;
+            // 
+            // iDDataGridViewTextBoxColumn
+            // 
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.iDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Contract Name";
+            this.nameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nameDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // amountDataGridViewTextBoxColumn
+            // 
+            this.amountDataGridViewTextBoxColumn.DataPropertyName = "Amount";
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.amountDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.amountDataGridViewTextBoxColumn.HeaderText = "Amount";
+            this.amountDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.amountDataGridViewTextBoxColumn.Name = "amountDataGridViewTextBoxColumn";
+            this.amountDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // discountDataGridViewTextBoxColumn
+            // 
+            this.discountDataGridViewTextBoxColumn.DataPropertyName = "Discount";
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.discountDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.discountDataGridViewTextBoxColumn.HeaderText = "Discount";
+            this.discountDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.discountDataGridViewTextBoxColumn.Name = "discountDataGridViewTextBoxColumn";
+            this.discountDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // netPriceDataGridViewTextBoxColumn
+            // 
+            this.netPriceDataGridViewTextBoxColumn.DataPropertyName = "NetPrice";
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.netPriceDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            this.netPriceDataGridViewTextBoxColumn.HeaderText = "Net Price";
+            this.netPriceDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.netPriceDataGridViewTextBoxColumn.Name = "netPriceDataGridViewTextBoxColumn";
+            this.netPriceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // Contract_Frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -508,6 +542,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DatallySet)).EndInit();
             this.Grid_Group.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.User_Grid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TempleteBindSour)).EndInit();
             this.User_Group.ResumeLayout(false);
             this.User_Group.PerformLayout();
             this.ResumeLayout(false);
@@ -527,7 +562,6 @@
         private System.Windows.Forms.Button Delete_Btn;
         private System.Windows.Forms.TextBox Net_Txt;
         private System.Windows.Forms.TextBox Amount_Txt;
-        private System.Windows.Forms.TextBox Name_Txt;
         private System.Windows.Forms.TextBox Discount_Txt;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
@@ -537,6 +571,9 @@
         private System.Windows.Forms.Button Edit_Btn;
         private System.Windows.Forms.Button Save_Btn;
         private System.Windows.Forms.Button Cancel_Btn;
+        private System.Windows.Forms.ComboBox Name_Txt;
+        private System.Windows.Forms.BindingSource TempleteBindSour;
+        private DatallyDataSetTableAdapters.TempleteTableAdapter TempleteTabAd;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn amountDataGridViewTextBoxColumn;

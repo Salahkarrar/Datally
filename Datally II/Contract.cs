@@ -24,7 +24,7 @@ namespace Datally
             {
                 Dock = DockStyle.Fill;
                 Enabled = true;
-                Edit(true, false);
+                TempleteTabAd.Fill(DatallySet.Templete);
                 T_ContractTabAd.Fill(DatallySet.T_Contract);
                 T_ContractBindSour.MoveLast();
                 Login.Instance.CheckMain(Login.Instance.UserName);
@@ -51,7 +51,7 @@ namespace Datally
                         Cancel_Btn.Enabled = true;
                     }
                 }
-
+                Edit(true, false);
             }
             catch (Exception ex)
             {
@@ -190,7 +190,7 @@ namespace Datally
         private void Edit(bool Value, bool Value2)
         {
             Save_Btn.Enabled = Value2;
-            Name_Txt.ReadOnly = Value;
+            Name_Txt.Enabled = Value2;
             Amount_Txt.ReadOnly = Value;
             Discount_Txt.ReadOnly = Value;
         }

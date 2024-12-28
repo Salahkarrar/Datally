@@ -37,7 +37,6 @@
             this.Shutdown_Btn = new System.Windows.Forms.Button();
             this.Services_Label = new System.Windows.Forms.Label();
             this.Tittle_Txt = new System.Windows.Forms.TextBox();
-            this.DatallySet = new Datally.DatallyDataSet();
             this.Name_Txt = new System.Windows.Forms.TextBox();
             this.Delete_Btn = new System.Windows.Forms.Button();
             this.Save_Btn = new System.Windows.Forms.Button();
@@ -46,28 +45,29 @@
             this.Templete_Btn = new System.Windows.Forms.Button();
             this.New_Btn = new System.Windows.Forms.Button();
             this.Templete_Grid = new System.Windows.Forms.DataGridView();
-            this.CTBindSour = new System.Windows.Forms.BindingSource(this.components);
-            this.USBindSour = new System.Windows.Forms.BindingSource(this.components);
             this.Category_Grid = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.Report_Txt = new System.Windows.Forms.RichTextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.CTBindSour = new System.Windows.Forms.BindingSource(this.components);
+            this.DatallySet = new Datally.DatallyDataSet();
+            this.USBindSour = new System.Windows.Forms.BindingSource(this.components);
             this.MriBindSour = new System.Windows.Forms.BindingSource(this.components);
             this.MriTableAdapter = new Datally.DatallyDataSetTableAdapters.MRITableAdapter();
             this.CtTableAdapter = new Datally.DatallyDataSetTableAdapters.CTTableAdapter();
             this.XrayBindSour = new System.Windows.Forms.BindingSource(this.components);
             this.x_RAYTableAdapter = new Datally.DatallyDataSetTableAdapters.X_RAYTableAdapter();
             this.USTableAdapter = new Datally.DatallyDataSetTableAdapters.USTableAdapter();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.Tittle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.DatallySet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Templete_Grid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CTBindSour)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.USBindSour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Category_Grid)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CTBindSour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DatallySet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.USBindSour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MriBindSour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.XrayBindSour)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Shutdown_Btn
@@ -116,11 +116,6 @@
             this.Tittle_Txt.TabIndex = 2;
             this.Tittle_Txt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Tittle_Txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Tittle_Txt_KeyDown);
-            // 
-            // DatallySet
-            // 
-            this.DatallySet.DataSetName = "DatallyDataSet";
-            this.DatallySet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // Name_Txt
             // 
@@ -307,16 +302,6 @@
             this.Templete_Grid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Templete_Grid_CellDoubleClick);
             this.Templete_Grid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Templete_Grid_KeyDown);
             // 
-            // CTBindSour
-            // 
-            this.CTBindSour.DataMember = "CT";
-            this.CTBindSour.DataSource = this.DatallySet;
-            // 
-            // USBindSour
-            // 
-            this.USBindSour.DataMember = "US";
-            this.USBindSour.DataSource = this.DatallySet;
-            // 
             // Category_Grid
             // 
             this.Category_Grid.AllowUserToAddRows = false;
@@ -397,6 +382,32 @@
             this.Report_Txt.TabIndex = 3;
             this.Report_Txt.Text = "";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.Shutdown_Btn);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1276, 31);
+            this.panel1.TabIndex = 12;
+            // 
+            // CTBindSour
+            // 
+            this.CTBindSour.DataMember = "CT";
+            this.CTBindSour.DataSource = this.DatallySet;
+            // 
+            // DatallySet
+            // 
+            this.DatallySet.DataSetName = "DatallyDataSet";
+            this.DatallySet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // USBindSour
+            // 
+            this.USBindSour.DataMember = "US";
+            this.USBindSour.DataSource = this.DatallySet;
+            // 
             // MriBindSour
             // 
             this.MriBindSour.DataMember = "MRI";
@@ -422,17 +433,6 @@
             // USTableAdapter
             // 
             this.USTableAdapter.ClearBeforeFill = true;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.Shutdown_Btn);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1276, 31);
-            this.panel1.TabIndex = 12;
             // 
             // Tittle
             // 
@@ -476,14 +476,14 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Templete";
             this.Load += new System.EventHandler(this.Templates_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.DatallySet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Templete_Grid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CTBindSour)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.USBindSour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Category_Grid)).EndInit();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.CTBindSour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DatallySet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.USBindSour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MriBindSour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.XrayBindSour)).EndInit();
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

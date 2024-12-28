@@ -17,6 +17,7 @@ namespace Datally
         public OleDbConnection Conn { get; set; } = new OleDbConnection(Resources.SVRDB);
         public OleDbCommand Cmd { get; set; } = new OleDbCommand();
         public BindingSource Value { get; set; }
+        public Control Ctrl;
         public string Path { get; set; } = Application.StartupPath + "\\";
 
 
@@ -35,7 +36,6 @@ namespace Datally
                 MinimizeBox = true;
                 Services();
                 Services_Label.Text = "MRI";
-                Edit(true);
                 Login.Instance.CheckMain(Login.Instance.UserName);
                 foreach (var obj in Login.Instance.List)
                 {
@@ -64,6 +64,7 @@ namespace Datally
                         Templete_Btn.Enabled = true;
                     }
                 }
+                Edit(true,false);
             }
             catch (Exception ex)
             {
@@ -81,28 +82,28 @@ namespace Datally
 
                     if (Templete_Grid.DataSource == MriBindSour)
                     {
-                        Edit(false);
+                        Edit(false,true);
                         DatallySet.MRI.AddMRIRow(DatallySet.MRI.NewMRIRow());
                         MriBindSour.MoveLast();
                         Name_Txt.Focus();
                     }
                     else if (Templete_Grid.DataSource == CTBindSour)
                     {
-                        Edit(false);
+                        Edit(false, true);
                         DatallySet.CT.AddCTRow(DatallySet.CT.NewCTRow());
                         CTBindSour.MoveLast();
                         Name_Txt.Focus();
                     }
                     else if (Templete_Grid.DataSource == USBindSour)
                     {
-                        Edit(false);
+                        Edit(false, true);
                         DatallySet.US.AddUSRow(DatallySet.US.NewUSRow());
                         USBindSour.MoveLast();
                         Name_Txt.Focus();
                     }
                     else if (Templete_Grid.DataSource == XrayBindSour)
                     {
-                        Edit(false);
+                        Edit(false, true);
                         DatallySet.X_RAY.AddX_RAYRow(DatallySet.X_RAY.NewX_RAYRow());
                         XrayBindSour.MoveLast();
                         Name_Txt.Focus();
@@ -128,7 +129,7 @@ namespace Datally
                 {
                     if (Edit_Btn.Text == "Edit")
                     {
-                        Edit(false);
+                        Edit(false, false);
                         New_Btn.Enabled = false;
                         Save_Btn.Enabled = false;
 
@@ -136,7 +137,7 @@ namespace Datally
                     }
                     else if (Edit_Btn.Text == "Update")
                     {
-                        Edit(true);
+                        Edit(true, false);
                         New_Btn.Enabled = true;
 
                         Login.Instance.Edit_Ico(Edit_Btn, "Edit", Resources.ic_edit_white_18dp);
@@ -144,25 +145,25 @@ namespace Datally
                         {
                             if (Templete_Grid.DataSource == MriBindSour)
                             {
-                                Edit(true);
+                                Edit(true,false);
                                 MriBindSour.EndEdit();
                                 MriTableAdapter.Update(DatallySet.MRI);
                             }
                             else if (Templete_Grid.DataSource == CTBindSour)
                             {
-                                Edit(true);
+                                Edit(true, false);
                                 CTBindSour.EndEdit();
                                 CtTableAdapter.Update(DatallySet.CT);
                             }
                             else if (Templete_Grid.DataSource == XrayBindSour)
                             {
-                                Edit(true);
+                                Edit(true,false);
                                 XrayBindSour.EndEdit();
                                 x_RAYTableAdapter.Update(DatallySet.X_RAY);
                             }
                             else if (Templete_Grid.DataSource == USBindSour)
                             {
-                                Edit(true);
+                                Edit(true,false);
                                 USBindSour.EndEdit();
                                 USTableAdapter.Update(DatallySet.US);
                             }
@@ -177,7 +178,7 @@ namespace Datally
                 }
                 else
                 {
-                    Edit(true);
+                    Edit(true, false);
                 }
             }
             catch (Exception ex)
@@ -190,12 +191,17 @@ namespace Datally
         {
             try
             {
-                Edit(true);
+                Edit(true, false);
                 Login.Instance.Edit_Ico(Edit_Btn, "Edit", Resources.ic_edit_white_18dp);
                 MriBindSour.CancelEdit();
                 CTBindSour.CancelEdit();
                 XrayBindSour.CancelEdit();
                 USBindSour.CancelEdit();
+                MriTableAdapter.Fill(DatallySet.MRI);
+                CtTableAdapter.Fill(DatallySet.CT);
+                x_RAYTableAdapter.Fill(DatallySet.X_RAY);
+                USTableAdapter.Fill(DatallySet.US);
+                New_Btn.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -209,28 +215,28 @@ namespace Datally
             {
                 if (Templete_Grid.DataSource == MriBindSour)
                 {
-                    Edit(true);
+                    Edit(true,false);
                     MriBindSour.EndEdit();
                     MriTableAdapter.Update(DatallySet.MRI);
                     Name_Txt.Focus();
                 }
                 else if (Templete_Grid.DataSource == CTBindSour)
                 {
-                    Edit(true);
+                    Edit(true,false);
                     CTBindSour.EndEdit();
                     CtTableAdapter.Update(DatallySet.CT);
                     Name_Txt.Focus();
                 }
                 else if (Templete_Grid.DataSource == XrayBindSour)
                 {
-                    Edit(true);
+                    Edit(true, false);
                     XrayBindSour.EndEdit();
                     x_RAYTableAdapter.Update(DatallySet.X_RAY);
                     Name_Txt.Focus();
                 }
                 else if (Templete_Grid.DataSource == USBindSour)
                 {
-                    Edit(true);
+                    Edit(true, false);
                     USBindSour.EndEdit();
                     USTableAdapter.Update(DatallySet.US);
                     Name_Txt.Focus();
@@ -357,11 +363,12 @@ namespace Datally
         private void Templete_Grid_CellDoubleClick(object sender, DataGridViewCellEventArgs e) => Templete();
 
         //F
-        private void Edit(bool value)
+        private void Edit(bool value, bool value2)
         {
             Name_Txt.ReadOnly = value;
             Tittle_Txt.ReadOnly = value;
             Report_Txt.ReadOnly = value;
+            Save_Btn.Enabled = value2;
         }
 
         private string[] ReadData()
@@ -496,6 +503,34 @@ namespace Datally
 
         private void Tittle_Txt_KeyDown(object sender, KeyEventArgs e)
         {
+            Ctrl = (Control)sender;
+            if (Ctrl is TextBox)
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    SelectNextControl(Ctrl, true, true, true, true);
+                }
+                else
+                    return;
+            }
+            else if (Ctrl is ComboBox)
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    SelectNextControl(Ctrl, true, true, true, true);
+                }
+                else
+                    return;
+            }
+            else
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    SelectNextControl(Ctrl, true, true, true, true);
+                }
+                else
+                    return;
+            }
             if (e.Control == true)
             {
                 if (e.KeyCode == Keys.S)

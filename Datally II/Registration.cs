@@ -266,7 +266,9 @@ namespace Datally
 
         }
 
+#pragma warning disable IDE0051 // Remove unused private members
         void InsertRegKey()
+#pragma warning restore IDE0051 // Remove unused private members
         {
             string RegKey = "";
             string RegCh = null;

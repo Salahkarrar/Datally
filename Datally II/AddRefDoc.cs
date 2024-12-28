@@ -17,7 +17,6 @@ namespace Datally
         {
             try
             {
-                Edit(true, false);
                 RefDocTabAd.Fill(DatallySet.RefDoctor);
                 Login.Instance.CheckMain(Login.Instance.UserName);
                 foreach (var obj in Login.Instance.List)
@@ -43,6 +42,7 @@ namespace Datally
                         Cancel_Btn.Enabled = true;
                     }
                 }
+                Edit(true, false);
             }
             catch (Exception ex)
             {

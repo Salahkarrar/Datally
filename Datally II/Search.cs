@@ -35,7 +35,7 @@ namespace Datally
 
 
                 Cmd.Connection = Conn;
-                Cmd.CommandText = "SELECT P_Data.ID, P_Data.P_Name, P_Data.Age, P_Data.Sex, P_Data.Card, P_Data.P_Date, P_Data.Ref, P_Report.Services, P_Report.Doctor " +
+                Cmd.CommandText = "SELECT P_Data.ID, P_Data.P_Name, P_Data.Age, P_Data.Sex, P_Data.P_Date, P_Data.Ref, P_Report.Services, P_Report.Doctor, P_Report.Amount " +
                                   $"FROM P_Data INNER JOIN P_Report ON P_Data.[ID] = P_Report.[ID]";
 
                 using (OleDbDataAdapter Da = new OleDbDataAdapter(Cmd))
@@ -46,16 +46,16 @@ namespace Datally
                     Search_Grid.Columns[0].Width = 60;
                     Search_Grid.Columns[1].Width = 250;
                     Search_Grid.Columns[1].HeaderText = "Patient Name";
-                    Search_Grid.Columns[2].Width = 60;
+                    Search_Grid.Columns[2].Width = 50;
                     Search_Grid.Columns[3].Width = 60;
-                    Search_Grid.Columns[4].Width = 60;
-                    Search_Grid.Columns[5].Width = 110;
-                    Search_Grid.Columns[5].HeaderText = "Date";
-                    Search_Grid.Columns[6].Width = 160;
-                    Search_Grid.Columns[6].HeaderText = "Ref. Doctor";
-                    Search_Grid.Columns[7].Width = 300;
-                    Search_Grid.Columns[8].Width = 180;
-                    Search_Grid.Columns[8].HeaderText = "Radiologist";
+                    Search_Grid.Columns[4].Width = 90;
+                    Search_Grid.Columns[4].HeaderText = "Date";
+                    Search_Grid.Columns[5].Width = 160;
+                    Search_Grid.Columns[5].HeaderText = "Ref. Doctor";
+                    Search_Grid.Columns[6].Width = 200;
+                    Search_Grid.Columns[7].Width = 100;
+                    Search_Grid.Columns[7].HeaderText = "Radiologist";
+                    Search_Grid.Columns[8].Width = 60;
                 }
                 Conn.Close();
             }
@@ -83,9 +83,9 @@ namespace Datally
                         }
 
                         Cmd.Connection = Conn;
-                        Cmd.CommandText = "SELECT P_Data.ID, P_Data.P_Name, P_Data.Age, P_Data.Sex, P_Data.Card, P_Data.P_Date, P_Data.Ref, P_Report.Services, P_Report.Doctor " +
+                        Cmd.CommandText = "SELECT P_Data.ID, P_Data.P_Name, P_Data.Age, P_Data.Sex,P_Data.P_Date, P_Data.Ref, P_Report.Services, P_Report.Doctor, P_Report.Amount " +
                                           $"FROM P_Data INNER JOIN P_Report ON P_Data.[ID] = P_Report.[ID] " +
-                                          "WHERE P_Data.ID LIKE '%" + Search_Txt.Text + "%' OR P_Name LIKE'%" + Search_Txt.Text + "%' OR Card LIKE'%" + Search_Txt.Text + "%' OR Services LIKE'%" + Search_Txt.Text + "%' OR P_Report.Doctor LIKE'%" + Search_Txt.Text + "%' OR Sex LIKE'%" + Search_Txt.Text + "%'";
+                                          "WHERE P_Data.ID LIKE '%" + Search_Txt.Text + "%' OR P_Name LIKE'%" + Search_Txt.Text + "%' OR Services LIKE'%" + Search_Txt.Text + "%' OR P_Report.Doctor LIKE'%" + Search_Txt.Text + "%' OR Sex LIKE'%" + Search_Txt.Text + "%'";
 
                         using (OleDbDataAdapter Da = new OleDbDataAdapter(Cmd))
                         {
@@ -108,7 +108,7 @@ namespace Datally
             DataGridViewRow row = Search_Grid.Rows[e.RowIndex];
             if (!string.IsNullOrEmpty(row.Cells[0].Value.ToString()))
             {
-                string FilePath = Path + "P_Report\\" + row.Cells[0].Value + "_" + row.Cells[1].Value + "_" + row.Cells[7].Value + ".docx";
+                string FilePath = Path + "P_Report\\" + row.Cells[0].Value + "_" + row.Cells[1].Value + "_" + row.Cells[6].Value + ".docx";
                 P_Report(FilePath);
             }
             else

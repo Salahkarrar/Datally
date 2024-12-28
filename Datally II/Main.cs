@@ -61,6 +61,7 @@ namespace Datally
                 File.Copy(So, De);
                 MessageBoxEx.Show(Resources.S4, Resources.E8, 700);
                 Application.Exit();
+                Environment.Exit(0);
             }
             else if (dialog == DialogResult.No)
             {

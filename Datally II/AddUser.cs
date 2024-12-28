@@ -21,7 +21,6 @@ namespace Datally
             {
                 T_RolesTabAd.Fill(DatallySet.T_Roles);
                 T_UsersTabAd.Fill(DatallySet.T_Users);
-                Edit(true, false);
                 Login.Instance.CheckMain(Login.Instance.UserName);
                 foreach (var obj in Login.Instance.List)
                 {
@@ -46,6 +45,7 @@ namespace Datally
                         Cancel_Btn.Enabled = true;
                     }
                 }
+                Edit(true, false);
             }
             catch (Exception ex)
             {

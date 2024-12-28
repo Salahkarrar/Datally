@@ -124,6 +124,7 @@ namespace Datally
 
         private void Login_Btn_Click(object sender, EventArgs e)
         {
+            int c = 0;
             try
             {
                 OleDbCommand Cmd = new OleDbCommand("SELECT * FROM T_Users WHERE PWord=@0", Conn);
@@ -134,6 +135,7 @@ namespace Datally
 
                 while (Reader.Read())
                 {
+                    c = 1;
                     ID = Reader[Resources.DB1].ToString();
                     UserName = Reader[Resources.DB2].ToString();
                     Password = Reader[Resources.DB3].ToString();
@@ -149,7 +151,7 @@ namespace Datally
                 MessageBox.Show("Problem in Database, Can't Get Your Data." + "\r\n" + "Call System Administrator" + "\r\n" + ex.Message, "Error Login - 1001", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            if (ID != null && Status == "Changed")
+            if (c== 1 && ID != null && Status == "Changed")
             {
                 Hide();
                 using (Main D = new Main())
@@ -158,7 +160,7 @@ namespace Datally
                 }
                 PassWord.Clear();
             }
-            else if (ID != null && Status != "Changed")
+            else if (c == 1 && ID != null && Status != "Changed")
             {
                 using (ChangePass D = new ChangePass())
                 {
@@ -257,6 +259,7 @@ namespace Datally
                 File.Copy(So, De);
                 MessageBoxEx.Show(Resources.S4, Resources.E8, 700);
                 Application.Exit();
+                Environment.Exit(0);
             }
         }
 

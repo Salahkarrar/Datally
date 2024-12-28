@@ -36,7 +36,6 @@ namespace Datally
                 Date_Txt.Value = DateTime.Today;
                 MinimizeBox = true;
                 Date_Txt.CalendarMonthBackground = Color.FromArgb(27, 38, 49);
-                Edit(true, false);
                 Login.Instance.CheckMain(Login.Instance.UserName);
                 foreach (var obj in Login.Instance.List)
                 {
@@ -77,6 +76,7 @@ namespace Datally
                         New_Report_Btn.Enabled = true;
                     }
                 }
+                Edit(true, false);
             }
             catch (Exception ex)
             {
@@ -117,12 +117,14 @@ namespace Datally
         private void Save_Btn_Click(object sender, EventArgs e)
         {
             if (Name_Txt.TextLength > 0 && Age_Txt.TextLength > 0 && !string.IsNullOrEmpty(Sex_Txt.Text)
-                && !string.IsNullOrEmpty(Card_Txt.Text) && !string.IsNullOrEmpty(Date_Txt.Text))
+                && !string.IsNullOrEmpty(Date_Txt.Text))
             {
                 Edit(true, false);
                 SaveData();
-                New_Report_Click(sender, e);
                 RefDoc();
+                P_DataTabAd.Fill(DatallySet.P_Data);
+                P_DataBindSour.MoveLast();
+                New_Report_Click(sender, e);
                 New_Btn.Enabled = true;
             }
             else
@@ -169,7 +171,7 @@ namespace Datally
                                 Connection = Conn
                             })
                             {
-                                string Qurey = "UPDATE P_Data SET P_Name ='" + Name_Txt.Text + "',Age='" + Age_Txt.Text + "',Sex='" + Sex_Txt.Text + "',Card='" + Card_Txt.Text + "',Ref='" + Ref_Txt.Text + "' WHERE ID= " + ID_Txt.Text + "";
+                                string Qurey = "UPDATE P_Data SET P_Name ='" + Name_Txt.Text + "',Age='" + Age_Txt.Text + "',Sex='" + Sex_Txt.Text + "',P_Date = '" + Date_Txt.Text + "',Ref='" + Ref_Txt.Text + "' WHERE ID= " + ID_Txt.Text + "";
                                 Cmd.CommandText = Qurey;
                                 Cmd.ExecuteNonQuery();
                             }
@@ -269,7 +271,7 @@ namespace Datally
         private void S_Save_Btn_Click(object sender, EventArgs e)
 #pragma warning restore IDE1006 // Naming Styles
         {
-            if (!string.IsNullOrEmpty(Services_Combo.Text) && !string.IsNullOrEmpty(Doctor_Txt.Text))
+            if (!string.IsNullOrEmpty(Services_Combo.Text) && !string.IsNullOrEmpty(Doctor_Txt.Text) && !string.IsNullOrEmpty(Cash_Txt.Text))
             {
                 Services_Combo.Enabled = false;
                 Doctor_Txt.Enabled = false;
@@ -334,8 +336,6 @@ namespace Datally
             Se();
         }
 
-
-
         private void PData_Grid_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.Delete && MessageBox.Show("Do You Want to Delete This Patient Data", Resources.Question, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -376,7 +376,6 @@ namespace Datally
             Cash_Txt.ReadOnly = Value;
             Date_Txt.Enabled = Value2;
             Sex_Txt.Enabled = Value2;
-            Card_Txt.Enabled = Value2;
             Ref_Txt.Enabled = Value2;
         }
 
@@ -441,7 +440,7 @@ namespace Datally
             try
             {
                 if (!string.IsNullOrEmpty(Name_Txt.Text) && !string.IsNullOrEmpty(Age_Txt.Text) && !string.IsNullOrEmpty(Sex_Txt.Text)
-                    && !string.IsNullOrEmpty(Card_Txt.Text) && !string.IsNullOrEmpty(Date_Txt.Text))
+                    && !string.IsNullOrEmpty(Date_Txt.Text))
                 //Insert Data to Database;
                 {
                     if (Conn.State == ConnectionState.Closed)
@@ -450,13 +449,12 @@ namespace Datally
                     }
 
                     Cmd.Connection = Conn;
-                    Cmd.CommandText = "INSERT INTO P_Data (P_Name,Sex,Age,Card,P_Date,Ref) VALUES (@0,@1,@2,@3,@4,@5)";
+                    Cmd.CommandText = "INSERT INTO P_Data (P_Name,Sex,Age,P_Date,Ref) VALUES (@0,@1,@2,@3,@4)";
                     Cmd.Parameters.AddWithValue("@0", Name_Txt.Text);
                     Cmd.Parameters.AddWithValue("@1", Sex_Txt.Text);
                     Cmd.Parameters.AddWithValue("@2", Age_Txt.Text);
-                    Cmd.Parameters.AddWithValue("@3", Card_Txt.Text);
-                    Cmd.Parameters.AddWithValue("@4", Date_Txt.Text);
-                    Cmd.Parameters.AddWithValue("@5", Ref_Txt.Text);
+                    Cmd.Parameters.AddWithValue("@3", Date_Txt.Text);
+                    Cmd.Parameters.AddWithValue("@", Ref_Txt.Text);
                     Cmd.ExecuteNonQuery();
                     Cmd.Parameters.Clear();
                     MessageBoxEx.Show(Resources.Save, Resources.Information, MessageBoxButtons.OK, MessageBoxIcon.Information, 700);
@@ -558,12 +556,13 @@ namespace Datally
                 }
 
                 Cmd.Connection = Conn;
-                string Qurey = "INSERT INTO P_Report (ID,Name,Services,Doctor) VALUES (@0,@1,@2,@3);";
+                string Qurey = "INSERT INTO P_Report (ID,Name,Services,Doctor,Amount) VALUES (@0,@1,@2,@3,@4);";
                 Cmd.CommandText = Qurey;
                 Cmd.Parameters.AddWithValue("@0", ID_Txt.Text);
                 Cmd.Parameters.AddWithValue("@1", Name_Txt.Text);
                 Cmd.Parameters.AddWithValue("@2", Services_Combo.Text);
                 Cmd.Parameters.AddWithValue("@3", Doctor_Txt.Text);
+                Cmd.Parameters.AddWithValue("@4", Cash_Txt.Text);
 
                 Cmd.ExecuteNonQuery();
                 Cmd.Parameters.Clear();
@@ -620,11 +619,6 @@ namespace Datally
 
         private void SwitchInput(InputLanguage layout) => InputLanguage.CurrentInputLanguage = layout;
 
-        private void Card_Txt_Leave(object sender, EventArgs e)
-        {
-            Contract(Card_Txt.Text);
-            Cash_Txt.ReadOnly = true;
-        }
 
         public void Enter_KeyDown(object sender, KeyEventArgs e)
         {
@@ -709,7 +703,7 @@ namespace Datally
                 }
 
                 Cmd.Connection = Conn;
-                Cmd.CommandText = "SELECT P_Data.ID, P_Data.P_Name, P_Data.Age, P_Data.Sex, P_Data.Card, P_Data.Cash, P_Data.P_Date, P_Data.Ref, P_Report.Services, P_Report.Doctor " +
+                Cmd.CommandText = "SELECT P_Data.ID, P_Data.P_Name, P_Data.Age, P_Data.Sex, P_Data.P_Date, P_Data.Ref, P_Report.Services, P_Report.Doctor, P_Report.Amount " +
                                   $"FROM P_Data INNER JOIN P_Report ON P_Data.[ID] = P_Report.[ID]";
 
                 using (OleDbDataAdapter Da = new OleDbDataAdapter(Cmd))
@@ -765,22 +759,31 @@ namespace Datally
 
         void Contract(string Value)
         {
+            string Amount = null;
             try
             {
                 if (Conn.State == ConnectionState.Closed)
                     Conn.Open();
                 Cmd.Connection = Conn;
-                Cmd.CommandText = "SELECT NetPrice FROM T_Contract WHERE Name='" + Value + "'";
+                Cmd.CommandText = "SELECT NetPrice FROM T_Contract WHERE Name=@0";
                 Cmd.Parameters.AddWithValue("@0", Value);
 
                 OleDbDataReader Reader = Cmd.ExecuteReader();
                 while (Reader.Read())
                 {
-                    Cash_Txt.Text = Reader[0].ToString();
+                    Amount = Reader["NetPrice"].ToString();
                 }
                 Cmd.Parameters.Clear();
                 Reader.Close();
                 Conn.Close();
+                if(Amount != null)
+                {
+                    Cash_Txt.Text = Amount;
+                }
+                else
+                {
+                    Cash_Txt.Text = "0";
+                }
             }
             catch (Exception ex)
             {
@@ -842,6 +845,12 @@ namespace Datally
             {
                 return;
             }
+        }
+
+        private void Cash_Txt_Enter(object sender, EventArgs e)
+        {
+            Contract(Services_Combo.Text);
+            Cash_Txt.ReadOnly = true;
         }
     }
 }

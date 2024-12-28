@@ -29,34 +29,33 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Patiant_Group1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.Cash_Txt = new System.Windows.Forms.TextBox();
+            this.Date_Txt = new System.Windows.Forms.DateTimePicker();
             this.P_DataBindSour = new System.Windows.Forms.BindingSource(this.components);
             this.DatallySet = new Datally.DatallyDataSet();
-            this.Date_Txt = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.New_Btn = new System.Windows.Forms.Button();
             this.Ref_Txt = new System.Windows.Forms.ComboBox();
             this.RefDocBindSour = new System.Windows.Forms.BindingSource(this.components);
             this.Edit_Btn = new System.Windows.Forms.Button();
             this.Save_Btn = new System.Windows.Forms.Button();
-            this.Card_Txt = new System.Windows.Forms.ComboBox();
-            this.T_ContractBindSour = new System.Windows.Forms.BindingSource(this.components);
             this.Cancel_Btn = new System.Windows.Forms.Button();
             this.Sex_Txt = new System.Windows.Forms.ComboBox();
             this.ID_Txt = new System.Windows.Forms.TextBox();
             this.Age_Txt = new System.Windows.Forms.TextBox();
             this.Name_Txt = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Cash_Txt = new System.Windows.Forms.TextBox();
+            this.pReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.T_ContractBindSour = new System.Windows.Forms.BindingSource(this.components);
             this.Patiant_Group2 = new System.Windows.Forms.GroupBox();
             this.Report_Btn = new System.Windows.Forms.Button();
             this.Doctor_Txt = new System.Windows.Forms.ComboBox();
@@ -87,10 +86,12 @@
             this.TempleteTabAd = new Datally.DatallyDataSetTableAdapters.TempleteTableAdapter();
             this.RefDocTabAd = new Datally.DatallyDataSetTableAdapters.RefDoctorTableAdapter();
             this.T_ContractTabAd = new Datally.DatallyDataSetTableAdapters.T_ContractTableAdapter();
+            this.p_ReportTableAdapter = new Datally.DatallyDataSetTableAdapters.P_ReportTableAdapter();
             this.Patiant_Group1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.P_DataBindSour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DatallySet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RefDocBindSour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pReportBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.T_ContractBindSour)).BeginInit();
             this.Patiant_Group2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DocBindSour)).BeginInit();
@@ -106,21 +107,17 @@
             // Patiant_Group1
             // 
             this.Patiant_Group1.BackColor = System.Drawing.Color.Transparent;
-            this.Patiant_Group1.Controls.Add(this.label1);
-            this.Patiant_Group1.Controls.Add(this.Cash_Txt);
             this.Patiant_Group1.Controls.Add(this.Date_Txt);
             this.Patiant_Group1.Controls.Add(this.label4);
             this.Patiant_Group1.Controls.Add(this.label3);
             this.Patiant_Group1.Controls.Add(this.label6);
             this.Patiant_Group1.Controls.Add(this.label8);
             this.Patiant_Group1.Controls.Add(this.label7);
-            this.Patiant_Group1.Controls.Add(this.label5);
             this.Patiant_Group1.Controls.Add(this.label2);
             this.Patiant_Group1.Controls.Add(this.New_Btn);
             this.Patiant_Group1.Controls.Add(this.Ref_Txt);
             this.Patiant_Group1.Controls.Add(this.Edit_Btn);
             this.Patiant_Group1.Controls.Add(this.Save_Btn);
-            this.Patiant_Group1.Controls.Add(this.Card_Txt);
             this.Patiant_Group1.Controls.Add(this.Cancel_Btn);
             this.Patiant_Group1.Controls.Add(this.Sex_Txt);
             this.Patiant_Group1.Controls.Add(this.ID_Txt);
@@ -139,41 +136,6 @@
             this.Patiant_Group1.TabStop = false;
             this.Patiant_Group1.Text = "Patients Data";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(435, 144);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 19);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "Cash :";
-            this.label1.Visible = false;
-            // 
-            // Cash_Txt
-            // 
-            this.Cash_Txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(38)))), ((int)(((byte)(49)))));
-            this.Cash_Txt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Cash_Txt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.P_DataBindSour, "Cash", true));
-            this.Cash_Txt.ForeColor = System.Drawing.Color.White;
-            this.Cash_Txt.Location = new System.Drawing.Point(492, 141);
-            this.Cash_Txt.Margin = new System.Windows.Forms.Padding(4);
-            this.Cash_Txt.Name = "Cash_Txt";
-            this.Cash_Txt.ReadOnly = true;
-            this.Cash_Txt.Size = new System.Drawing.Size(156, 26);
-            this.Cash_Txt.TabIndex = 7;
-            this.Cash_Txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown);
-            // 
-            // P_DataBindSour
-            // 
-            this.P_DataBindSour.DataMember = "P_Data";
-            this.P_DataBindSour.DataSource = this.DatallySet;
-            // 
-            // DatallySet
-            // 
-            this.DatallySet.DataSetName = "DatallyDataSet";
-            this.DatallySet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // Date_Txt
             // 
             this.Date_Txt.CustomFormat = "dd/MM/yyyy";
@@ -185,9 +147,19 @@
             this.Date_Txt.MinDate = new System.DateTime(2024, 1, 1, 0, 0, 0, 0);
             this.Date_Txt.Name = "Date_Txt";
             this.Date_Txt.Size = new System.Drawing.Size(155, 26);
-            this.Date_Txt.TabIndex = 5;
+            this.Date_Txt.TabIndex = 4;
             this.Date_Txt.Value = new System.DateTime(2024, 1, 1, 0, 0, 0, 0);
             this.Date_Txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown);
+            // 
+            // P_DataBindSour
+            // 
+            this.P_DataBindSour.DataMember = "P_Data";
+            this.P_DataBindSour.DataSource = this.DatallySet;
+            // 
+            // DatallySet
+            // 
+            this.DatallySet.DataSetName = "DatallyDataSet";
+            this.DatallySet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label4
             // 
@@ -212,7 +184,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(225, 40);
+            this.label6.Location = new System.Drawing.Point(219, 143);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(43, 19);
@@ -238,16 +210,6 @@
             this.label7.Size = new System.Drawing.Size(50, 19);
             this.label7.TabIndex = 13;
             this.label7.Text = "Date :";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(216, 144);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(50, 19);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Card :";
             // 
             // label2
             // 
@@ -297,7 +259,7 @@
             this.Ref_Txt.Margin = new System.Windows.Forms.Padding(4);
             this.Ref_Txt.Name = "Ref_Txt";
             this.Ref_Txt.Size = new System.Drawing.Size(278, 27);
-            this.Ref_Txt.TabIndex = 6;
+            this.Ref_Txt.TabIndex = 5;
             this.Ref_Txt.ValueMember = "RefName";
             this.Ref_Txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown);
             // 
@@ -323,7 +285,7 @@
             this.Edit_Btn.Margin = new System.Windows.Forms.Padding(4);
             this.Edit_Btn.Name = "Edit_Btn";
             this.Edit_Btn.Size = new System.Drawing.Size(92, 31);
-            this.Edit_Btn.TabIndex = 9;
+            this.Edit_Btn.TabIndex = 7;
             this.Edit_Btn.Text = "Edit";
             this.Edit_Btn.UseVisualStyleBackColor = true;
             this.Edit_Btn.Click += new System.EventHandler(this.Edit_Btn_Click);
@@ -345,38 +307,10 @@
             this.Save_Btn.Margin = new System.Windows.Forms.Padding(4);
             this.Save_Btn.Name = "Save_Btn";
             this.Save_Btn.Size = new System.Drawing.Size(92, 31);
-            this.Save_Btn.TabIndex = 8;
+            this.Save_Btn.TabIndex = 6;
             this.Save_Btn.Text = "Save";
             this.Save_Btn.UseVisualStyleBackColor = true;
             this.Save_Btn.Click += new System.EventHandler(this.Save_Btn_Click);
-            // 
-            // Card_Txt
-            // 
-            this.Card_Txt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.Card_Txt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.Card_Txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(38)))), ((int)(((byte)(49)))));
-            this.Card_Txt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.P_DataBindSour, "Card", true));
-            this.Card_Txt.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.T_ContractBindSour, "Name", true));
-            this.Card_Txt.DataSource = this.T_ContractBindSour;
-            this.Card_Txt.DisplayMember = "Name";
-            this.Card_Txt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Card_Txt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Card_Txt.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Card_Txt.ForeColor = System.Drawing.Color.White;
-            this.Card_Txt.FormattingEnabled = true;
-            this.Card_Txt.Location = new System.Drawing.Point(271, 140);
-            this.Card_Txt.Margin = new System.Windows.Forms.Padding(4);
-            this.Card_Txt.Name = "Card_Txt";
-            this.Card_Txt.Size = new System.Drawing.Size(109, 27);
-            this.Card_Txt.TabIndex = 4;
-            this.Card_Txt.ValueMember = "ID";
-            this.Card_Txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown);
-            this.Card_Txt.Leave += new System.EventHandler(this.Card_Txt_Leave);
-            // 
-            // T_ContractBindSour
-            // 
-            this.T_ContractBindSour.DataMember = "T_Contract";
-            this.T_ContractBindSour.DataSource = this.DatallySet;
             // 
             // Cancel_Btn
             // 
@@ -395,7 +329,7 @@
             this.Cancel_Btn.Margin = new System.Windows.Forms.Padding(4);
             this.Cancel_Btn.Name = "Cancel_Btn";
             this.Cancel_Btn.Size = new System.Drawing.Size(92, 31);
-            this.Cancel_Btn.TabIndex = 10;
+            this.Cancel_Btn.TabIndex = 8;
             this.Cancel_Btn.Text = "Cancel";
             this.Cancel_Btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Cancel_Btn.UseVisualStyleBackColor = true;
@@ -417,7 +351,7 @@
             "Male",
             "Female",
             "Other"});
-            this.Sex_Txt.Location = new System.Drawing.Point(271, 35);
+            this.Sex_Txt.Location = new System.Drawing.Point(270, 138);
             this.Sex_Txt.Margin = new System.Windows.Forms.Padding(4);
             this.Sex_Txt.Name = "Sex_Txt";
             this.Sex_Txt.Size = new System.Drawing.Size(109, 27);
@@ -454,6 +388,7 @@
             this.Age_Txt.Name = "Age_Txt";
             this.Age_Txt.Size = new System.Drawing.Size(108, 26);
             this.Age_Txt.TabIndex = 2;
+            this.Age_Txt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Age_Txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown);
             this.Age_Txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Age_Txt_KeyPress);
             // 
@@ -470,10 +405,48 @@
             this.Name_Txt.TabIndex = 1;
             this.Name_Txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(179, 129);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(72, 19);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Amount :";
+            // 
+            // Cash_Txt
+            // 
+            this.Cash_Txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(38)))), ((int)(((byte)(49)))));
+            this.Cash_Txt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Cash_Txt.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pReportBindingSource, "Amount", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
+            this.Cash_Txt.ForeColor = System.Drawing.Color.White;
+            this.Cash_Txt.Location = new System.Drawing.Point(259, 126);
+            this.Cash_Txt.Margin = new System.Windows.Forms.Padding(4);
+            this.Cash_Txt.Name = "Cash_Txt";
+            this.Cash_Txt.ReadOnly = true;
+            this.Cash_Txt.Size = new System.Drawing.Size(130, 26);
+            this.Cash_Txt.TabIndex = 1;
+            this.Cash_Txt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Cash_Txt.Enter += new System.EventHandler(this.Cash_Txt_Enter);
+            this.Cash_Txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown);
+            // 
+            // pReportBindingSource
+            // 
+            this.pReportBindingSource.DataMember = "P_Report";
+            this.pReportBindingSource.DataSource = this.DatallySet;
+            // 
+            // T_ContractBindSour
+            // 
+            this.T_ContractBindSour.DataMember = "T_Contract";
+            this.T_ContractBindSour.DataSource = this.DatallySet;
+            // 
             // Patiant_Group2
             // 
             this.Patiant_Group2.BackColor = System.Drawing.Color.Transparent;
+            this.Patiant_Group2.Controls.Add(this.label1);
             this.Patiant_Group2.Controls.Add(this.Report_Btn);
+            this.Patiant_Group2.Controls.Add(this.Cash_Txt);
             this.Patiant_Group2.Controls.Add(this.Doctor_Txt);
             this.Patiant_Group2.Controls.Add(this.Services_Combo);
             this.Patiant_Group2.Controls.Add(this.label10);
@@ -505,11 +478,11 @@
             this.Report_Btn.Image = global::Datally.Properties.Resources.ic_folder_white_18dp;
             this.Report_Btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Report_Btn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Report_Btn.Location = new System.Drawing.Point(324, 215);
+            this.Report_Btn.Location = new System.Drawing.Point(324, 245);
             this.Report_Btn.Margin = new System.Windows.Forms.Padding(4);
             this.Report_Btn.Name = "Report_Btn";
             this.Report_Btn.Size = new System.Drawing.Size(88, 31);
-            this.Report_Btn.TabIndex = 3;
+            this.Report_Btn.TabIndex = 4;
             this.Report_Btn.Text = "Report";
             this.Report_Btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Report_Btn.UseVisualStyleBackColor = true;
@@ -526,12 +499,13 @@
             this.Doctor_Txt.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Doctor_Txt.ForeColor = System.Drawing.Color.White;
             this.Doctor_Txt.FormattingEnabled = true;
-            this.Doctor_Txt.Location = new System.Drawing.Point(166, 146);
+            this.Doctor_Txt.Location = new System.Drawing.Point(166, 170);
             this.Doctor_Txt.Margin = new System.Windows.Forms.Padding(4);
             this.Doctor_Txt.Name = "Doctor_Txt";
             this.Doctor_Txt.Size = new System.Drawing.Size(308, 27);
-            this.Doctor_Txt.TabIndex = 1;
+            this.Doctor_Txt.TabIndex = 2;
             this.Doctor_Txt.ValueMember = "ID";
+            this.Doctor_Txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown);
             // 
             // DocBindSour
             // 
@@ -559,6 +533,7 @@
             this.Services_Combo.Size = new System.Drawing.Size(308, 27);
             this.Services_Combo.TabIndex = 0;
             this.Services_Combo.ValueMember = "Name";
+            this.Services_Combo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_KeyDown);
             // 
             // TempleteBindSour
             // 
@@ -568,7 +543,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(61, 150);
+            this.label10.Location = new System.Drawing.Point(61, 174);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(97, 19);
@@ -598,11 +573,11 @@
             this.S_Save_Btn.Image = global::Datally.Properties.Resources.ic_send_white_18dp;
             this.S_Save_Btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.S_Save_Btn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.S_Save_Btn.Location = new System.Drawing.Point(158, 215);
+            this.S_Save_Btn.Location = new System.Drawing.Point(158, 245);
             this.S_Save_Btn.Margin = new System.Windows.Forms.Padding(4);
             this.S_Save_Btn.Name = "S_Save_Btn";
             this.S_Save_Btn.Size = new System.Drawing.Size(88, 31);
-            this.S_Save_Btn.TabIndex = 2;
+            this.S_Save_Btn.TabIndex = 3;
             this.S_Save_Btn.Text = "Save";
             this.S_Save_Btn.UseVisualStyleBackColor = true;
             this.S_Save_Btn.Click += new System.EventHandler(this.S_Save_Btn_Click);
@@ -620,11 +595,11 @@
             this.New_Report_Btn.Image = global::Datally.Properties.Resources.ic_create_new_folder_white_18dp;
             this.New_Report_Btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.New_Report_Btn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.New_Report_Btn.Location = new System.Drawing.Point(219, 266);
+            this.New_Report_Btn.Location = new System.Drawing.Point(219, 296);
             this.New_Report_Btn.Margin = new System.Windows.Forms.Padding(4);
             this.New_Report_Btn.Name = "New_Report_Btn";
             this.New_Report_Btn.Size = new System.Drawing.Size(156, 38);
-            this.New_Report_Btn.TabIndex = 4;
+            this.New_Report_Btn.TabIndex = 5;
             this.New_Report_Btn.Text = "New Report";
             this.New_Report_Btn.UseVisualStyleBackColor = true;
             this.New_Report_Btn.Click += new System.EventHandler(this.New_Report_Click);
@@ -757,8 +732,8 @@
             this.Services_DataGrid.ReadOnly = true;
             this.Services_DataGrid.RowHeadersVisible = false;
             this.Services_DataGrid.RowHeadersWidth = 51;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            this.Services_DataGrid.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            this.Services_DataGrid.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.Services_DataGrid.RowTemplate.DividerHeight = 4;
             this.Services_DataGrid.RowTemplate.Height = 25;
             this.Services_DataGrid.RowTemplate.ReadOnly = true;
@@ -784,14 +759,14 @@
             this.PData_Grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1});
             this.PData_Grid.DataSource = this.P_DataBindSour;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.PData_Grid.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.PData_Grid.DefaultCellStyle = dataGridViewCellStyle5;
             this.PData_Grid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PData_Grid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(38)))), ((int)(((byte)(49)))));
             this.PData_Grid.Location = new System.Drawing.Point(4, 77);
@@ -801,8 +776,8 @@
             this.PData_Grid.ReadOnly = true;
             this.PData_Grid.RowHeadersVisible = false;
             this.PData_Grid.RowHeadersWidth = 51;
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            this.PData_Grid.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            this.PData_Grid.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.PData_Grid.RowTemplate.DividerHeight = 4;
             this.PData_Grid.RowTemplate.Height = 25;
             this.PData_Grid.RowTemplate.ReadOnly = true;
@@ -922,6 +897,10 @@
             // 
             this.T_ContractTabAd.ClearBeforeFill = true;
             // 
+            // p_ReportTableAdapter
+            // 
+            this.p_ReportTableAdapter.ClearBeforeFill = true;
+            // 
             // Reception_Frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -949,6 +928,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.P_DataBindSour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DatallySet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RefDocBindSour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pReportBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.T_ContractBindSour)).EndInit();
             this.Patiant_Group2.ResumeLayout(false);
             this.Patiant_Group2.PerformLayout();
@@ -973,13 +953,11 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button New_Btn;
         private System.Windows.Forms.ComboBox Ref_Txt;
         private System.Windows.Forms.Button Edit_Btn;
         private System.Windows.Forms.Button Save_Btn;
-        private System.Windows.Forms.ComboBox Card_Txt;
         private System.Windows.Forms.Button Cancel_Btn;
         private System.Windows.Forms.ComboBox Sex_Txt;
         private System.Windows.Forms.TextBox ID_Txt;
@@ -1022,5 +1000,7 @@
         private System.Windows.Forms.BindingSource T_ContractBindSour;
         private DatallyDataSetTableAdapters.T_ContractTableAdapter T_ContractTabAd;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.BindingSource pReportBindingSource;
+        private DatallyDataSetTableAdapters.P_ReportTableAdapter p_ReportTableAdapter;
     }
 }

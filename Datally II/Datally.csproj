@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Datally</RootNamespace>
-    <AssemblyName>Datally</AssemblyName>
+    <AssemblyName>Radiologix</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -186,9 +186,6 @@
     <Compile Include="Contract.designer.cs">
       <DependentUpon>Contract.cs</DependentUpon>
     </Compile>
-    <Compile Include="DatallyDataSet.cs">
-      <DependentUpon>DatallyDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="DatallyDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -337,9 +334,9 @@
       <DependentUpon>DatallyDataSet.xsd</DependentUpon>
     </None>
     <None Include="DatallyDataSet.xsd">
+      <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>DatallyDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </None>
     <None Include="DatallyDataSet.xss">
       <DependentUpon>DatallyDataSet.xsd</DependentUpon>

@@ -47,7 +47,7 @@ namespace Datally
                     }
 
                     Cmd.Connection = Conn;
-                    Cmd.CommandText = "SELECT P_Data.ID,P_Data.P_Name,P_Data.P_Date,P_Report.Services,P_Report.Doctor,P_Data.Cash FROM P_Data INNER JOIN P_Report ON P_Data.ID = P_Report.ID " +
+                    Cmd.CommandText = "SELECT P_Data.ID,P_Data.P_Name,P_Data.P_Date,P_Report.Services,P_Report.Doctor,P_Report.Amount FROM P_Data INNER JOIN P_Report ON P_Data.ID = P_Report.ID " +
                                        $"WHERE P_Date BETWEEN '" + f + "' AND '" + t + "' AND P_Report.Doctor='" + doc + "'";
 
                     using (OleDbDataAdapter Da = new OleDbDataAdapter(Cmd))

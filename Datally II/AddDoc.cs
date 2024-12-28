@@ -19,7 +19,6 @@ namespace Datally
         {
             try
             {
-                Edit(true, false);
                 DocTabAd.Fill(DatallySet.Doctor);
 
                 // The PErmision of the Botton
@@ -48,6 +47,7 @@ namespace Datally
                         Cancel_Btn.Enabled = true;
                     }
                 }
+                Edit(true, false);
             }
             catch (Exception ex)
             {

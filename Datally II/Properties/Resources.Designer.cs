@@ -290,6 +290,15 @@ namespace Datally.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 2024/12/31.
+        /// </summary>
+        internal static string ExpairdDate {
+            get {
+                return ResourceManager.GetString("ExpairdDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File Exist.
         /// </summary>
         internal static string FileExist {

@@ -9,36 +9,38 @@ namespace Datally
     {
         public ChangePass() => InitializeComponent();
 
-        public OleDbConnection Con { get; } = new OleDbConnection(Properties.Resources.SVRDB);
+        // Connection to the database
+        public OleDbConnection _connection { get; } = new OleDbConnection(Properties.Resources.SVRDB);
+
+        // Command to execute SQL queries
         public OleDbCommand Cmd { get; set; } = new OleDbCommand();
+
+        // User information
         public string UserName { get; set; }
         public string ID { get; set; }
+
+        // Control for handling key events
         public Control Ctrl { get; set; }
 
         private void PassWord_KeyDown(object sender, KeyEventArgs e)
         {
-            var c = 0;
-            if (e.KeyCode == Keys.Enter)
-            {
-                try
-                {
-                    if (Con.State == ConnectionState.Closed)
-                        Con.Open();
+            if (e.KeyCode != Keys.Enter) return;
 
-                    Cmd.Connection = Con;
-                    Cmd.CommandText = "SELECT * FROM T_Users WHERE PWord=@0";
-                    Cmd.Parameters.AddWithValue("@0", PassWord.Text);
-                    OleDbDataReader Reader = Cmd.ExecuteReader();
-                    while (Reader.Read())
+            try
+            {
+                if (_connection.State == ConnectionState.Closed)
+                    _connection.Open();
+
+                Cmd.Connection = _connection;
+                Cmd.CommandText = "SELECT * FROM T_Users WHERE PWord=@0";
+                Cmd.Parameters.AddWithValue("@0", PassWord.Text);
+
+                using (OleDbDataReader reader = Cmd.ExecuteReader())
+                {
+                    if (reader.Read())
                     {
-                        c += 1;
-                        UserName = Reader["UserName"].ToString();
-                        ID = Reader["ID"].ToString();
-                    }
-                    Cmd.Parameters.Clear();
-                    Reader.Close();
-                    if (c == 1)
-                    {
+                        UserName = reader["UserName"].ToString();
+                        ID = reader["ID"].ToString();
                         groupBox1.Enabled = true;
                         UserName_Txt.Text = UserName;
                         New_Txt.Focus();
@@ -49,47 +51,57 @@ namespace Datally
                         PassWord.Text = null;
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Can't Retrive Your Data, Call System Administrator" + "\r\n" + ex.Message, "Error Change Password - 1000", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+
+                Cmd.Parameters.Clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can't Retrieve Your Data, Call System Administrator" + "\r\n" + ex.Message, "Error Change Password - 1000", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void Save_Btn_Click(object sender, EventArgs e)
         {
-            if (UserName_Txt.Text != null && New_Txt.TextLength > 4 && New_Txt.Text == Confirm_Txt.Text)
+            if (string.IsNullOrEmpty(UserName_Txt.Text) || New_Txt.TextLength <= 4 || New_Txt.Text != Confirm_Txt.Text)
             {
-                string Ch = "Changed";
-                try
-                {
-                    if (Con.State == ConnectionState.Closed)
-                        Con.Open();
-                    Cmd.Connection = Con;
-                    Cmd.CommandText = "UPDATE T_Users SET PWord= @1,C_Status='" + Ch + "' WHERE ID=@0";
-                    Cmd.Parameters.AddWithValue("@1", New_Txt.Text);
-                    Cmd.Parameters.AddWithValue("@0", ID);
-                    Cmd.ExecuteNonQuery();
-                    Cmd.Parameters.Clear();
-                    Con.Close();
-                    MessageBoxEx.Show("Data Saved", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information, 700);
-                    PassWord.Clear();
-                    New_Txt.Clear();
-                    Confirm_Txt.Clear();
-                    UserName_Txt.Clear();
-                    groupBox1.Enabled = false;
-                    PassWord.Focus();
-                    Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Can't Save Your Data, Please Check Your Data or Call Administration." + "\r\n" + ex.Message, "Change Password - 1001", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                MessageBox.Show("The User Name can't be empty, or your new password and confirm password do not match, and the new password must be greater than 4 characters. Please try again.", "Error Changed Password - 1001", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else
+
+            const string statusChanged = "Changed";
+
+            try
             {
-                MessageBox.Show("The User Name Can't be Empty or Your New Password & Confirm Password not Equal and New Passsword Most Be Great Than 4, Please Try Again.", "Error Changed Password - 1001", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (_connection.State == ConnectionState.Closed)
+                    _connection.Open();
+
+                Cmd.Connection = _connection;
+                Cmd.CommandText = "UPDATE T_Users SET PWord=@1, C_Status=@2 WHERE ID=@0";
+                Cmd.Parameters.AddWithValue("@1", New_Txt.Text);
+                Cmd.Parameters.AddWithValue("@2", statusChanged);
+                Cmd.Parameters.AddWithValue("@0", ID);
+                Cmd.ExecuteNonQuery();
+                Cmd.Parameters.Clear();
+
+                MessageBoxEx.Show("Data Saved", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information, 700);
+
+                ClearForm();
+                Close();
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can't save your data. Please check your data or call administration." + "\r\n" + ex.Message, "Change Password - 1001", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ClearForm()
+        {
+            PassWord.Clear();
+            New_Txt.Clear();
+            Confirm_Txt.Clear();
+            UserName_Txt.Clear();
+            groupBox1.Enabled = false;
+            PassWord.Focus();
         }
 
         private void Exit_Btn_Click(object sender, EventArgs e)
@@ -97,31 +109,16 @@ namespace Datally
             Close();
         }
 
-        /* Function */
-
         private void ProID_Txt_KeyDown(object sender, KeyEventArgs e)
         {
-            Ctrl = (Control)sender;
-            if (Ctrl is TextBox)
-            {
-                if (e.KeyCode == Keys.Enter)
-                {
-                    SelectNextControl(Ctrl, true, true, true, true);
-                }
-                else
-                    return;
-            }
-            else
-            {
-                if (e.KeyCode == Keys.Enter)
-                {
-                    SelectNextControl(Ctrl, true, true, true, true);
-                }
-                else
-                    return;
-            }
+            if (e.KeyCode != Keys.Enter) return;
 
+            Ctrl = sender as Control;
+            if (Ctrl != null)
+            {
+                SelectNextControl(Ctrl, true, true, true, true);
+            }
         }
-
     }
+
 }

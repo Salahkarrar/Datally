@@ -42,6 +42,7 @@
             this.Logo = new System.Windows.Forms.PictureBox();
             this.RLogin_Btn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.SuspendLayout();
@@ -101,7 +102,7 @@
             this.CheckConn_label.AutoSize = true;
             this.CheckConn_label.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CheckConn_label.ForeColor = System.Drawing.Color.White;
-            this.CheckConn_label.Location = new System.Drawing.Point(11, 123);
+            this.CheckConn_label.Location = new System.Drawing.Point(11, 145);
             this.CheckConn_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.CheckConn_label.Name = "CheckConn_label";
             this.CheckConn_label.Size = new System.Drawing.Size(151, 19);
@@ -112,7 +113,7 @@
             // 
             this.Conn_Status.AutoSize = true;
             this.Conn_Status.ForeColor = System.Drawing.Color.White;
-            this.Conn_Status.Location = new System.Drawing.Point(127, 123);
+            this.Conn_Status.Location = new System.Drawing.Point(127, 145);
             this.Conn_Status.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Conn_Status.Name = "Conn_Status";
             this.Conn_Status.Size = new System.Drawing.Size(50, 19);
@@ -219,6 +220,18 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "Devoloper By:";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.label3.Location = new System.Drawing.Point(56, 100);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(88, 15);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Radiologix App";
+            // 
             // Login
             // 
             this.AcceptButton = this.Login_Btn;
@@ -229,6 +242,7 @@
             this.CancelButton = this.Exit_Btn;
             this.ClientSize = new System.Drawing.Size(200, 500);
             this.ControlBox = false;
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Logo);
             this.Controls.Add(this.Passwor_label);
@@ -276,6 +290,7 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
     }
 }
 
